@@ -1,0 +1,34 @@
+<form data-request="{{ __SELF__ }}::onFormSubmit">
+
+    <div id="{{ __SELF__ }}_forms_flash"></div>
+
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <textarea name="comments" rows="8" cols="80"></textarea>
+    </div>
+
+    <button id="simpleContactSubmitButton" type="submit" class="btn btn-default">Submit</button>
+
+</form>

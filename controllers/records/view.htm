@@ -1,0 +1,17 @@
+<?= $this->makePartial('partials/view_toolbar') ?>
+
+<h2 class="text-center">Record #<?php echo $record->id ?></h2>
+
+<table class="record-table m-t-md">
+<?php foreach($record->form_data_arr as $label => $value): ?>
+    <tr>
+        <td class="record-label"><?php echo ucwords($label) ?>:</td>
+        <td class="record-value"><?php echo nl2br($value) ?></td>
+    </tr>
+<?php endforeach ?>
+</table>
+
+<div class="record-metadata m-t-md m-r-md text-right">
+    <p class="m-a-0">IP: <?php echo $record->ip ?></p>
+    <p class="m-a-0">Time: <?php echo $record->created_at ?></p>
+</div>

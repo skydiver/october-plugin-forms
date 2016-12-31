@@ -1,0 +1,13 @@
+<div class="control-toolbar">
+    <div class="toolbar-item toolbar-primary">
+        <div data-control="toolbar">
+            <a href="<?= Backend::url('martin/forms/records') ?>" type="button" class="btn btn-default oc-icon-arrow-left"><?= e(trans('backend::lang.form.return_to_list')) ?></a>
+            <button type="button" class="btn btn-danger oc-icon-trash"
+                    data-request="onDeleteSingle"
+                    data-request-confirm="<?= e(trans('backend::lang.form.confirm_delete')) ?>"
+                    data-request-data="id: <?= $record->id ?>"
+                    data-stripe-load-indicator
+            ><?= e(trans('backend::lang.account.delete')) ?></button>
+        </div>
+    </div>
+</div>
