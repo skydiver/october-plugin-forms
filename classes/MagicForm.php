@@ -7,8 +7,21 @@
     use October\Rain\Exception\ApplicationException;
     use October\Rain\Support\Facades\Flash;
     use Martin\Forms\Models\Record;
+    use Martin\Forms\Models\Settings;
 
     abstract class MagicForm extends ComponentBase {
+
+        public function onRun() {
+            if($this->property('recaptcha_enabled') && Settings::get('recaptcha_site_key') != '') {
+                $this->addJs('https://www.google.com/recaptcha/api.js');
+            }
+        }
+
+        public function settings() {
+            return [
+                'recaptcha_site_key' => Settings::get('recaptcha_site_key'),
+            ];
+        }
 
         public function defineProperties() {
             return [
@@ -65,6 +78,13 @@
                     'group'             => 'martin.forms::lang.components.shared.group_mail',
                     'showExternalParam' => false
                 ],
+                'recaptcha_enabled' => [
+                    'title'             => 'martin.forms::lang.components.shared.recaptcha_enabled.title',
+                    'description'       => 'martin.forms::lang.components.shared.recaptcha_enabled.description',
+                    'type'              => 'checkbox',
+                    'group'             => 'martin.forms::lang.components.shared.group_recaptcha',
+                    'showExternalParam' => false
+                ],
             ];
         }
 
@@ -88,15 +108,21 @@
                 $post = post();
             }
 
-            # REMOVE CSRF TOKEN FROM STORED DATA
-            unset($post['_token']);
-
             # VALIDATION PARAMETERS
             $rules = (array) $this->property('rules');
             $msgs  = (array) $this->property('rules_messages');
 
+            # ADD reCAPTCHA VALIDATION
+            if($this->property('recaptcha_enabled') && Settings::get('recaptcha_site_key') != '') {
+                $rules['g-recaptcha-response'] = 'required|recaptcha';
+            }
+
+            # NICE reCAPTCHA FIELD NAME
+            $fields_names = ['g-recaptcha-response' => 'reCAPTCHA'];
+
             # DO FORM VALIDATION
             $validator = Validator::make($post, $rules, $msgs);
+            $validator->setAttributeNames($fields_names);
 
             if($validator->fails()) {
 
@@ -107,6 +133,9 @@
                 ])]);
 
             } else {
+
+                # REMOVE EXTRA FIELDS FROM STORED DATA
+                unset($post['_token'], $post['g-recaptcha-response']);
 
                 $record = new Record;
                 $record->ip        = Request::getClientIp();
