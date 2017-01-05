@@ -2,9 +2,10 @@
 
     namespace Martin\Forms;
 
-    use Backend, Lang;
+    use Backend, Lang, Validator;
     use System\Classes\PluginBase;
     use System\Classes\SettingsManager;
+    use Martin\Forms\Classes\ReCaptchaValidator;
 
     class Plugin extends PluginBase {
 
@@ -70,6 +71,14 @@
             return [
                 'martin.forms::mail.notification' => Lang::get('martin.forms::lang.mails.form_notification.description'),
             ];
+        }
+
+        public function register() {
+
+            Validator::resolver(function($translator, $data, $rules, $messages, $customAttributes) {
+                return new ReCaptchaValidator($translator, $data, $rules, $messages, $customAttributes);
+            });
+
         }
 
     }

@@ -77,7 +77,11 @@
             'form_notification' => [
                 'description' => 'Notify when a form is submited'
             ]
-        ]
+        ],
+
+        'validation' => [
+            'recaptcha_error' => 'Cannot validate reCAPTCHA field'
+        ],
 
     ];
 
