@@ -7,8 +7,8 @@ columns:
     ip:
         label: martin.forms::lang.controllers.records.columns.ip
 
-    form_data_arr:
-        label: martin.forms::lang.controllers.records.columns.form_data_arr
+    form_data:
+        label: martin.forms::lang.controllers.records.columns.form_data
         type : partial
         path : $/martin/forms/models/record/fields/_stored_fields.htm
 

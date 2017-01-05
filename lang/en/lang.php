@@ -22,10 +22,10 @@
                 'error'      => 'Record not found',
                 'deleted'    => 'Record deleted successfully',
                 'columns'    => [
-                    'id'            => 'Record ID',
-                    'ip'            => 'IP Address',
-                    'form_data_arr' => 'Stored Fields',
-                    'created_at'    => 'Created',
+                    'id'         => 'Record ID',
+                    'ip'         => 'IP Address',
+                    'form_data'  => 'Stored Fields',
+                    'created_at' => 'Created',
                 ],
             ]
         ],
