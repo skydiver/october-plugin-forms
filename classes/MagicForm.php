@@ -78,11 +78,8 @@
                 ])]);
             }
 
-            $rules = (array) $this->property('rules');
-            $msgs  = (array) $this->property('rules_messages');
-
+            # FILTER ALLOWED FIELDS
             $allow = $this->property('allowed_fields');
-
             if(is_array($allow) && !empty($allow)) {
                 foreach($allow as $field) {
                     $post[$field] = post($field);
@@ -91,6 +88,14 @@
                 $post = post();
             }
 
+            # REMOVE CSRF TOKEN FROM STORED DATA
+            unset($post['_token']);
+
+            # VALIDATION PARAMETERS
+            $rules = (array) $this->property('rules');
+            $msgs  = (array) $this->property('rules_messages');
+
+            # DO FORM VALIDATION
             $validator = Validator::make($post, $rules, $msgs);
 
             if($validator->fails()) {
