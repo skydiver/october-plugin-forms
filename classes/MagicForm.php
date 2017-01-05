@@ -2,8 +2,9 @@
 
     namespace Martin\Forms\Classes;
 
-    use AjaxException, Lang, Mail, Request, Validator;
+    use AjaxException, Lang, Mail, Request, Session, Validator;
     use Cms\Classes\ComponentBase;
+    use October\Rain\Exception\ApplicationException;
     use October\Rain\Support\Facades\Flash;
     use Martin\Forms\Models\Record;
 
@@ -69,6 +70,14 @@
 
         public function onFormSubmit() {
 
+            # CSRF CHECK
+            if(Session::token() != post('_token')) {
+                throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
+                    'type'    => 'danger',
+                    'content' => Lang::get('martin.forms::lang.components.shared.csrf_error'),
+                ])]);
+            }
+
             $rules = (array) $this->property('rules');
             $msgs  = (array) $this->property('rules_messages');
 
@@ -86,11 +95,10 @@
 
             if($validator->fails()) {
 
-                $messages = $validator->messages();
                 throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
                     'type'  => 'danger',
                     'title' => $this->property('messages_errors'),
-                    'list'  => $messages->all()
+                    'list'  => $validator->messages()->all()
                 ])]);
 
             } else {

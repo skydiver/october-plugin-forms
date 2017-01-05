@@ -40,6 +40,7 @@
                 'description' => 'Create a empty template for your custom form; override component HTML.',
             ],
             'shared' => [
+                'csrf_error'       => 'Form session expired! Please refresh the page.',
                 'group_validation' => 'Form Validation',
                 'group_messages'   => 'Flash Messages',
                 'group_security'   => 'Security',
