@@ -87,10 +87,10 @@
             if($validator->fails()) {
 
                 $messages = $validator->messages();
-                Flash::error($messages->first());
                 throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
-                    'title'  => $this->property('messages_errors'),
-                    'errors' => $messages->all()
+                    'type'  => 'danger',
+                    'title' => $this->property('messages_errors'),
+                    'list'  => $messages->all()
                 ])]);
 
             } else {
@@ -109,8 +109,10 @@
                     ]);
                 }
 
-                Flash::success($this->property('messages_success'));
-                return ['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm')];
+                return ['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
+                    'type'    => 'success',
+                    'content' => $this->property('messages_success')
+                ])];
 
             }
 

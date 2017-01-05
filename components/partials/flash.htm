@@ -1,22 +1,24 @@
 {% spaceless %}
 
-    {% flash success %}
-    <div class="alert alert-success alert-dismissible" role="alert">
+    <div class="alert alert-{{ type }} alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        {{ message }}
-    </div>
-    {% endflash %}
 
-    {% flash error %}
-    <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {% if title %}
         <h4>{{ title }}</h4>
+    {% endif %}
+
+    {% if content %}
+        <p>{{ content }}</p>
+    {% endif %}
+
+    {% if list %}
         <ul>
-        {% for error in errors %}
-            <li>{{ error }}</li>
+        {% for item in list %}
+            <li>{{ item }}</li>
         {% endfor %}
         </ul>
+    {% endif %}
+
     </div>
-    {% endflash %}
 
 {% endspaceless %}
