@@ -38,19 +38,19 @@
             ];
         }
 
-        // public function registerSettings() {
-        //     return [
-        //         'config' => [
-        //             'label'       => 'martin.forms::lang.menu.label',
-        //             'description' => 'martin.forms::lang.menu.settings',
-        //             'category'    => SettingsManager::CATEGORY_CMS,
-        //             'icon'        => 'icon-bolt',
-        //             'class'       => 'Martin\Forms\Models\Settings',
-        //             'permissions' => ['martin.forms.access_settings'],
-        //             'order'       => 500
-        //         ]
-        //     ];
-        // }
+        public function registerSettings() {
+            return [
+                'config' => [
+                    'label'       => 'martin.forms::lang.menu.label',
+                    'description' => 'martin.forms::lang.menu.settings',
+                    'category'    => SettingsManager::CATEGORY_CMS,
+                    'icon'        => 'icon-bolt',
+                    'class'       => 'Martin\Forms\Models\Settings',
+                    'permissions' => ['martin.forms.access_settings'],
+                    'order'       => 500
+                ]
+            ];
+        }
 
         public function registerPermissions() {
             return [
