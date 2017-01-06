@@ -1,0 +1,5 @@
+{% if __SELF__.property('recaptcha_enabled') and __SELF__.settings.recaptcha_site_key != '' and __SELF__.settings.recaptcha_secret_key != '' %}
+    <div class="g-recaptcha" data-sitekey="{{ __SELF__.settings.recaptcha_site_key }}"></div>
+{% elseif __SELF__.property('recaptcha_enabled') and (__SELF__.settings.recaptcha_site_key == '' or __SELF__.settings.recaptcha_secret_key == '') %}
+    <h5>{{ recaptcha_warn }}</h5>
+{% endif %}

@@ -12,14 +12,21 @@
     abstract class MagicForm extends ComponentBase {
 
         public function onRun() {
-            if($this->property('recaptcha_enabled') && Settings::get('recaptcha_site_key') != '') {
+
+            if($this->property('recaptcha_enabled') && Settings::get('recaptcha_site_key') != '' && Settings::get('recaptcha_secret_key') != '') {
                 $this->addJs('https://www.google.com/recaptcha/api.js');
             }
+
+            if($this->property('recaptcha_enabled') && (Settings::get('recaptcha_site_key') == '' || Settings::get('recaptcha_secret_key') == '')) {
+                $this->page['recaptcha_warn'] = Lang::get('martin.forms::lang.components.shared.recaptcha_warn');
+            }
+
         }
 
         public function settings() {
             return [
-                'recaptcha_site_key' => Settings::get('recaptcha_site_key'),
+                'recaptcha_site_key'   => Settings::get('recaptcha_site_key'),
+                'recaptcha_secret_key' => Settings::get('recaptcha_secret_key'),
             ];
         }
 
@@ -113,7 +120,7 @@
             $msgs  = (array) $this->property('rules_messages');
 
             # ADD reCAPTCHA VALIDATION
-            if($this->property('recaptcha_enabled') && Settings::get('recaptcha_site_key') != '') {
+            if($this->property('recaptcha_enabled') && Settings::get('recaptcha_site_key') != '' && Settings::get('recaptcha_secret_key') != '') {
                 $rules['g-recaptcha-response'] = 'required|recaptcha';
             }
 
