@@ -13,7 +13,7 @@ So, the objective was to find a way to just put the html elements on the page, s
 
 
 ## Features
-* Create any type of form: contact, feedback, registration, etc 
+* Create any type of form: contact, feedback, registration, etc
 * Write only HTML
 * Don't code forms logic
 * Laravel validation
@@ -22,6 +22,7 @@ So, the objective was to find a way to just put the html elements on the page, s
 * Store on database
 * Access database records from backend
 * Send mail notifications to multiple recipients
+* reCAPTCHA validation
 
 
 
