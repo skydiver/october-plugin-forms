@@ -17,10 +17,6 @@
             return ($response['success'] == true);
         }
 
-        protected function replaceReCaptcha($message, $attribute, $rule, $parameters) {
-            return Lang::get('martin.forms::lang.validation.recaptcha_error');
-        }
-
     }
 
 ?>
