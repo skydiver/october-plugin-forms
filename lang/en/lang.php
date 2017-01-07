@@ -56,6 +56,9 @@
                 'mail_enabled'      => ['title' => 'Mail Notifications', 'description' => 'Send mail on every form submited'],
                 'mail_recipients'   => ['title' => 'Mail Recipients'   , 'description' => 'Specify email recipients (add one address per line)'],
                 'recaptcha_enabled' => ['title' => 'Enable reCAPTCHA'  , 'description' => 'Insert the reCAPTCHA widget on your form'],
+                'recaptcha_theme'   => ['title' => 'Theme'             , 'description' => 'The color theme of the widget', 'light'  => 'Light' , 'dark'    => 'Dark'],
+                'recaptcha_type'    => ['title' => 'Type'              , 'description' => 'The type of CAPTCHA to serve' , 'image'  => 'Image' , 'audio'   => 'Audio'],
+                'recaptcha_size'    => ['title' => 'Size'              , 'description' => 'The size of the widget'       , 'normal' => 'Normal', 'compact' => 'Compact'],
             ]
         ],
 

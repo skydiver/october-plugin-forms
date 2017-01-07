@@ -95,6 +95,33 @@
                     'group'             => 'martin.forms::lang.components.shared.group_recaptcha',
                     'showExternalParam' => false
                 ],
+                'recaptcha_theme' => [
+                    'title'             => 'martin.forms::lang.components.shared.recaptcha_theme.title',
+                    'description'       => 'martin.forms::lang.components.shared.recaptcha_theme.description',
+                    'type'              => 'dropdown',
+                    'options'           => ['light' => 'martin.forms::lang.components.shared.recaptcha_theme.light', 'dark' => 'martin.forms::lang.components.shared.recaptcha_theme.dark'],
+                    'default'           => 'light',
+                    'group'             => 'martin.forms::lang.components.shared.group_recaptcha',
+                    'showExternalParam' => false
+                ],
+                'recaptcha_type' => [
+                    'title'             => 'martin.forms::lang.components.shared.recaptcha_type.title',
+                    'description'       => 'martin.forms::lang.components.shared.recaptcha_type.description',
+                    'type'              => 'dropdown',
+                    'options'           => ['image' => 'martin.forms::lang.components.shared.recaptcha_type.image', 'audio' => 'martin.forms::lang.components.shared.recaptcha_type.audio'],
+                    'default'           => 'image',
+                    'group'             => 'martin.forms::lang.components.shared.group_recaptcha',
+                    'showExternalParam' => false
+                ],
+                'recaptcha_size' => [
+                    'title'             => 'martin.forms::lang.components.shared.recaptcha_size.title',
+                    'description'       => 'martin.forms::lang.components.shared.recaptcha_size.description',
+                    'type'              => 'dropdown',
+                    'options'           => ['normal' => 'martin.forms::lang.components.shared.recaptcha_size.normal', 'compact' => 'martin.forms::lang.components.shared.recaptcha_size.compact'],
+                    'default'           => 'normal',
+                    'group'             => 'martin.forms::lang.components.shared.group_recaptcha',
+                    'showExternalParam' => false
+                ],
             ];
         }
 
