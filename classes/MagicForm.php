@@ -13,7 +13,7 @@
 
         public function onRun() {
 
-            if($this->property('recaptcha_enabled') && Settings::get('recaptcha_site_key') != '' && Settings::get('recaptcha_secret_key') != '') {
+            if($this->isReCaptchaEnabled()) {
                 $this->addJs('https://www.google.com/recaptcha/api.js');
             }
 
@@ -120,8 +120,8 @@
             $msgs  = (array) $this->property('rules_messages');
 
             # ADD reCAPTCHA VALIDATION
-            if($this->property('recaptcha_enabled') && Settings::get('recaptcha_site_key') != '' && Settings::get('recaptcha_secret_key') != '') {
-                $rules['g-recaptcha-response'] = 'required|recaptcha';
+            if($this->isReCaptchaEnabled()) {
+                $rules['g-recaptcha-response'] = 'required';
             }
 
             # NICE reCAPTCHA FIELD NAME
@@ -131,40 +131,58 @@
             $validator = Validator::make($post, $rules, $msgs);
             $validator->setAttributeNames($fields_names);
 
+            # VALIDATE ALL + CAPTCHA EXISTS
             if($validator->fails()) {
-
                 throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
                     'type'  => 'danger',
                     'title' => $this->property('messages_errors'),
                     'list'  => $validator->messages()->all()
                 ])]);
-
-            } else {
-
-                # REMOVE EXTRA FIELDS FROM STORED DATA
-                unset($post['_token'], $post['g-recaptcha-response']);
-
-                $record = new Record;
-                $record->ip        = Request::getClientIp();
-                $record->form_data = json_encode($post);
-                $record->save();
-
-                if($this->property('mail_enabled') && is_array($this->property('mail_recipients'))) {
-                    Mail::sendTo($this->property('mail_recipients'), 'martin.forms::mail.notification', [
-                        'id'   => $record->id,
-                        'data' => $post,
-                        'ip'   => $record->ip,
-                        'date' => $record->created_at
-                    ]);
-                }
-
-                return ['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
-                    'type'    => 'success',
-                    'content' => $this->property('messages_success')
-                ])];
-
             }
 
+            # IF FIRST VALIDATION IS OK, VALIDATE CAPTCHA vs GOOGLE
+            # (this prevents to resolve captcha on every form error)
+            if($this->isReCaptchaEnabled()) {
+                $rules = ['g-recaptcha-response' => 'recaptcha'];
+            }
+
+            # DO SECOND VALIDATION
+            $validator = Validator::make($post, $rules);
+
+            # VALIDATE ALL + CAPTCHA EXISTS
+            if($validator->fails()) {
+                throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
+                    'type'    => 'danger',
+                    'content' => Lang::get('martin.forms::lang.validation.recaptcha_error')
+                ])]);
+            }
+
+            # REMOVE EXTRA FIELDS FROM STORED DATA
+            unset($post['_token'], $post['g-recaptcha-response']);
+
+            $record = new Record;
+            $record->ip        = Request::getClientIp();
+            $record->form_data = json_encode($post);
+            $record->save();
+
+            if($this->property('mail_enabled') && is_array($this->property('mail_recipients'))) {
+                Mail::sendTo($this->property('mail_recipients'), 'martin.forms::mail.notification', [
+                    'id'   => $record->id,
+                    'data' => $post,
+                    'ip'   => $record->ip,
+                    'date' => $record->created_at
+                ]);
+            }
+
+            return ['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
+                'type'    => 'success',
+                'content' => $this->property('messages_success')
+            ])];
+
+        }
+
+        private function isReCaptchaEnabled() {
+            return ($this->property('recaptcha_enabled') && Settings::get('recaptcha_site_key') != '' && Settings::get('recaptcha_secret_key') != '');
         }
 
     }
