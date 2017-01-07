@@ -186,10 +186,10 @@
                     ])]);
                 }
 
-                # REMOVE EXTRA FIELDS FROM STORED DATA
-                unset($post['_token'], $post['g-recaptcha-response']);
-
             }
+
+            # REMOVE EXTRA FIELDS FROM STORED DATA
+            unset($post['_token'], $post['g-recaptcha-response']);
 
             # SAVE RECORD TO DATABASE
             $record = new Record;
