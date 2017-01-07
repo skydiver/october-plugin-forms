@@ -23,6 +23,10 @@
         <textarea id="comments" name="comments" rows="8" cols="80"></textarea>
     </div>
 
+    <div class="form-group">
+        {% partial '@recaptcha' %}
+    </div>
+
     <button id="simpleContactSubmitButton" type="submit" class="btn btn-default">Submit</button>
 
 </form>

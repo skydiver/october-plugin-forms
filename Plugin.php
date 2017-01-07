@@ -2,9 +2,10 @@
 
     namespace Martin\Forms;
 
-    use Backend, Lang;
+    use Backend, Lang, Validator;
     use System\Classes\PluginBase;
     use System\Classes\SettingsManager;
+    use Martin\Forms\Classes\ReCaptchaValidator;
 
     class Plugin extends PluginBase {
 
@@ -38,19 +39,19 @@
             ];
         }
 
-        // public function registerSettings() {
-        //     return [
-        //         'config' => [
-        //             'label'       => 'martin.forms::lang.menu.label',
-        //             'description' => 'martin.forms::lang.menu.settings',
-        //             'category'    => SettingsManager::CATEGORY_CMS,
-        //             'icon'        => 'icon-bolt',
-        //             'class'       => 'Martin\Forms\Models\Settings',
-        //             'permissions' => ['martin.forms.access_settings'],
-        //             'order'       => 500
-        //         ]
-        //     ];
-        // }
+        public function registerSettings() {
+            return [
+                'config' => [
+                    'label'       => 'martin.forms::lang.menu.label',
+                    'description' => 'martin.forms::lang.menu.settings',
+                    'category'    => SettingsManager::CATEGORY_CMS,
+                    'icon'        => 'icon-bolt',
+                    'class'       => 'Martin\Forms\Models\Settings',
+                    'permissions' => ['martin.forms.access_settings'],
+                    'order'       => 500
+                ]
+            ];
+        }
 
         public function registerPermissions() {
             return [
@@ -70,6 +71,14 @@
             return [
                 'martin.forms::mail.notification' => Lang::get('martin.forms::lang.mails.form_notification.description'),
             ];
+        }
+
+        public function register() {
+
+            Validator::resolver(function($translator, $data, $rules, $messages, $customAttributes) {
+                return new ReCaptchaValidator($translator, $data, $rules, $messages, $customAttributes);
+            });
+
         }
 
     }

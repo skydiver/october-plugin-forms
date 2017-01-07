@@ -3,3 +3,5 @@
     - create_records_table.php
 1.0.1:
     - Added CSRF protection
+1.1.0:
+    - Added reCAPTCHA
