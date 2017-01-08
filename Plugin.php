@@ -33,7 +33,13 @@
                             'icon'        => 'icon-database',
                             'url'         => Backend::url('martin/forms/records'),
                             'permissions' => ['martin.forms.access_records']
-                        ]
+                        ],
+                        'exports' => [
+                            'label'       => 'martin.forms::lang.menu.exports.label',
+                            'icon'        => 'icon-download',
+                            'url'         => Backend::url('martin/forms/exports'),
+                            'permissions' => ['martin.forms.access_exports']
+                        ],
                     ]
                 ]
             ];
@@ -57,6 +63,7 @@
             return [
                 'martin.forms.access_settings' => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_settings'],
                 'martin.forms.access_records'  => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_records'],
+                'martin.forms.access_exports'  => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_exports'],
             ];
         }
 

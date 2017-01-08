@@ -9,9 +9,8 @@
 
         'menu' => [
             'label'   => 'Magic Forms',
-            'records' => [
-                'label' => 'Records'
-            ],
+            'records' => ['label' => 'Records'],
+            'exports' => ['label' => 'Export Data'],
             'settings' => 'Configure module parameters',
         ],
 
@@ -27,7 +26,11 @@
                     'form_data'  => 'Stored Fields',
                     'created_at' => 'Created',
                 ],
-            ]
+            ],
+            'exports' => [
+                'title'      => 'Export Records',
+                'breadcrumb' => 'Export',
+            ],
         ],
 
         'components' => [
@@ -74,6 +77,7 @@
         'permissions' => [
             'tab'             => 'Magic Forms',
             'access_records'  => 'Access stored forms data',
+            'access_exports'  => 'Access to export stored data',
             'access_settings' => 'Access module configuration',
         ],
 

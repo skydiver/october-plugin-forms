@@ -1,0 +1,2 @@
+form      : $/martin/forms/models/export/fields.yaml
+modelClass: Martin\Forms\Models\Record
