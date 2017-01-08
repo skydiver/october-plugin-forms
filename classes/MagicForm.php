@@ -141,6 +141,7 @@
                 foreach($allow as $field) {
                     $post[$field] = post($field);
                 }
+                if($this->isReCaptchaEnabled()) { $post['g-recaptcha-response'] = post('g-recaptcha-response'); }
             } else {
                 $post = post();
             }
