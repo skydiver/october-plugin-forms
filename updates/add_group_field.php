@@ -9,7 +9,7 @@
 
         public function up() {
             Schema::table('martin_forms_records', function ($table) {
-                $table->string('group')->nullable()->after('id');
+                $table->string('group')->default('(Empty)')->after('id');
             });
 
         }

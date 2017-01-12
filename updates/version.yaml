@@ -8,5 +8,7 @@
 1.1.1:
     - Fix when using reCAPTCHA + allowed fields
 1.1.2:
+    - Filter forms records
+    - Search inside stored data
     - Organize your forms on custom groups
     - add_group_field.php

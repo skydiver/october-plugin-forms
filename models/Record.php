@@ -16,6 +16,10 @@
             return (array) json_decode($this->form_data);
         }
 
+        public function filterGroups() {
+            return Record::orderBy('group')->groupBy('group')->lists('group', 'group');
+        }
+
     }
 
 ?>

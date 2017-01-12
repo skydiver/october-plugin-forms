@@ -19,6 +19,7 @@
 </table>
 
 <div class="record-metadata m-t-md m-r-md text-right">
-    <p class="m-a-0">IP: <?php echo $record->ip ?></p>
-    <p class="m-a-0">Time: <?php echo $record->created_at ?></p>
+    <p class="m-a-0"><?php echo e(trans('martin.forms::lang.controllers.records.columns.group')) ?>: <?php echo $record->group ?></p>
+    <p class="m-a-0"><?php echo e(trans('martin.forms::lang.controllers.records.columns.ip')) ?>: <?php echo $record->ip ?></p>
+    <p class="m-a-0"><?php echo e(trans('martin.forms::lang.controllers.records.columns.created_at')) ?>: <?php echo $record->created_at ?></p>
 </div>
