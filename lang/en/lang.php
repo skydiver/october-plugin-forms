@@ -23,6 +23,7 @@
                 'deleted'    => 'Record deleted successfully',
                 'columns'    => [
                     'id'         => 'Record ID',
+                    'group'      => 'Group',
                     'ip'         => 'IP Address',
                     'form_data'  => 'Stored Fields',
                     'created_at' => 'Created',
@@ -48,6 +49,7 @@
                 'group_mail'        => 'Mail Settings',
                 'group_recaptcha'   => 'reCAPTCHA Settings',
                 'validation_req'    => 'The property is required',
+                'group'             => ['title' => 'Group'             , 'description' => 'Organize your forms with a custom group name. This option is useful when exporting data.'],
                 'rules'             => ['title' => 'Rules'             , 'description' => 'Set your own rules using Laravel validation'],
                 'rules_messages'    => ['title' => 'Rules Messages'    , 'description' => 'Use your own rules messages using Laravel validation'],
                 'messages_success'  => ['title' => 'Success'           , 'description' => 'Message when the form is successfully submited', 'default' => 'Your form was successfully submitted'  ],

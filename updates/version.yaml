@@ -6,4 +6,7 @@
 1.1.0:
     - Added reCAPTCHA
 1.1.1:
-    - fix when using reCAPTCHA + allowed fields
+    - Fix when using reCAPTCHA + allowed fields
+1.1.2:
+    - Organize your forms on custom groups
+    - add_group_field.php

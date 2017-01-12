@@ -35,6 +35,12 @@
 
         public function defineProperties() {
             return [
+                'group' => [
+                    'title'             => 'martin.forms::lang.components.shared.group.title',
+                    'description'       => 'martin.forms::lang.components.shared.group.description',
+                    'type'              => 'string',
+                    'showExternalParam' => false,
+                ],
                 'rules' => [
                     'title'             => 'martin.forms::lang.components.shared.rules.title',
                     'description'       => 'martin.forms::lang.components.shared.rules.description',
@@ -194,6 +200,7 @@
 
             # SAVE RECORD TO DATABASE
             $record = new Record;
+            $record->group     = $this->property('group');
             $record->ip        = Request::getClientIp();
             $record->form_data = json_encode($post);
             $record->save();

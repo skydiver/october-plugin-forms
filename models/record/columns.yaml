@@ -4,8 +4,13 @@ columns:
         label     : martin.forms::lang.controllers.records.columns.id
         searchable: true
 
+    group:
+        label     : martin.forms::lang.controllers.records.columns.group
+        searchable: true
+
     ip:
-        label: martin.forms::lang.controllers.records.columns.ip
+        label     : martin.forms::lang.controllers.records.columns.ip
+        searchable: true
 
     form_data:
         label: martin.forms::lang.controllers.records.columns.form_data
