@@ -35,6 +35,12 @@
 
         public function defineProperties() {
             return [
+                'group' => [
+                    'title'             => 'martin.forms::lang.components.shared.group.title',
+                    'description'       => 'martin.forms::lang.components.shared.group.description',
+                    'type'              => 'string',
+                    'showExternalParam' => false,
+                ],
                 'rules' => [
                     'title'             => 'martin.forms::lang.components.shared.rules.title',
                     'description'       => 'martin.forms::lang.components.shared.rules.description',
@@ -141,6 +147,7 @@
                 foreach($allow as $field) {
                     $post[$field] = post($field);
                 }
+                if($this->isReCaptchaEnabled()) { $post['g-recaptcha-response'] = post('g-recaptcha-response'); }
             } else {
                 $post = post();
             }
@@ -195,6 +202,7 @@
             $record = new Record;
             $record->ip        = Request::getClientIp();
             $record->form_data = json_encode($post);
+            if($this->property('group') != '') { $record->group = $this->property('group'); }
             $record->save();
 
             # SEND MAIL IF NEEDED

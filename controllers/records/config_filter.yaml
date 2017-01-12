@@ -1,0 +1,13 @@
+scopes:
+
+    group:
+        label     : martin.forms::lang.controllers.records.columns.group
+        type      : group
+        modelClass: Martin\Forms\Models\Record
+        options   : filterGroups
+        conditions: "`group` in (:filtered)"
+
+    created_at:
+        label     : martin.forms::lang.controllers.records.columns.created_at
+        type      : daterange
+        conditions: created_at >= ':after' AND created_at <= ':before'
