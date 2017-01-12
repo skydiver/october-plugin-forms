@@ -200,9 +200,9 @@
 
             # SAVE RECORD TO DATABASE
             $record = new Record;
-            $record->group     = $this->property('group');
             $record->ip        = Request::getClientIp();
             $record->form_data = json_encode($post);
+            if($this->property('group') != '') { $record->group = $this->property('group'); }
             $record->save();
 
             # SEND MAIL IF NEEDED
