@@ -20,6 +20,7 @@ So, the objective was to find a way to just put the html elements on the page, s
 * Custom validation errors
 * Use multiple forms on same page
 * Store on database
+* Export data in CSV
 * Access database records from backend
 * Send mail notifications to multiple recipients
 * reCAPTCHA validation

@@ -12,3 +12,5 @@
     - Search inside stored data
     - Organize your forms on custom groups
     - add_group_field.php
+1.2.0:
+    - Export stored data in CSV format
