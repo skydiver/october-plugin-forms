@@ -69,10 +69,10 @@
                 'allowed_fields'    => ['title' => 'İzin Verilen Alanlar', 'description' => 'Filtrelenecek ve depolanacak alanları belirtin (her satır için bir alan adı ekleyin)'],
                 'mail_enabled'      => ['title' => 'Posta Bildirimleri'  , 'description' => 'Gönderilen her formda posta gönder'],
                 'mail_recipients'   => ['title' => 'Posta Alıcıları'     , 'description' => 'E-posta alıcılarını belirtin (her hat için bir adres ekleyin)'],
-                'recaptcha_enabled' => ['title' => 'ReCAPTCHA'yı etkinleştir'  , 'description' => 'ReCAPTCHA widget'ını formunuza ekleyin.'],
-                'recaptcha_theme'   => ['title' => 'Tema'                , 'description' => 'Widget'in renk teması', 'light'  => 'Aydınlık' , 'dark'    => 'Karanlık'],
+                'recaptcha_enabled' => ['title' => 'ReCAPTCHAyı etkinleştir'  , 'description' => 'ReCAPTCHA widgetını formunuza ekleyin.'],
+                'recaptcha_theme'   => ['title' => 'Tema'                , 'description' => 'Widgetin renk teması', 'light'  => 'Aydınlık' , 'dark'    => 'Karanlık'],
                 'recaptcha_type'    => ['title' => 'Tip'                 , 'description' => 'Gösterilecek CAPTCHA türü' , 'image'  => 'Resim' , 'audio'   => 'Ses'],
-                'recaptcha_size'    => ['title' => 'Boyut'               , 'description' => 'Widget'ın boyutu'       , 'normal' => 'Normal', 'compact' => 'Kompakt'],
+                'recaptcha_size'    => ['title' => 'Boyut'               , 'description' => 'Widgetın boyutu'       , 'normal' => 'Normal', 'compact' => 'Kompakt'],
             ]
         ],
 
