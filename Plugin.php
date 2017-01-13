@@ -5,6 +5,7 @@
     use Backend, Lang, Validator;
     use System\Classes\PluginBase;
     use System\Classes\SettingsManager;
+    use Martin\Forms\Classes\BackendHelpers;
     use Martin\Forms\Classes\ReCaptchaValidator;
 
     class Plugin extends PluginBase {
@@ -19,14 +20,14 @@
             ];
         }
 
-        public function registerNavigation(){
+        public function registerNavigation() {
             return [
                 'forms' => [
                     'label'       => 'martin.forms::lang.menu.label',
                     'icon'        => 'icon-bolt',
                     'iconSvg'     => 'plugins/martin/forms/assets/imgs/icon.svg',
-                    'url'         => Backend::url('martin/forms/records'),
-                    'permissions' => ['martin.forms.access_records'],
+                    'url'         => BackendHelpers::getBackendURL(['martin.forms.access_records' => 'martin/forms/records', 'martin.forms.access_exports' => 'martin/forms/exports'], 'martin.forms.access_records'),
+                    'permissions' => ['martin.forms.*'],
                     'sideMenu' => [
                         'records' => [
                             'label'       => 'martin.forms::lang.menu.records.label',
