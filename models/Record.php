@@ -20,6 +20,10 @@
             return Record::orderBy('group')->groupBy('group')->lists('group', 'group');
         }
 
+        public function getGroupsOptions() {
+            return $this->filterGroups();
+        }
+
     }
 
 ?>

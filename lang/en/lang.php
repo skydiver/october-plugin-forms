@@ -8,11 +8,10 @@
         ],
 
         'menu' => [
-            'label'   => 'Magic Forms',
-            'records' => [
-                'label' => 'Records'
-            ],
-            'settings' => 'Configure module parameters',
+            'label'    => 'Magic Forms',
+            'records'  => ['label' => 'Records'],
+            'exports'  => ['label' => 'Export'],
+            'settings' => 'Configure plugin parameters',
         ],
 
         'controllers' => [
@@ -28,7 +27,20 @@
                     'form_data'  => 'Stored Fields',
                     'created_at' => 'Created',
                 ],
-            ]
+            ],
+            'exports' => [
+                'title'                => 'Export Records',
+                'breadcrumb'           => 'Export',
+                'filter_section'       => '1. Filter records',
+                'filter_type'          => 'Export all records',
+                'filter_groups'        => 'Groups',
+                'filter_date_after'    => 'Date after',
+                'filter_date_before'   => 'Date before',
+                'options_section'      => '2. Extra options',
+                'options_metadata'     => 'Include metadata',
+                'options_metadata_com' => 'Export records with metadata (Record ID, group, IP, created date)',
+                'options_deleted'      => 'Include deleted records',
+            ],
         ],
 
         'components' => [
@@ -76,6 +88,7 @@
         'permissions' => [
             'tab'             => 'Magic Forms',
             'access_records'  => 'Access stored forms data',
+            'access_exports'  => 'Access to export stored data',
             'access_settings' => 'Access module configuration',
         ],
 

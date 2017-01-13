@@ -1,0 +1,16 @@
+<?php Block::put('breadcrumb') ?>
+    <ul>
+        <li><a href="<?php echo Backend::url('martin/forms/records') ?>"><?php echo e(trans('martin.forms::lang.menu.records.label')) ?></a></li>
+        <li><?php echo e(trans('martin.forms::lang.controllers.exports.breadcrumb')) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php echo Form::open(['url' => Backend::url('martin/forms/exports/csv/')]) ?>
+
+    <?php echo $this->formRender() ?>
+
+    <div class="form-buttons m-t-lg">
+        <?= Form::submit(e(trans('martin.forms::lang.controllers.exports.title')), ['class' => 'btn btn-primary']) ?>
+    </div>
+
+<?php echo Form::close() ?>

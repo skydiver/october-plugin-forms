@@ -1,0 +1,69 @@
+fields:
+
+    header:
+        type: partial
+        path: $/martin/forms/models/export/_header.htm
+        span: left
+
+    ################################################################################################################################################
+    #   FILTER SECTION
+    ################################################################################################################################################
+    filter_section:
+        label   : martin.forms::lang.controllers.exports.filter_section
+        type    : section
+        cssClass: m-t-md
+
+    filter_type:
+        label  : martin.forms::lang.controllers.exports.filter_type
+        type   : switch
+        default: true
+
+    filter_groups:
+        label  : martin.forms::lang.controllers.exports.filter_groups
+        span   : left
+        type   : checkboxlist
+        options: getGroupsOptions
+        trigger:
+            action   : hide
+            field    : filter_type
+            condition: checked
+
+    filter_date_after:
+        label  : martin.forms::lang.controllers.exports.filter_date_after
+        span   : left
+        type   : datepicker
+        mode   : date
+        trigger:
+            action   : hide
+            field    : filter_type
+            condition: checked
+
+    filter_date_before:
+        label  : martin.forms::lang.controllers.exports.filter_date_before
+        span   : left
+        type   : datepicker
+        mode   : date
+        trigger:
+            action   : hide
+            field    : filter_type
+            condition: checked
+
+    ################################################################################################################################################
+    #   OPTIONS SECTION
+    ################################################################################################################################################
+    options_section:
+        label   : martin.forms::lang.controllers.exports.options_section
+        type    : section
+        cssClass: m-t-md
+
+    options_metadata:
+        label  : martin.forms::lang.controllers.exports.options_metadata
+        comment: martin.forms::lang.controllers.exports.options_metadata_com
+        type   : switch
+        default: true
+
+    options_deleted:
+        label  : martin.forms::lang.controllers.exports.options_deleted
+        span   : left
+        type   : switch
+        default: false

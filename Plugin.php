@@ -5,6 +5,7 @@
     use Backend, Lang, Validator;
     use System\Classes\PluginBase;
     use System\Classes\SettingsManager;
+    use Martin\Forms\Classes\BackendHelpers;
     use Martin\Forms\Classes\ReCaptchaValidator;
 
     class Plugin extends PluginBase {
@@ -19,21 +20,27 @@
             ];
         }
 
-        public function registerNavigation(){
+        public function registerNavigation() {
             return [
                 'forms' => [
                     'label'       => 'martin.forms::lang.menu.label',
                     'icon'        => 'icon-bolt',
                     'iconSvg'     => 'plugins/martin/forms/assets/imgs/icon.svg',
-                    'url'         => Backend::url('martin/forms/records'),
-                    'permissions' => ['martin.forms.access_records'],
+                    'url'         => BackendHelpers::getBackendURL(['martin.forms.access_records' => 'martin/forms/records', 'martin.forms.access_exports' => 'martin/forms/exports'], 'martin.forms.access_records'),
+                    'permissions' => ['martin.forms.*'],
                     'sideMenu' => [
                         'records' => [
                             'label'       => 'martin.forms::lang.menu.records.label',
                             'icon'        => 'icon-database',
                             'url'         => Backend::url('martin/forms/records'),
                             'permissions' => ['martin.forms.access_records']
-                        ]
+                        ],
+                        'exports' => [
+                            'label'       => 'martin.forms::lang.menu.exports.label',
+                            'icon'        => 'icon-download',
+                            'url'         => Backend::url('martin/forms/exports'),
+                            'permissions' => ['martin.forms.access_exports']
+                        ],
                     ]
                 ]
             ];
@@ -57,6 +64,7 @@
             return [
                 'martin.forms.access_settings' => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_settings'],
                 'martin.forms.access_records'  => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_records'],
+                'martin.forms.access_exports'  => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_exports'],
             ];
         }
 
