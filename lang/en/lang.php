@@ -8,10 +8,10 @@
         ],
 
         'menu' => [
-            'label'   => 'Magic Forms',
-            'records' => ['label' => 'Records'],
-            'exports' => ['label' => 'Export Data'],
-            'settings' => 'Configure module parameters',
+            'label'    => 'Magic Forms',
+            'records'  => ['label' => 'Records'],
+            'exports'  => ['label' => 'Export'],
+            'settings' => 'Configure plugin parameters',
         ],
 
         'controllers' => [
