@@ -61,18 +61,21 @@
                 'group_mail'        => 'Mail Settings',
                 'group_recaptcha'   => 'reCAPTCHA Settings',
                 'validation_req'    => 'The property is required',
-                'group'             => ['title' => 'Group'             , 'description' => 'Organize your forms with a custom group name. This option is useful when exporting data.'],
-                'rules'             => ['title' => 'Rules'             , 'description' => 'Set your own rules using Laravel validation'],
-                'rules_messages'    => ['title' => 'Rules Messages'    , 'description' => 'Use your own rules messages using Laravel validation'],
-                'messages_success'  => ['title' => 'Success'           , 'description' => 'Message when the form is successfully submited', 'default' => 'Your form was successfully submitted'  ],
-                'messages_errors'   => ['title' => 'Errors'            , 'description' => 'Message when the form contains errors'         , 'default' => 'There were errors with your submission'],
-                'allowed_fields'    => ['title' => 'Allowed Fields'    , 'description' => 'Specify which fields should be filtered and stored (add one field name per line)'],
-                'mail_enabled'      => ['title' => 'Mail Notifications', 'description' => 'Send mail on every form submited'],
-                'mail_recipients'   => ['title' => 'Mail Recipients'   , 'description' => 'Specify email recipients (add one address per line)'],
-                'recaptcha_enabled' => ['title' => 'Enable reCAPTCHA'  , 'description' => 'Insert the reCAPTCHA widget on your form'],
-                'recaptcha_theme'   => ['title' => 'Theme'             , 'description' => 'The color theme of the widget', 'light'  => 'Light' , 'dark'    => 'Dark'],
-                'recaptcha_type'    => ['title' => 'Type'              , 'description' => 'The type of CAPTCHA to serve' , 'image'  => 'Image' , 'audio'   => 'Audio'],
-                'recaptcha_size'    => ['title' => 'Size'              , 'description' => 'The size of the widget'       , 'normal' => 'Normal', 'compact' => 'Compact'],
+                'group'             => ['title' => 'Group'              , 'description' => 'Organize your forms with a custom group name. This option is useful when exporting data.'],
+                'rules'             => ['title' => 'Rules'              , 'description' => 'Set your own rules using Laravel validation'],
+                'rules_messages'    => ['title' => 'Rules Messages'     , 'description' => 'Use your own rules messages using Laravel validation'],
+                'messages_success'  => ['title' => 'Success'            , 'description' => 'Message when the form is successfully submited', 'default' => 'Your form was successfully submitted'  ],
+                'messages_errors'   => ['title' => 'Errors'             , 'description' => 'Message when the form contains errors'         , 'default' => 'There were errors with your submission'],
+                'allowed_fields'    => ['title' => 'Allowed Fields'     , 'description' => 'Specify which fields should be filtered and stored (add one field name per line)'],
+                'mail_enabled'      => ['title' => 'Mail Notifications' , 'description' => 'Send mail on every form submited'],
+                'mail_recipients'   => ['title' => 'Mail Recipients'    , 'description' => 'Specify email recipients (add one address per line)'],
+                'mail_resp_enabled' => ['title' => 'Auto-Response'      , 'description' => 'Send an auto-response email to the person submitting the form'],
+                'mail_resp_field'   => ['title' => 'Auto-Response Field', 'description' => 'Form field containing the email address of the recipient of auto-response'],
+                'mail_resp_from'    => ['title' => 'Auto-Response From' , 'description' => 'Email address of auto-response email sender'],
+                'recaptcha_enabled' => ['title' => 'Enable reCAPTCHA'   , 'description' => 'Insert the reCAPTCHA widget on your form'],
+                'recaptcha_theme'   => ['title' => 'Theme'              , 'description' => 'The color theme of the widget', 'light'  => 'Light' , 'dark'    => 'Dark'],
+                'recaptcha_type'    => ['title' => 'Type'               , 'description' => 'The type of CAPTCHA to serve' , 'image'  => 'Image' , 'audio'   => 'Audio'],
+                'recaptcha_size'    => ['title' => 'Size'               , 'description' => 'The size of the widget'       , 'normal' => 'Normal', 'compact' => 'Compact'],
             ]
         ],
 
@@ -93,9 +96,8 @@
         ],
 
         'mails' => [
-            'form_notification' => [
-                'description' => 'Notify when a form is submited'
-            ]
+            'form_notification' => ['description' => 'Notify when a form is submited'],
+            'form_autoresponse' => ['description' => 'Auto-Response when a form is submited'],
         ],
 
         'validation' => [

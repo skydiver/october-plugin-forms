@@ -78,6 +78,7 @@
         public function registerMailTemplates() {
             return [
                 'martin.forms::mail.notification' => Lang::get('martin.forms::lang.mails.form_notification.description'),
+                'martin.forms::mail.autoresponse' => Lang::get('martin.forms::lang.mails.form_autoresponse.description'),
             ];
         }
 
