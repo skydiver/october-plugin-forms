@@ -14,3 +14,5 @@
     - add_group_field.php
 1.2.0:
     - Export stored data in CSV format
+1.2.1:
+    - Auto-response email on form submit

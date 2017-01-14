@@ -200,7 +200,7 @@
             }
 
             # IF FIRST VALIDATION IS OK, VALIDATE CAPTCHA vs GOOGLE
-            # (this prevents to resolve captcha on every form error)
+            # (this prevents to resolve captcha after every form error)
             if($this->isReCaptchaEnabled()) {
 
                 # DO SECOND VALIDATION
