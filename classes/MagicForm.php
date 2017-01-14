@@ -2,10 +2,11 @@
 
     namespace Martin\Forms\Classes;
 
-    use AjaxException, Lang, Mail, Request, Session, Validator;
+    use AjaxException, Lang, Request, Session, Validator;
     use Cms\Classes\ComponentBase;
     use October\Rain\Exception\ApplicationException;
     use October\Rain\Support\Facades\Flash;
+    use Martin\Forms\Classes\SendMail;
     use Martin\Forms\Models\Record;
     use Martin\Forms\Models\Settings;
 
@@ -94,6 +95,27 @@
                     'group'             => 'martin.forms::lang.components.shared.group_mail',
                     'showExternalParam' => false
                 ],
+                'mail_resp_enabled' => [
+                    'title'             => 'martin.forms::lang.components.shared.mail_resp_enabled.title',
+                    'description'       => 'martin.forms::lang.components.shared.mail_resp_enabled.description',
+                    'type'              => 'checkbox',
+                    'group'             => 'martin.forms::lang.components.shared.group_mail',
+                    'showExternalParam' => false
+                ],
+                'mail_resp_field' => [
+                    'title'             => 'martin.forms::lang.components.shared.mail_resp_field.title',
+                    'description'       => 'martin.forms::lang.components.shared.mail_resp_field.description',
+                    'type'              => 'string',
+                    'group'             => 'martin.forms::lang.components.shared.group_mail',
+                    'showExternalParam' => false
+                ],
+                'mail_resp_from' => [
+                    'title'             => 'martin.forms::lang.components.shared.mail_resp_from.title',
+                    'description'       => 'martin.forms::lang.components.shared.mail_resp_from.description',
+                    'type'              => 'string',
+                    'group'             => 'martin.forms::lang.components.shared.group_mail',
+                    'showExternalParam' => false
+                ],
                 'recaptcha_enabled' => [
                     'title'             => 'martin.forms::lang.components.shared.recaptcha_enabled.title',
                     'description'       => 'martin.forms::lang.components.shared.recaptcha_enabled.description',
@@ -178,7 +200,7 @@
             }
 
             # IF FIRST VALIDATION IS OK, VALIDATE CAPTCHA vs GOOGLE
-            # (this prevents to resolve captcha on every form error)
+            # (this prevents to resolve captcha after every form error)
             if($this->isReCaptchaEnabled()) {
 
                 # DO SECOND VALIDATION
@@ -205,14 +227,14 @@
             if($this->property('group') != '') { $record->group = $this->property('group'); }
             $record->save();
 
-            # SEND MAIL IF NEEDED
-            if($this->property('mail_enabled') && is_array($this->property('mail_recipients'))) {
-                Mail::sendTo($this->property('mail_recipients'), 'martin.forms::mail.notification', [
-                    'id'   => $record->id,
-                    'data' => $post,
-                    'ip'   => $record->ip,
-                    'date' => $record->created_at
-                ]);
+            # SEND NOTIFICATION EMAIL
+            if($this->property('mail_enabled')) {
+                SendMail::sendNotification($this->property('mail_recipients'), $record, $post);
+            }
+
+            # SEND AUTORESPONSE EMAIL
+            if($this->property('mail_resp_enabled')) {
+                SendMail::sendAutoResponse($post[$this->property('mail_resp_field')], $this->property('mail_resp_from'), $post);
             }
 
             # SHOW SUCCESS MESSAGE
