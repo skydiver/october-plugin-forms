@@ -19,10 +19,11 @@
             }
         }
 
-        public static function sendAutoResponse($to, $from, $post) {
+        public static function sendAutoResponse($to, $from, $subject, $post) {
             if(filter_var($to, FILTER_VALIDATE_EMAIL) && filter_var($from, FILTER_VALIDATE_EMAIL)) {
-                Mail::sendTo($to, 'martin.forms::mail.autoresponse', $post, function($message) use ($from) {
+                Mail::sendTo($to, 'martin.forms::mail.autoresponse', $post, function($message) use ($from, $subject) {
                     $message->from($from);
+                    $message->subject($subject);
                 });
             }
         }

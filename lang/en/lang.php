@@ -73,6 +73,7 @@
                 'mail_resp_enabled' => ['title' => 'Send Auto-Response' , 'description' => 'Send an auto-response email to the person submitting the form'],
                 'mail_resp_field'   => ['title' => 'Email Field'        , 'description' => 'Form field containing the email address of the recipient of auto-response'],
                 'mail_resp_from'    => ['title' => 'Sender Address'     , 'description' => 'Email address of auto-response email sender (e.g. noreply@yourcompany.com)'],
+                'mail_resp_subject' => ['title' => 'Subject'            , 'description' => 'Override default email subject'],
                 'allowed_fields'    => ['title' => 'Allowed Fields'     , 'description' => 'Specify which fields should be filtered and stored (add one field name per line)'],
                 'recaptcha_enabled' => ['title' => 'Enable reCAPTCHA'   , 'description' => 'Insert the reCAPTCHA widget on your form'],
                 'recaptcha_theme'   => ['title' => 'Theme'              , 'description' => 'The color theme of the widget', 'light'  => 'Light' , 'dark'    => 'Dark'],

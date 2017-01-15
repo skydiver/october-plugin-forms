@@ -116,6 +116,13 @@
                     'group'             => 'martin.forms::lang.components.shared.group_mail_resp',
                     'showExternalParam' => false
                 ],
+                'mail_resp_subject' => [
+                    'title'             => 'martin.forms::lang.components.shared.mail_resp_subject.title',
+                    'description'       => 'martin.forms::lang.components.shared.mail_resp_subject.description',
+                    'type'              => 'string',
+                    'group'             => 'martin.forms::lang.components.shared.group_mail_resp',
+                    'showExternalParam' => false
+                ],
                 'allowed_fields' => [
                     'title'             => 'martin.forms::lang.components.shared.allowed_fields.title',
                     'description'       => 'martin.forms::lang.components.shared.allowed_fields.description',
@@ -241,7 +248,7 @@
 
             # SEND AUTORESPONSE EMAIL
             if($this->property('mail_resp_enabled')) {
-                SendMail::sendAutoResponse($post[$this->property('mail_resp_field')], $this->property('mail_resp_from'), $post);
+                SendMail::sendAutoResponse($post[$this->property('mail_resp_field')], $this->property('mail_resp_from'), $this->property('mail_resp_subject'), $post);
             }
 
             # SHOW SUCCESS MESSAGE
