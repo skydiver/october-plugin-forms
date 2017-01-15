@@ -23,6 +23,7 @@ So, the objective was to find a way to just put the html elements on the page, s
 * Export data in CSV
 * Access database records from backend
 * Send mail notifications to multiple recipients
+* Auto-response email on form submit
 * reCAPTCHA validation
 
 
