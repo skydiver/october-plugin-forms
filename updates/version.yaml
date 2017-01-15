@@ -17,3 +17,5 @@
 1.2.1:
     - Auto-response email on form submit
     - Added Turkish language
+1.2.2:
+    - Override notifications and auto-response email subjects
