@@ -74,24 +74,10 @@
                     'showExternalParam' => false,
                     'validation'        => ['required' => ['message' => Lang::get('martin.forms::lang.components.shared.validation_req')]]
                 ],
-                'allowed_fields' => [
-                    'title'             => 'martin.forms::lang.components.shared.allowed_fields.title',
-                    'description'       => 'martin.forms::lang.components.shared.allowed_fields.description',
-                    'type'              => 'stringList',
-                    'group'             => 'martin.forms::lang.components.shared.group_security',
-                    'showExternalParam' => false
-                ],
                 'mail_enabled' => [
                     'title'             => 'martin.forms::lang.components.shared.mail_enabled.title',
                     'description'       => 'martin.forms::lang.components.shared.mail_enabled.description',
                     'type'              => 'checkbox',
-                    'group'             => 'martin.forms::lang.components.shared.group_mail',
-                    'showExternalParam' => false
-                ],
-                'mail_recipients' => [
-                    'title'             => 'martin.forms::lang.components.shared.mail_recipients.title',
-                    'description'       => 'martin.forms::lang.components.shared.mail_recipients.description',
-                    'type'              => 'stringList',
                     'group'             => 'martin.forms::lang.components.shared.group_mail',
                     'showExternalParam' => false
                 ],
@@ -102,25 +88,39 @@
                     'group'             => 'martin.forms::lang.components.shared.group_mail',
                     'showExternalParam' => false
                 ],
+                'mail_recipients' => [
+                    'title'             => 'martin.forms::lang.components.shared.mail_recipients.title',
+                    'description'       => 'martin.forms::lang.components.shared.mail_recipients.description',
+                    'type'              => 'stringList',
+                    'group'             => 'martin.forms::lang.components.shared.group_mail',
+                    'showExternalParam' => false
+                ],
                 'mail_resp_enabled' => [
                     'title'             => 'martin.forms::lang.components.shared.mail_resp_enabled.title',
                     'description'       => 'martin.forms::lang.components.shared.mail_resp_enabled.description',
                     'type'              => 'checkbox',
-                    'group'             => 'martin.forms::lang.components.shared.group_mail',
+                    'group'             => 'martin.forms::lang.components.shared.group_mail_resp',
                     'showExternalParam' => false
                 ],
                 'mail_resp_field' => [
                     'title'             => 'martin.forms::lang.components.shared.mail_resp_field.title',
                     'description'       => 'martin.forms::lang.components.shared.mail_resp_field.description',
                     'type'              => 'string',
-                    'group'             => 'martin.forms::lang.components.shared.group_mail',
+                    'group'             => 'martin.forms::lang.components.shared.group_mail_resp',
                     'showExternalParam' => false
                 ],
                 'mail_resp_from' => [
                     'title'             => 'martin.forms::lang.components.shared.mail_resp_from.title',
                     'description'       => 'martin.forms::lang.components.shared.mail_resp_from.description',
                     'type'              => 'string',
-                    'group'             => 'martin.forms::lang.components.shared.group_mail',
+                    'group'             => 'martin.forms::lang.components.shared.group_mail_resp',
+                    'showExternalParam' => false
+                ],
+                'allowed_fields' => [
+                    'title'             => 'martin.forms::lang.components.shared.allowed_fields.title',
+                    'description'       => 'martin.forms::lang.components.shared.allowed_fields.description',
+                    'type'              => 'stringList',
+                    'group'             => 'martin.forms::lang.components.shared.group_security',
                     'showExternalParam' => false
                 ],
                 'recaptcha_enabled' => [
