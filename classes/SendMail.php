@@ -6,14 +6,16 @@
 
     class SendMail {
 
-        public static function sendNotification($recipients, $record, $post) {
+        public static function sendNotification($recipients, $subject, $record, $post) {
             if(is_array($recipients)) {
                 Mail::sendTo($recipients, 'martin.forms::mail.notification', [
                     'id'   => $record->id,
                     'data' => $post,
                     'ip'   => $record->ip,
                     'date' => $record->created_at
-                ]);
+                ], function($message) use ($subject) {
+                    $message->subject($subject);
+                });
             }
         }
 

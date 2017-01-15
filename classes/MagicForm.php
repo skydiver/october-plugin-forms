@@ -95,6 +95,13 @@
                     'group'             => 'martin.forms::lang.components.shared.group_mail',
                     'showExternalParam' => false
                 ],
+                'mail_subject' => [
+                    'title'             => 'martin.forms::lang.components.shared.mail_subject.title',
+                    'description'       => 'martin.forms::lang.components.shared.mail_subject.description',
+                    'type'              => 'string',
+                    'group'             => 'martin.forms::lang.components.shared.group_mail',
+                    'showExternalParam' => false
+                ],
                 'mail_resp_enabled' => [
                     'title'             => 'martin.forms::lang.components.shared.mail_resp_enabled.title',
                     'description'       => 'martin.forms::lang.components.shared.mail_resp_enabled.description',
@@ -229,7 +236,7 @@
 
             # SEND NOTIFICATION EMAIL
             if($this->property('mail_enabled')) {
-                SendMail::sendNotification($this->property('mail_recipients'), $record, $post);
+                SendMail::sendNotification($this->property('mail_recipients'), $this->property('mail_subject'), $record, $post);
             }
 
             # SEND AUTORESPONSE EMAIL

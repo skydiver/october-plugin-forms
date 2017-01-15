@@ -69,6 +69,7 @@
                 'allowed_fields'    => ['title' => 'Allowed Fields'     , 'description' => 'Specify which fields should be filtered and stored (add one field name per line)'],
                 'mail_enabled'      => ['title' => 'Mail Notifications' , 'description' => 'Send mail on every form submited'],
                 'mail_recipients'   => ['title' => 'Mail Recipients'    , 'description' => 'Specify email recipients (add one address per line)'],
+                'mail_subject'   => ['title' => 'Mail Subject'    , 'description' => 'Override default email subject'],
                 'mail_resp_enabled' => ['title' => 'Auto-Response'      , 'description' => 'Send an auto-response email to the person submitting the form'],
                 'mail_resp_field'   => ['title' => 'Auto-Response Field', 'description' => 'Form field containing the email address of the recipient of auto-response'],
                 'mail_resp_from'    => ['title' => 'Auto-Response From' , 'description' => 'Email address of auto-response email sender'],
