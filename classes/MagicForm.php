@@ -192,6 +192,13 @@
             $rules = (array) $this->property('rules');
             $msgs  = (array) $this->property('rules_messages');
 
+            if (class_exists('\RainLab\Translate\Models\Message')) {
+                $msgs_keys = array_keys($msgs);
+                for ($i=0;$i<sizeof($msgs_keys);$i++) {
+                    $msgs[$msgs_keys[$i]] = \RainLab\Translate\Models\Message::trans($msgs[$msgs_keys[$i]]);
+                }
+            }
+
             # ADD reCAPTCHA VALIDATION
             if($this->isReCaptchaEnabled()) {
                 $rules['g-recaptcha-response'] = 'required';
@@ -206,9 +213,13 @@
 
             # VALIDATE ALL + CAPTCHA EXISTS
             if($validator->fails()) {
+                $message = $this->property('messages_errors');
+                if (class_exists('\RainLab\Translate\Models\Message')) {
+                    $message = \RainLab\Translate\Models\Message::trans($message);
+                }
                 throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
                     'type'  => 'danger',
-                    'title' => $this->property('messages_errors'),
+                    'title' => $message,
                     'list'  => $validator->messages()->all()
                 ])]);
             }
@@ -252,9 +263,13 @@
             }
 
             # SHOW SUCCESS MESSAGE
+            $message = $this->property('messages_success');
+            if (class_exists('\RainLab\Translate\Models\Message')) {
+                $message = \RainLab\Translate\Models\Message::trans($message);
+            }
             return ['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
                 'type'    => 'success',
-                'content' => $this->property('messages_success'),
+                'content' => $message,
                 'jscript' => ($this->isReCaptchaEnabled()) ? 'grecaptcha.reset();' : false
             ])];
 
