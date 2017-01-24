@@ -19,3 +19,5 @@
     - Added Turkish language
 1.2.2:
     - Override notifications and auto-response email subjects
+1.2.3:
+    - Fixed Empty AJAX Form template
