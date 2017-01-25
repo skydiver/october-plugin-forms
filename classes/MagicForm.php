@@ -123,6 +123,13 @@
                     'group'             => 'martin.forms::lang.components.shared.group_mail_resp',
                     'showExternalParam' => false
                 ],
+                'reset_form' => [
+                    'title'             => 'martin.forms::lang.components.shared.reset_form.title',
+                    'description'       => 'martin.forms::lang.components.shared.reset_form.description',
+                    'type'              => 'checkbox',
+                    'group'             => 'martin.forms::lang.components.shared.group_settings',
+                    'showExternalParam' => false
+                ],
                 'allowed_fields' => [
                     'title'             => 'martin.forms::lang.components.shared.allowed_fields.title',
                     'description'       => 'martin.forms::lang.components.shared.allowed_fields.description',
@@ -255,7 +262,7 @@
             return ['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
                 'type'    => 'success',
                 'content' => $this->property('messages_success'),
-                'jscript' => ($this->isReCaptchaEnabled()) ? 'grecaptcha.reset();' : false
+                'jscript' => $this->prepareJavaScript(),
             ])];
 
         }
@@ -266,6 +273,13 @@
 
         private function isReCaptchaMisconfigured() {
             return ($this->property('recaptcha_enabled') && (Settings::get('recaptcha_site_key') == '' || Settings::get('recaptcha_secret_key') == ''));
+        }
+
+        private function prepareJavaScript() {
+            $code = false;
+            if($this->isReCaptchaEnabled())   { $code .= 'grecaptcha.reset();'; }
+            if($this->property('reset_form')) { $code .= "$('#" . $this->alias . "_forms_flash').parent('form')[0].reset()"; }
+            return $code;
         }
 
     }
