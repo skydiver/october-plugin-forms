@@ -277,8 +277,8 @@
 
         private function prepareJavaScript() {
             $code = false;
-            if($this->isReCaptchaEnabled())   { $code .= 'grecaptcha.reset();'; }
-            if($this->property('reset_form')) { $code .= "$('#" . $this->alias . "_forms_flash').parent('form')[0].reset()"; }
+            if($this->isReCaptchaEnabled())   { $code .= $content = $this->renderPartial('@js/recaptcha.js'); }
+            if($this->property('reset_form')) { $code .= $content = $this->renderPartial('@js/reset-form.js', ['id' => '#' . $this->alias . '_forms_flash']); }
             return $code;
         }
 
