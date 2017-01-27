@@ -177,6 +177,14 @@
                 ])]);
             }
 
+            # LOAD TRANSLATOR PLUGIN
+            if($this->isTranslatePlugin()) {
+                $translator = \RainLab\Translate\Classes\Translator::instance();
+                $translator->loadLocaleFromSession();
+                $locale = $translator->getLocale();
+                \RainLab\Translate\Models\Message::setContext($locale);
+            }
+
             # FILTER ALLOWED FIELDS
             $allow = $this->property('allowed_fields');
             if(is_array($allow) && !empty($allow)) {
@@ -192,10 +200,10 @@
             $rules = (array) $this->property('rules');
             $msgs  = (array) $this->property('rules_messages');
 
-            if (class_exists('\RainLab\Translate\Models\Message')) {
-                $msgs_keys = array_keys($msgs);
-                for ($i=0;$i<sizeof($msgs_keys);$i++) {
-                    $msgs[$msgs_keys[$i]] = \RainLab\Translate\Models\Message::trans($msgs[$msgs_keys[$i]]);
+            # TRANSLATE CUSTOM ERROR MESSAGES
+            if($this->isTranslatePlugin()) {
+                foreach($msgs as $rule => $msg) {
+                    $msgs[$rule] = \RainLab\Translate\Models\Message::trans($msg);
                 }
             }
 
@@ -213,15 +221,22 @@
 
             # VALIDATE ALL + CAPTCHA EXISTS
             if($validator->fails()) {
+
+                # GET DEFAULT ERROR MESSAGE
                 $message = $this->property('messages_errors');
-                if (class_exists('\RainLab\Translate\Models\Message')) {
+
+                # LOOK FOR TRANSLATION
+                if($this->isTranslatePlugin()) {
                     $message = \RainLab\Translate\Models\Message::trans($message);
                 }
+
+                # THROW ERROR MESSAGE
                 throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
                     'type'  => 'danger',
                     'title' => $message,
                     'list'  => $validator->messages()->all()
                 ])]);
+
             }
 
             # IF FIRST VALIDATION IS OK, VALIDATE CAPTCHA vs GOOGLE
@@ -262,11 +277,15 @@
                 SendMail::sendAutoResponse($post[$this->property('mail_resp_field')], $this->property('mail_resp_from'), $this->property('mail_resp_subject'), $post);
             }
 
-            # SHOW SUCCESS MESSAGE
+            # GET DEFAULT SUCCESS MESSAGE
             $message = $this->property('messages_success');
-            if (class_exists('\RainLab\Translate\Models\Message')) {
+
+            # LOOK FOR TRANSLATION
+            if($this->isTranslatePlugin()) {
                 $message = \RainLab\Translate\Models\Message::trans($message);
             }
+
+            # DISPLAY SUCCESS MESSAGE
             return ['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
                 'type'    => 'success',
                 'content' => $message,
@@ -281,6 +300,10 @@
 
         private function isReCaptchaMisconfigured() {
             return ($this->property('recaptcha_enabled') && (Settings::get('recaptcha_site_key') == '' || Settings::get('recaptcha_secret_key') == ''));
+        }
+
+        private function isTranslatePlugin() {
+            return class_exists('\RainLab\Translate\Classes\Translator') && class_exists('\RainLab\Translate\Models\Message');
         }
 
     }
