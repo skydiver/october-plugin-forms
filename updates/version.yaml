@@ -22,3 +22,5 @@
 1.2.3:
     - New option to reset form after successfully submit
     - Fixed Empty AJAX Form template
+    - Support for Translate plugin
+    - Added plugin documentation

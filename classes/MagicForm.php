@@ -314,7 +314,7 @@
             if($this->isReCaptchaEnabled())   { $code .= $content = $this->renderPartial('@js/recaptcha.js'); }
             if($this->property('reset_form')) { $code .= $content = $this->renderPartial('@js/reset-form.js', ['id' => '#' . $this->alias . '_forms_flash']); }
             return $code;
-        }      
+        }
 
         private function isTranslatePlugin() {
             return class_exists('\RainLab\Translate\Classes\Translator') && class_exists('\RainLab\Translate\Models\Message');
