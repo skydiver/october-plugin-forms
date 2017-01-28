@@ -123,6 +123,13 @@
                     'group'             => 'martin.forms::lang.components.shared.group_mail_resp',
                     'showExternalParam' => false
                 ],
+                'reset_form' => [
+                    'title'             => 'martin.forms::lang.components.shared.reset_form.title',
+                    'description'       => 'martin.forms::lang.components.shared.reset_form.description',
+                    'type'              => 'checkbox',
+                    'group'             => 'martin.forms::lang.components.shared.group_settings',
+                    'showExternalParam' => false
+                ],
                 'allowed_fields' => [
                     'title'             => 'martin.forms::lang.components.shared.allowed_fields.title',
                     'description'       => 'martin.forms::lang.components.shared.allowed_fields.description',
@@ -289,7 +296,7 @@
             return ['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
                 'type'    => 'success',
                 'content' => $message,
-                'jscript' => ($this->isReCaptchaEnabled()) ? 'grecaptcha.reset();' : false
+                'jscript' => $this->prepareJavaScript(),
             ])];
 
         }
@@ -301,6 +308,13 @@
         private function isReCaptchaMisconfigured() {
             return ($this->property('recaptcha_enabled') && (Settings::get('recaptcha_site_key') == '' || Settings::get('recaptcha_secret_key') == ''));
         }
+
+        private function prepareJavaScript() {
+            $code = false;
+            if($this->isReCaptchaEnabled())   { $code .= $content = $this->renderPartial('@js/recaptcha.js'); }
+            if($this->property('reset_form')) { $code .= $content = $this->renderPartial('@js/reset-form.js', ['id' => '#' . $this->alias . '_forms_flash']); }
+            return $code;
+        }      
 
         private function isTranslatePlugin() {
             return class_exists('\RainLab\Translate\Classes\Translator') && class_exists('\RainLab\Translate\Models\Message');
