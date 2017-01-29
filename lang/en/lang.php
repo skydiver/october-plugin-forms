@@ -48,6 +48,10 @@
                 'name'        => 'Generic AJAX Form',
                 'description' => 'By default renders a generic form; override component HTML with your custom fields.',
             ],
+            'upload_form' => [
+                'name'        => 'Upload AJAX Form [BETA]',
+                'description' => 'Shows how to implement file uploads on your form.',
+            ],
             'empty_form' => [
                 'name'        => 'Empty AJAX Form',
                 'description' => 'Create a empty template for your custom form; override component HTML.',
@@ -59,9 +63,10 @@
                 'group_messages'    => 'Flash Messages',
                 'group_mail'        => 'Notifications Settings',
                 'group_mail_resp'   => 'Auto-Response Settings',
+                'group_settings'    => 'More Settings',
                 'group_security'    => 'Security',
                 'group_recaptcha'   => 'reCAPTCHA Settings',
-                'group_settings'    => 'More Settings',
+                'group_uploader'    => 'Uploader Settings',
                 'validation_req'    => 'The property is required',
                 'group'             => ['title' => 'Group'              , 'description' => 'Organize your forms with a custom group name. This option is useful when exporting data.'],
                 'rules'             => ['title' => 'Rules'              , 'description' => 'Set your own rules using Laravel validation'],
@@ -81,6 +86,9 @@
                 'recaptcha_theme'   => ['title' => 'Theme'              , 'description' => 'The color theme of the widget', 'light'  => 'Light' , 'dark'    => 'Dark'],
                 'recaptcha_type'    => ['title' => 'Type'               , 'description' => 'The type of CAPTCHA to serve' , 'image'  => 'Image' , 'audio'   => 'Audio'],
                 'recaptcha_size'    => ['title' => 'Size'               , 'description' => 'The size of the widget'       , 'normal' => 'Normal', 'compact' => 'Compact'],
+                'uploader_pholder'  => ['title' => 'Placeholder text'   , 'description' => 'Wording to display when no file is uploaded', 'default' => 'Click or drag files to upload'],
+                'uploader_maxsize'  => ['title' => 'Max file size'      , 'description' => 'The maximum file size that can be uploaded in megabytes'],
+                'uploader_types'    => ['title' => 'Allowed file types' , 'description' => 'Allowed file extensions or star (*) for all types (add one extension per line)'],
             ]
         ],
 

@@ -1,0 +1,13 @@
+{{ form_ajax('uploadForm::onSave', {
+  update: { 'message': '#form_answer' }
+}) }}
+
+
+
+    <!-- File uploader -->
+    {% partial '@file-upload' %}
+
+    {{ form_submit() }}
+
+
+{{ form_close() }}

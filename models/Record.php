@@ -12,6 +12,10 @@
 
         protected $dates = ['deleted_at'];
 
+        public $attachMany = [
+            'files' => 'System\Models\File',
+        ];
+
         public function getFormDataArrAttribute() {
             return (array) json_decode($this->form_data);
         }

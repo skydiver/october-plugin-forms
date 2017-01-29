@@ -1,0 +1,9 @@
+{% if __SELF__.isMulti %}
+
+    {% partial __SELF__ ~ '::file-multi' %}
+
+{% else %}
+
+    {% partial __SELF__ ~ '::file-single' %}
+
+{% endif %}
