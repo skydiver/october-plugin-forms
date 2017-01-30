@@ -25,6 +25,7 @@
                     'group'      => 'Group',
                     'ip'         => 'IP Address',
                     'form_data'  => 'Stored Fields',
+                    'files'      => 'Attached Files',
                     'created_at' => 'Created',
                 ],
             ],

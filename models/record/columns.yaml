@@ -18,5 +18,13 @@ columns:
         path      : $/martin/forms/models/record/fields/_stored_fields.htm
         searchable: true
 
+    files:
+        label     : martin.forms::lang.controllers.records.columns.files
+        type      : partial
+        path      : $/martin/forms/models/record/fields/_files_fields.htm
+        searchable: false
+        sortable  : false
+       #invisible : true
+
     created_at:
         label: martin.forms::lang.controllers.records.columns.created_at

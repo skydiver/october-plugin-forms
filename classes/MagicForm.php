@@ -265,14 +265,14 @@
             }
 
             # REMOVE EXTRA FIELDS FROM STORED DATA
-            unset($post['_token'], $post['g-recaptcha-response']);
+            unset($post['_token'], $post['g-recaptcha-response'], $post['_session_key'], $post['_uploader']);
 
             # SAVE RECORD TO DATABASE
             $record = new Record;
             $record->ip        = Request::getClientIp();
             $record->form_data = json_encode($post);
             if($this->property('group') != '') { $record->group = $this->property('group'); }
-            $record->save();
+            $record->save(null, post('_session_key'));
 
             # SEND NOTIFICATION EMAIL
             if($this->property('mail_enabled')) {

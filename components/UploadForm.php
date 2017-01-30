@@ -26,6 +26,16 @@
             $this->bindModel('files', new Record);
         }
 
+        public function onRun() {
+            parent::onRun();
+            $this->addCss('assets/css/uploader.css');
+            $this->addJs('assets/vendor/dropzone/dropzone.js');
+            $this->addJs('assets/js/uploader.js');
+            if($result = $this->checkUploadAction()) { return $result; }
+            $this->fileList   = $fileList = $this->getFileList();
+            $this->singleFile = $fileList->first();
+        }
+
         public function defineProperties() {
             $local = [
                 'placeholderText' => [

@@ -13,7 +13,7 @@
         protected $dates = ['deleted_at'];
 
         public $attachMany = [
-            'files' => 'System\Models\File',
+            'files' => ['System\Models\File', 'public' => false]
         ];
 
         public function getFormDataArrAttribute() {
