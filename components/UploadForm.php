@@ -37,6 +37,14 @@
 
         public function defineProperties() {
             $local = [
+                'mail_uploads' => [
+                    'title'             => 'martin.forms::lang.components.shared.mail_uploads.title',
+                    'description'       => 'martin.forms::lang.components.shared.mail_uploads.description',
+                    'type'              => 'checkbox',
+                    'default'           => false,
+                    'group'             => 'martin.forms::lang.components.shared.group_mail',
+                    'showExternalParam' => false
+                ],
                 'uploader_multi' => [
                     'title'             => 'martin.forms::lang.components.shared.uploader_multi.title',
                     'description'       => 'martin.forms::lang.components.shared.uploader_multi.description',

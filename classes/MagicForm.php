@@ -276,7 +276,7 @@
 
             # SEND NOTIFICATION EMAIL
             if($this->property('mail_enabled')) {
-                SendMail::sendNotification($this->property('mail_recipients'), $this->property('mail_subject'), $record, $post);
+                SendMail::sendNotification($this->getProperties(), $post, $record, $record->files);
             }
 
             # SEND AUTORESPONSE EMAIL

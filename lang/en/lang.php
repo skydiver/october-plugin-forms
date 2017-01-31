@@ -77,6 +77,7 @@
                 'mail_enabled'      => ['title' => 'Send Notifications' , 'description' => 'Send mail notifications on every form submited'],
                 'mail_subject'      => ['title' => 'Subject'            , 'description' => 'Override default email subject'],
                 'mail_recipients'   => ['title' => 'Recipients'         , 'description' => 'Specify email recipients (add one address per line)'],
+                'mail_uploads'      => ['title' => 'Send Uploads'       , 'description' => 'Send uploads as attachements'],
                 'mail_resp_enabled' => ['title' => 'Send Auto-Response' , 'description' => 'Send an auto-response email to the person submitting the form'],
                 'mail_resp_field'   => ['title' => 'Email Field'        , 'description' => 'Form field containing the email address of the recipient of auto-response'],
                 'mail_resp_from'    => ['title' => 'Sender Address'     , 'description' => 'Email address of auto-response email sender (e.g. noreply@yourcompany.com)'],
