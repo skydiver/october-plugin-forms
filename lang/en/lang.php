@@ -88,8 +88,9 @@
                 'recaptcha_type'    => ['title' => 'Type'               , 'description' => 'The type of CAPTCHA to serve' , 'image'  => 'Image' , 'audio'   => 'Audio'],
                 'recaptcha_size'    => ['title' => 'Size'               , 'description' => 'The size of the widget'       , 'normal' => 'Normal', 'compact' => 'Compact'],
                 'uploader_pholder'  => ['title' => 'Placeholder text'   , 'description' => 'Wording to display when no file is uploaded', 'default' => 'Click or drag files to upload'],
-                'uploader_maxsize'  => ['title' => 'Max file size'      , 'description' => 'The maximum file size that can be uploaded in megabytes'],
+                'uploader_maxsize'  => ['title' => 'File size limit'    , 'description' => 'The maximum file size that can be uploaded in megabytes'],
                 'uploader_types'    => ['title' => 'Allowed file types' , 'description' => 'Allowed file extensions or star (*) for all types (add one extension per line)'],
+                'uploader_multi'    => ['title' => 'Multiple files'     , 'description' => 'Allow multipe files uploads'],
             ]
         ],
 

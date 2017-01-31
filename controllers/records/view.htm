@@ -23,14 +23,13 @@
     <ul>
     <?php foreach($record->files as $file): ?>
         <li class="text-center">
-            <a href="<?php echo $file->getPath() ?>" class="btn btn-primary" title="<?php echo $file->file_name ?>">
+            <a href="<?php echo Backend::url('martin/forms/records/download', [$record->id, $file->id]) ?>" class="btn btn-primary" title="<?php echo $file->file_name ?>">
                 <i class="icon-download"></i>
                 <span class="files-filename"><?php echo $file->file_name ?></span>
             </a>
             <div class="files-size">
                 (<?php echo $file->sizeToString() ?>)
             </div>
-            <!-- <pre><?php print_r(get_class_methods($file)) ?></pre> -->
         </li>
     <?php endforeach ?>
     </ul>

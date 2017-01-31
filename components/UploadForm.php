@@ -31,13 +31,20 @@
             $this->addCss('assets/css/uploader.css');
             $this->addJs('assets/vendor/dropzone/dropzone.js');
             $this->addJs('assets/js/uploader.js');
+            $this->isMulti = $this->property('uploader_multi');
             if($result = $this->checkUploadAction()) { return $result; }
-            $this->fileList   = $fileList = $this->getFileList();
-            $this->singleFile = $fileList->first();
         }
 
         public function defineProperties() {
             $local = [
+                'uploader_multi' => [
+                    'title'             => 'martin.forms::lang.components.shared.uploader_multi.title',
+                    'description'       => 'martin.forms::lang.components.shared.uploader_multi.description',
+                    'default'           => true,
+                    'type'              => 'checkbox',
+                    'group'             => 'martin.forms::lang.components.shared.group_uploader',
+                    'showExternalParam' => false,
+                ],
                 'placeholderText' => [
                     'title'             => 'martin.forms::lang.components.shared.uploader_pholder.title',
                     'description'       => 'martin.forms::lang.components.shared.uploader_pholder.description',
@@ -54,7 +61,7 @@
                     'group'             => 'martin.forms::lang.components.shared.group_uploader',
                     'showExternalParam' => false,
                 ],
-                'uploader_types' => [
+                'fileTypes' => [
                     'title'             => 'martin.forms::lang.components.shared.uploader_types.title',
                     'description'       => 'martin.forms::lang.components.shared.uploader_types.description',
                     'default'           => Definitions::get('defaultExtensions'),
