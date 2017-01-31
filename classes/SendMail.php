@@ -19,7 +19,7 @@
 
                     $message->subject($properties['mail_subject']);
 
-                    if($properties['mail_uploads'] && !empty($files)) {
+                    if(isset($properties['mail_uploads']) && $properties['mail_uploads'] && !empty($files)) {
                         foreach($files as $file) {
                             $message->attach($file->getLocalPath(), ['as' => $file->getFilename()]);
                         }
