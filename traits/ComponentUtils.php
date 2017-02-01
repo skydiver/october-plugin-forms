@@ -132,18 +132,20 @@ trait ComponentUtils
 
             $file = new File;
             $file->data = $uploadedFile;
-            $file->is_public = true;
+            $file->is_public = false;
             $file->save();
 
             $this->model->{$this->attribute}()->add($file, $this->getSessionKey());
 
             $file = $this->decorateFileAttributes($file);
 
-            $result = [
-                'id' => $file->id,
-                'thumb' => $file->thumbUrl,
-                'path' => $file->pathUrl
-            ];
+            // $result = [
+            //     'id' => $file->id,
+            //     'thumb' => $file->thumbUrl,
+            //     'path' => $file->pathUrl
+            // ];
+
+            $result = 'ok';
 
             return Response::json($result, 200);
 
