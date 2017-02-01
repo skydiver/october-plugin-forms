@@ -24,3 +24,5 @@
     - Fixed Empty AJAX Form template
     - Support for Translate plugin
     - Added plugin documentation
+1.2.4:
+    - Added detailed reCAPTCHA help
