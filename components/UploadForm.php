@@ -45,6 +45,14 @@
                     'group'             => 'martin.forms::lang.components.shared.group_mail',
                     'showExternalParam' => false
                 ],
+                'uploader_enable' => [
+                    'title'             => 'martin.forms::lang.components.shared.uploader_enable.title',
+                    'description'       => 'martin.forms::lang.components.shared.uploader_enable.description',
+                    'default'           => false,
+                    'type'              => 'checkbox',
+                    'group'             => 'martin.forms::lang.components.shared.group_uploader',
+                    'showExternalParam' => false,
+                ],
                 'uploader_multi' => [
                     'title'             => 'martin.forms::lang.components.shared.uploader_multi.title',
                     'description'       => 'martin.forms::lang.components.shared.uploader_multi.description',

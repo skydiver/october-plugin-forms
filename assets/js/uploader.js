@@ -3,7 +3,7 @@
  *
  * Data attributes:
  * - data-control="fileupload" - enables the file upload plugin
- * - data-unique-id="XXX" - an optional identifier for multiple uploaders on the same page, this value will 
+ * - data-unique-id="XXX" - an optional identifier for multiple uploaders on the same page, this value will
  *   appear in the postback variable called X_OCTOBER_FILEUPLOAD
  * - data-template - a Dropzone.js template to use for each item
  *
@@ -63,7 +63,7 @@
         this.$filesContainer = null
         this.uploaderOptions = null
 
-        // In some cases options could contain callbacks, 
+        // In some cases options could contain callbacks,
         // so it's better to clean them up too.
         this.options = null
     }
@@ -115,6 +115,27 @@
         this.dropzone.on('sending', $.proxy(this.onUploadSending, this))
         this.dropzone.on('success', $.proxy(this.onUploadSuccess, this))
         this.dropzone.on('error', $.proxy(this.onUploadError, this))
+
+        var _this = this;
+
+        this.dropzone.on("queuecomplete", function (file) {
+            if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+                $.event.trigger({
+                    uploader: _this,
+                    type    : "uploadfinished",
+                    message : "Dropzone Files upload finished",
+                });
+            }
+        });
+
+        this.dropzone.on("sending", function (file) {
+            $.event.trigger({
+                uploader: _this,
+                type    : "uploadstarted",
+                message : "Dropzone File upload started",
+            });
+        });
+
     }
 
     FileUpload.prototype.onResizeFileInfo = function(file) {
@@ -321,3 +342,19 @@
     })
 
 }(window.jQuery);
+
+
+var uploadDropZones = {};
+
+$(document).on("uploadstarted", function(event) {
+    var frm = $(event.uploader.dropzone.element).parents('form');
+    frm.find(':submit').prop('disabled', true);
+});
+
+var martin;
+$(document).on("uploadfinished", function(event) {
+    var frm = $(event.uploader.dropzone.element).parents('form');
+    frm.find(':submit').prop('disabled', false);
+    var dz  = $(event.uploader.dropzone.element).data('unique-id');
+    uploadDropZones[dz] = event;
+});

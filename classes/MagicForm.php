@@ -312,7 +312,10 @@
         private function prepareJavaScript() {
             $code = false;
             if($this->isReCaptchaEnabled())   { $code .= $content = $this->renderPartial('@js/recaptcha.js'); }
-            if($this->property('reset_form')) { $code .= $content = $this->renderPartial('@js/reset-form.js', ['id' => '#' . $this->alias . '_forms_flash']); }
+            if($this->property('reset_form')) {
+                $code .= $content = $this->renderPartial('@js/reset-form.js', ['id' => '#' . $this->alias . '_forms_flash']);
+                if($this->property('uploader_enable')) { $code .= $content = $this->renderPartial('@js/reset-uploader.js', ['id' => $this->alias]); }
+            }
             return $code;
         }
 
