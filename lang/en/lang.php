@@ -54,7 +54,7 @@
             ],
             'shared' => [
                 'csrf_error'        => 'Form session expired! Please refresh the page.',
-                'recaptcha_warn'    => 'Warning: reCAPTCHA is not properly configured',
+                'recaptcha_warn'    => 'Warning: reCAPTCHA is not properly configured. Please, goto Backend > Settings > CMS > Magic Forms and configure.',
                 'group_validation'  => 'Form Validation',
                 'group_messages'    => 'Flash Messages',
                 'group_mail'        => 'Notifications Settings',

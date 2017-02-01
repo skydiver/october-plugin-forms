@@ -20,10 +20,14 @@ fields:
         label: martin.forms::lang.settings.section_recaptcha
         type : section
 
+    recaptcha_help:
+        type   : partial
+        path   : $/martin/forms/models/settings/_recaptcha_help.htm
+
     recaptcha_site_key:
         label: martin.forms::lang.settings.recaptcha_site_key
         span : left
 
     recaptcha_secret_key:
         label: martin.forms::lang.settings.recaptcha_secret_key
-        span : left
+        span : right
