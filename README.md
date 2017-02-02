@@ -13,7 +13,7 @@ So, the objective was to find a way to just put the html elements on the page, s
 
 
 ## Features
-* Create any type of form: contact, feedback, registration, etc
+* Create any type of form: contact, feedback, registration, uploads, etc
 * Write only HTML
 * Don't code forms logic
 * Laravel validation
@@ -26,13 +26,15 @@ So, the objective was to find a way to just put the html elements on the page, s
 * Auto-response email on form submit
 * reCAPTCHA validation
 * Support for Translate plugin
+* AJAX file uploads (BETA, available since v1.3.0)
 
 
 
 ## Documentation
-1. [Installation](docs/INSTALLATION.md)
-2. [Usage](docs/USAGE.md)
-3. [Components](docs/COMPONENTS.md)
-4. [Validation](docs/VALIDATION.md)
-5. [Custom Validation Messages](docs/CUSTOM-VALIDATION-MESSAGES.md.md)
-6. [Security](docs/SECURITY.md)
+1. [Installation](https://github.com/skydiver/october-plugin-forms/blob/master/docs/INSTALLATION.md)
+2. [Usage](https://github.com/skydiver/october-plugin-forms/blob/master/docs/USAGE.md)
+3. [Components](https://github.com/skydiver/october-plugin-forms/blob/master/docs/COMPONENTS.md)
+4. [Validation](https://github.com/skydiver/october-plugin-forms/blob/master/docs/VALIDATION.md)
+5. [Custom Validation Messages](https://github.com/skydiver/october-plugin-forms/blob/master/docs/CUSTOM-VALIDATION-MESSAGES.md)
+6. [Security](https://github.com/skydiver/october-plugin-forms/blob/master/docs/SECURITY.md)
+7. [Uploads [BETA]](https://github.com/skydiver/october-plugin-forms/blob/master/docs/UPLOADS.md)
