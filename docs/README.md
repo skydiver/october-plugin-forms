@@ -5,3 +5,4 @@
 4. [Validation](VALIDATION.md)
 5. [Custom Validation Messages](CUSTOM-VALIDATION-MESSAGES.md.md)
 6. [Security](SECURITY.md)
+7. [Uploads [BETA]](UPLOADS.md)
