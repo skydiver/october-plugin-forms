@@ -265,10 +265,10 @@
     }
 
     FileUpload.prototype.onClickSuccessObject = function(ev) {
-        if ($(ev.target).closest('.meta').length) return
-
-        var $target = $(ev.target).closest('.upload-object')
-        window.open($target.data('path'))
+        // if ($(ev.target).closest('.meta').length) return
+        //
+        // var $target = $(ev.target).closest('.upload-object')
+        // window.open($target.data('path'))
     }
 
     FileUpload.prototype.onClickErrorObject = function(ev) {
