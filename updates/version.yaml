@@ -26,3 +26,5 @@
     - Added plugin documentation
 1.2.4:
     - Added detailed reCAPTCHA help
+1.3.0:
+    - AJAX file uploads
