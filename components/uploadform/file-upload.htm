@@ -1,0 +1,21 @@
+{% if __SELF__.property('uploader_enable') == 0 %}
+
+    <div style="color:#a94442; background-color:#f2dede; border:solid 1px #ebccd1; border-radius:4px;">
+        <h5><strong>Warning</strong></h5>
+        <h6>Uploads are disabled.</h6>
+        <h6>You need to explicitly enable this option on the component (this is a security measure).</h6>
+    </div>
+
+{% else %}
+
+    {% if __SELF__.isMulti %}
+
+        {% partial __SELF__ ~ '::file-multi' %}
+
+    {% else %}
+
+        {% partial __SELF__ ~ '::file-single' %}
+
+    {% endif %}
+
+{% endif %}

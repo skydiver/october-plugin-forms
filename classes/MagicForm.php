@@ -265,18 +265,18 @@
             }
 
             # REMOVE EXTRA FIELDS FROM STORED DATA
-            unset($post['_token'], $post['g-recaptcha-response']);
+            unset($post['_token'], $post['g-recaptcha-response'], $post['_session_key'], $post['_uploader']);
 
             # SAVE RECORD TO DATABASE
             $record = new Record;
             $record->ip        = Request::getClientIp();
             $record->form_data = json_encode($post);
             if($this->property('group') != '') { $record->group = $this->property('group'); }
-            $record->save();
+            $record->save(null, post('_session_key'));
 
             # SEND NOTIFICATION EMAIL
             if($this->property('mail_enabled')) {
-                SendMail::sendNotification($this->property('mail_recipients'), $this->property('mail_subject'), $record, $post);
+                SendMail::sendNotification($this->getProperties(), $post, $record, $record->files);
             }
 
             # SEND AUTORESPONSE EMAIL
@@ -312,7 +312,10 @@
         private function prepareJavaScript() {
             $code = false;
             if($this->isReCaptchaEnabled())   { $code .= $content = $this->renderPartial('@js/recaptcha.js'); }
-            if($this->property('reset_form')) { $code .= $content = $this->renderPartial('@js/reset-form.js', ['id' => '#' . $this->alias . '_forms_flash']); }
+            if($this->property('reset_form')) {
+                $code .= $content = $this->renderPartial('@js/reset-form.js', ['id' => '#' . $this->alias . '_forms_flash']);
+                if($this->property('uploader_enable')) { $code .= $content = $this->renderPartial('@js/reset-uploader.js', ['id' => $this->alias]); }
+            }
             return $code;
         }
 

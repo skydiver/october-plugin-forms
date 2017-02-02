@@ -1,0 +1,51 @@
+{{ form_ajax(__SELF__ ~ '::onFormSubmit') }}
+
+    <div id="{{ __SELF__ }}_forms_flash"></div>
+
+    <div class="form-group">
+        <h2>Apply for online job</h2>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="position">Position:</label>
+        <select class="form-control" id="position" name="position">
+            <option value=""></option>
+            <option value="Lead">Lead</option>
+            <option value="Senior">Senior</option>
+            <option value="Direct">Direct</option>
+            <option value="Corporate">Corporate</option>
+            <option value="Dynamic">Dynamic</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="skills">Skills:</label>
+        <textarea id="skills" name="skills" class="form-control" rows="8" cols="80" placeholder="Summary of skills"></textarea>
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        <h4>Upload your resume</h4>
+        {% partial '@file-upload' %}
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        {% partial '@recaptcha' %}
+    </div>
+
+    {{ form_submit() }}
+
+{{ form_close() }}

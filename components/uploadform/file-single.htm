@@ -1,0 +1,79 @@
+{% set file = __SELF__.singleFile %}
+
+<div
+    class="responsiv-uploader-fileupload style-file-single {{ __SELF__.isPopulated() ? 'is-populated' }}"
+    data-control="fileupload"
+    data-template="#uploaderTemplate{{ __SELF__ }}"
+    data-unique-id="{{ __SELF__ }}"
+    {% if __SELF__.fileTypes %}data-file-types="{{ __SELF__.fileTypes }}"{% endif %}
+>
+
+    <!-- Field placeholder -->
+    <input type="hidden" name="_uploader[{{ __SELF__.attribute }}]" value="" />
+
+    <!-- Upload button -->
+    <button type="button" class="ui button btn btn-default upload-button">
+        Browse
+    </button>
+
+    <!-- Existing file -->
+    <div class="upload-files-container">
+        {% if file %}
+            <div class="upload-object is-success" data-id="{{ file.id }}" data-path="{{ file.pathUrl }}">
+                <div class="icon-container">
+                    {% if file.isImage %}
+                        <img src="{{ file.thumbUrl }}" alt="" />
+                    {% else %}
+                        <img src="{{ 'plugins/martin/forms/assets/imgs/upload.png'|app }}" alt="" />
+                    {% endif %}
+                </div>
+                <div class="info">
+                    <h4 class="filename">
+                        <span data-dz-name>{{ file.title ?: file.file_name }}</span>
+                    </h4>
+                    <p class="size">{{ file.sizeToString }}</p>
+                </div>
+                <div class="meta">
+                    <a
+                        href="javascript:;"
+                        class="upload-remove-button"
+                        data-request="{{ __SELF__ ~ '::onRemoveAttachment' }}"
+                        data-request-confirm="Are you sure?"
+                        data-request-data="file_id: {{ file.id }}"
+                        >&times;</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Empty message -->
+    <div class="upload-empty-message">
+        <span class="text-muted">{{ __SELF__.placeholderText }}</span>
+    </div>
+
+</div>
+
+<!-- Template for new file -->
+<script type="text/template" id="uploaderTemplate{{ __SELF__ }}">
+    <div class="upload-object dz-preview dz-file-preview">
+        <div class="icon-container">
+            <img data-dz-thumbnail />
+        </div>
+        <div class="info">
+            <h4 class="filename">
+                <span data-dz-name></span>
+            </h4>
+            <p class="size" data-dz-size></p>
+            <p class="error"><span data-dz-errormessage></span></p>
+        </div>
+        <div class="meta">
+            <a
+                href="javascript:;"
+                class="upload-remove-button"
+                data-request="{{ __SELF__ ~ '::onRemoveAttachment' }}"
+                data-request-confirm="Are you sure?"
+                >&times;</a>
+            <div class="progress-bar"><span class="upload-progress" data-dz-uploadprogress></span></div>
+        </div>
+    </div>
+</script>

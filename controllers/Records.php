@@ -2,7 +2,7 @@
 
     namespace Martin\Forms\Controllers;
 
-    use BackendMenu;
+    use App, BackendMenu, Lang;
     use Backend\Classes\Controller;
     use Backend\Facades\Backend;
     use Illuminate\Support\Facades\Redirect;
@@ -45,6 +45,14 @@
                 Flash::error(e(trans('martin.forms::lang.controllers.records.error')));
             }
             return Redirect::to(Backend::url('martin/forms/records'));
+        }
+
+        public function download($record_id, $file_id) {
+            $record = Record::findOrFail($record_id);
+            $file   = $record->files->find($file_id);
+            if(!$file) { App::abort(404, Lang::get('backend::lang.import_export.file_not_found_error')); }
+            return response()->download($file->getLocalPath(), $file->getFilename());
+            exit();
         }
 
     }

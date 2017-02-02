@@ -6,17 +6,29 @@
 
     class SendMail {
 
-        public static function sendNotification($recipients, $subject, $record, $post) {
-            if(is_array($recipients)) {
-                Mail::sendTo($recipients, 'martin.forms::mail.notification', [
+        public static function sendNotification($properties, $post, $record, $files) {
+
+            if(is_array($properties['mail_recipients'])) {
+
+                Mail::sendTo($properties['mail_recipients'], 'martin.forms::mail.notification', [
                     'id'   => $record->id,
                     'data' => $post,
                     'ip'   => $record->ip,
                     'date' => $record->created_at
-                ], function($message) use ($subject) {
-                    $message->subject($subject);
+                ], function($message) use ($properties, $files) {
+
+                    $message->subject($properties['mail_subject']);
+
+                    if(isset($properties['mail_uploads']) && $properties['mail_uploads'] && !empty($files)) {
+                        foreach($files as $file) {
+                            $message->attach($file->getLocalPath(), ['as' => $file->getFilename()]);
+                        }
+                    }
+
                 });
+
             }
+
         }
 
         public static function sendAutoResponse($to, $from, $subject, $post) {
