@@ -1,1 +1,1 @@
-$('{{ id }}').parent('form')[0].reset();
+$('{{ id }}').parents('form')[0].reset();
