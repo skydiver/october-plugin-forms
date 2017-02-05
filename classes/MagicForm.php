@@ -18,7 +18,8 @@
             $this->page['recaptcha_misconfigured'] = $this->isReCaptchaMisconfigured();
 
             if($this->isReCaptchaEnabled()) {
-                $this->addJs('https://www.google.com/recaptcha/api.js');
+                $this->addJs('https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit', ['async', 'defer']);
+                $this->addJs('assets/js/recaptcha.js');
             }
 
             if($this->isReCaptchaMisconfigured()) {
