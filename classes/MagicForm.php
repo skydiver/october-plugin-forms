@@ -12,14 +12,15 @@
 
     abstract class MagicForm extends ComponentBase {
 
+        use \Martin\Forms\Classes\ReCaptcha;
+
         public function onRun() {
 
             $this->page['recaptcha_enabled']       = $this->isReCaptchaEnabled();
             $this->page['recaptcha_misconfigured'] = $this->isReCaptchaMisconfigured();
 
             if($this->isReCaptchaEnabled()) {
-                $this->addJs('https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit', ['async', 'defer']);
-                $this->addJs('assets/js/recaptcha.js');
+                $this->loadReCaptcha();
             }
 
             if($this->isReCaptchaMisconfigured()) {
@@ -300,14 +301,6 @@
                 'jscript' => $this->prepareJavaScript(),
             ])];
 
-        }
-
-        private function isReCaptchaEnabled() {
-            return ($this->property('recaptcha_enabled') && Settings::get('recaptcha_site_key') != '' && Settings::get('recaptcha_secret_key') != '');
-        }
-
-        private function isReCaptchaMisconfigured() {
-            return ($this->property('recaptcha_enabled') && (Settings::get('recaptcha_site_key') == '' || Settings::get('recaptcha_secret_key') == ''));
         }
 
         private function prepareJavaScript() {

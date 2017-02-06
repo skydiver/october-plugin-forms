@@ -1,1 +1,1 @@
-grecaptcha.reset(captchas['{{ __SELF__ }}']);
+resetReCaptcha('{{ __SELF__ }}');
