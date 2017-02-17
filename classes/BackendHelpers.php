@@ -26,6 +26,23 @@
 
         }
 
+        /**
+         * Render an array as HTML list (UL > LI)
+         * @param  array   $array
+         * @return string
+         */
+        public static function array2ul($array) {
+            $return = '';
+            foreach($array as $index => $item) {
+                if(is_array($item)) {
+                    $return .= "<li>$index<ul>" . self::array2ul($item) . "</ul></li>";
+                } else {
+                    $return .= "<li>$item</li>";
+                }
+            }
+            return $return;
+        }
+
     }
 
 ?>

@@ -74,9 +74,23 @@
 
             # WRITE CSV LINES
             foreach($records->get()->toArray() as $row) {
+
                 $data = (array) json_decode($row['form_data']);
-                if($metadata = post('Record.options_metadata')) { array_unshift($data, $row['id'], $row['group'], $row['ip'], $row['created_at']); }
+
+                # IF DATA IS ARRAY CONVERT TO JSON STRING
+                foreach($data as $field => $value) {
+                    if(is_array($value) || is_object($value)) {
+                        $data[$field] = json_encode($value);
+                    }
+                }
+
+                # ADD METADATA IF NEEDED
+                if($metadata = post('Record.options_metadata')) {
+                    array_unshift($data, $row['id'], $row['group'], $row['ip'], $row['created_at']);
+                }
+
                 $csv->insertOne($data);
+
             }
 
             # RETURN CSV

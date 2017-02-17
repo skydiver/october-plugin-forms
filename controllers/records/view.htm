@@ -13,7 +13,15 @@
 <?php foreach($record->form_data_arr as $label => $value): ?>
     <tr>
         <td class="record-label"><?php echo ucwords($label) ?>:</td>
-        <td class="record-value"><?php echo nl2br($value) ?></td>
+        <td class="record-value">
+        <?php if(is_array($value) || is_object($value)): ?>
+            <ul>
+                <?php echo \Martin\Forms\Classes\BackendHelpers::array2ul($value) ?>
+            </ul>
+        <?php else: ?>
+            <?php echo nl2br($value); ?>
+        <?php endif ?>
+        </td>
     </tr>
 <?php endforeach ?>
 </table>
