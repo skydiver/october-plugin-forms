@@ -32,3 +32,6 @@
     - Added lang pt-br
 1.3.2:
     - Fixed multiples reCAPTCHAs on same page
+1.3.3:
+    - Fixed record detail page when form data contains an array
+    - Updated documentations
