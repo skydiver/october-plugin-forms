@@ -38,3 +38,4 @@ So, the objective was to find a way to just put the html elements on the page, s
 5. [Custom Validation Messages](https://github.com/skydiver/october-plugin-forms/blob/master/docs/CUSTOM-VALIDATION-MESSAGES.md)
 6. [Security](https://github.com/skydiver/october-plugin-forms/blob/master/docs/SECURITY.md)
 7. [Uploads [BETA]](https://github.com/skydiver/october-plugin-forms/blob/master/docs/UPLOADS.md)
+8. [Form Fields](https://github.com/skydiver/october-plugin-forms/blob/master/docs/FORM_FIELDS.md)
