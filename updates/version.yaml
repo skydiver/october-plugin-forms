@@ -35,3 +35,5 @@
 1.3.3:
     - Fixed record detail page when form data contains an array
     - Updated documentations
+1.3.4:
+    - New "Anonymize IP" option
