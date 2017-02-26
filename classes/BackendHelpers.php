@@ -43,6 +43,15 @@
             return $return;
         }
 
+        /**
+        * Anonymize an IPv4 address (credits: https://github.com/geertw/php-ip-anonymizer)
+        * @param $address string IPv4 address
+        * @return string Anonymized address
+        */
+        public static function anonymizeIPv4($address) {
+            return inet_ntop(inet_pton($address) & inet_pton("255.255.255.0"));
+        }
+
     }
 
 ?>
