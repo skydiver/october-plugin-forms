@@ -83,6 +83,7 @@
                 'mail_resp_from'    => ['title' => 'Sender Address'     , 'description' => 'Email address of auto-response email sender (e.g. noreply@yourcompany.com)'],
                 'mail_resp_subject' => ['title' => 'Subject'            , 'description' => 'Override default email subject'],
                 'reset_form'        => ['title' => 'Reset Form'         , 'description' => 'Reset form after successfully submit'],
+                'redirect'          => ['title' => 'Redirect on Success', 'description' => 'Redirect to specific URL on successfully submit. Note: must be a valid URL starting with http or https or the redirection will be ignored.'],
                 'anonymize_ip'      => ['title' => 'Anonymize IP'       , 'description' => 'Don\'t store IP address', 'full' => 'Full', 'partial' => 'Partial', 'disabled' => 'Disabled'],
                 'allowed_fields'    => ['title' => 'Allowed Fields'     , 'description' => 'Specify which fields should be filtered and stored (add one field name per line)'],
                 'recaptcha_enabled' => ['title' => 'Enable reCAPTCHA'   , 'description' => 'Insert the reCAPTCHA widget on your form'],

@@ -2,7 +2,7 @@
 
     namespace Martin\Forms\Classes;
 
-    use AjaxException, Lang, Request, Session, Validator;
+    use AjaxException, Lang, Redirect, Request, Session, Validator;
     use Cms\Classes\ComponentBase;
     use October\Rain\Exception\ApplicationException;
     use October\Rain\Support\Facades\Flash;
@@ -146,6 +146,11 @@
             # SEND AUTORESPONSE EMAIL
             if($this->property('mail_resp_enabled')) {
                 SendMail::sendAutoResponse($post[$this->property('mail_resp_field')], $this->property('mail_resp_from'), $this->property('mail_resp_subject'), $post);
+            }
+            
+            # CHECK FOR REDIRECT
+            if(filter_var($this->property('redirect'), FILTER_VALIDATE_URL)) {
+                return Redirect::to($this->property('redirect'));
             }
 
             # GET DEFAULT SUCCESS MESSAGE

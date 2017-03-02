@@ -102,6 +102,13 @@
                     'group'             => 'martin.forms::lang.components.shared.group_settings',
                     'showExternalParam' => false
                 ],
+                'redirect' => [
+                    'title'             => 'martin.forms::lang.components.shared.redirect.title',
+                    'description'       => 'martin.forms::lang.components.shared.redirect.description',
+                    'type'              => 'string',
+                    'group'             => 'martin.forms::lang.components.shared.group_settings',
+                    'showExternalParam' => false
+                ],
                 'anonymize_ip' => [
                     'title'             => 'martin.forms::lang.components.shared.anonymize_ip.title',
                     'description'       => 'martin.forms::lang.components.shared.anonymize_ip.description',
