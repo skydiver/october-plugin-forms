@@ -28,6 +28,8 @@
             if($this->isReCaptchaMisconfigured()) {
                 $this->page['recaptcha_warn'] = Lang::get('martin.forms::lang.components.shared.recaptcha_warn');
             }
+            
+            $this->addJs('assets/js/inline-errors.js');
 
         }
 
@@ -105,8 +107,10 @@
                 throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
                     'type'  => 'danger',
                     'title' => $message,
-                    'list'  => $validator->messages()->all()
-                ])]);
+                    'list'  => $validator->messages()->all(),
+                ]),
+                    'error_fields' => $validator->messages()
+                ]);
 
             }
 
@@ -123,7 +127,9 @@
                     throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
                         'type'    => 'danger',
                         'content' => Lang::get('martin.forms::lang.validation.recaptcha_error')
-                    ])]);
+                    ]),
+                        'error_fields' => $validator->messages()
+                    ]);
                 }
 
             }
