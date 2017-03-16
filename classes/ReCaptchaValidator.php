@@ -2,11 +2,10 @@
 
     namespace Martin\Forms\Classes;
 
-    use Lang, Request;
-    use Illuminate\Validation\Validator;
+    use Request;
     use Martin\Forms\Models\Settings;
 
-    class ReCaptchaValidator extends Validator {
+    class ReCaptchaValidator {
 
         public function validateReCaptcha($attribute, $value, $parameters) {
             $secret_key = Settings::get('recaptcha_secret_key');

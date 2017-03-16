@@ -84,11 +84,7 @@
         }
 
         public function register() {
-
-            Validator::resolver(function($translator, $data, $rules, $messages, $customAttributes) {
-                return new ReCaptchaValidator($translator, $data, $rules, $messages, $customAttributes);
-            });
-
+            Validator::extend('recaptcha', 'Martin\Forms\Classes\ReCaptchaValidator@validateReCaptcha');
         }
 
     }
