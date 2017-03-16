@@ -3,8 +3,9 @@
     namespace Martin\Forms\Classes;
 
     use Session;
-    use RainLab\Translate\Classes\Translator;
+    use Martin\Forms\Classes\BackendHelpers;
     use Martin\Forms\Models\Settings;
+    use RainLab\Translate\Classes\Translator;
 
     trait ReCaptcha {
         
@@ -19,7 +20,9 @@
         public $activeLocale;
 
         public function init() {
+            if(BackendHelpers::isTranslatePlugin()) {
                 $this->translator = Translator::instance();
+            }
         }
 
         private function isReCaptchaEnabled() {
@@ -29,10 +32,14 @@
         private function isReCaptchaMisconfigured() {
             return ($this->property('recaptcha_enabled') && (Settings::get('recaptcha_site_key') == '' || Settings::get('recaptcha_secret_key') == ''));
         }
+        
+        private function getReCaptchaLang($lang='') {
+            if(BackendHelpers::isTranslatePlugin()) { $lang = '&hl=' . $this->activeLocale = $this->translator->getLocale(); }
+            return $lang;
+        }
 
         private function loadReCaptcha() {
-            $activeLocale = $this->activeLocale = $this->translator->getLocale();
-            $this->addJs('https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl='.$activeLocale, ['async', 'defer']);
+            $this->addJs('https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'.$this->getReCaptchaLang(), ['async', 'defer']);
             $this->addJs('assets/js/recaptcha.js');
         }
 
