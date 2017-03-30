@@ -1,4 +1,4 @@
-#Uploads [BETA]
+# Uploads [BETA]
 
 ```
 Note: AJAX file uploads are available since version 1.3.0
@@ -17,7 +17,7 @@ Note: AJAX file uploads are available since version 1.3.0
 ```
 {{ form_ajax(__SELF__ ~ '::onFormSubmit') }}
     <div id="{{ __SELF__ }}_forms_flash"></div>
-    <!-- YOUR FORM FIELDS --> 
+    <!-- YOUR FORM FIELDS -->
     {% partial '@file-upload' %}
     {% partial '@recaptcha' %}
     {{ form_submit() }}
