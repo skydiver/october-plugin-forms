@@ -43,3 +43,5 @@
     - French translation
     - Support Translate plugin on reCAPTCHA
     - reCAPTCHA validation enhancements
+1.3.7:
+    - Display uploads as list
