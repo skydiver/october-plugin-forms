@@ -1,6 +1,6 @@
-#Form Fields
+# Form Fields
 
-###Multiple checkboxes
+### Multiple checkboxes
 
 You can create an array of checkboxes like:
 ```

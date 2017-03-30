@@ -51,7 +51,7 @@
             }
 
             # LOAD TRANSLATOR PLUGIN
-            if($this->isTranslatePlugin()) {
+            if(BackendHelpers::isTranslatePlugin()) {
                 $translator = \RainLab\Translate\Classes\Translator::instance();
                 $translator->loadLocaleFromSession();
                 $locale = $translator->getLocale();
@@ -74,7 +74,7 @@
             $msgs  = (array) $this->property('rules_messages');
 
             # TRANSLATE CUSTOM ERROR MESSAGES
-            if($this->isTranslatePlugin()) {
+            if(BackendHelpers::isTranslatePlugin()) {
                 foreach($msgs as $rule => $msg) {
                     $msgs[$rule] = \RainLab\Translate\Models\Message::trans($msg);
                 }
@@ -99,7 +99,7 @@
                 $message = $this->property('messages_errors');
 
                 # LOOK FOR TRANSLATION
-                if($this->isTranslatePlugin()) {
+                if(BackendHelpers::isTranslatePlugin()) {
                     $message = \RainLab\Translate\Models\Message::trans($message);
                 }
 
@@ -163,7 +163,7 @@
             $message = $this->property('messages_success');
 
             # LOOK FOR TRANSLATION
-            if($this->isTranslatePlugin()) {
+            if(BackendHelpers::isTranslatePlugin()) {
                 $message = \RainLab\Translate\Models\Message::trans($message);
             }
 
@@ -184,10 +184,6 @@
                 if($this->property('uploader_enable')) { $code .= $content = $this->renderPartial('@js/reset-uploader.js', ['id' => $this->alias]); }
             }
             return $code;
-        }
-
-        private function isTranslatePlugin() {
-            return class_exists('\RainLab\Translate\Classes\Translator') && class_exists('\RainLab\Translate\Models\Message');
         }
 
         private function getIP() {

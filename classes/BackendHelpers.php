@@ -27,6 +27,15 @@
         }
 
         /**
+         * Check if Translator plugin is installed
+         * @param  array   $array
+         * @return string
+         */
+        public static function isTranslatePlugin() {
+            return class_exists('\RainLab\Translate\Classes\Translator') && class_exists('\RainLab\Translate\Models\Message');
+        }
+
+        /**
          * Render an array as HTML list (UL > LI)
          * @param  array   $array
          * @return string

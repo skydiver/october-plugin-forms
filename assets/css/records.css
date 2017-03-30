@@ -1,8 +1,4 @@
-.files-container ul              { list-style:none; }
-.files-container ul li           { float:left; margin-bottom:20px; margin-right:20px; }
-.files-container .btn-primary    { width:200px; margin-bottom:5px; text-align:center; }
-.files-container .files-filename { display:block; font-size:0.9em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.files-container .files-size     { font-size:0.8em; color:#888; font-weight:bold; }
+.files-container ul              { padding:0; list-style:none; }
 
 .record-table    { width:100%; border-collapse:collapse; box-shadow:5px 5px 10px #AAA; }
 .record-table td { padding:10px; border:solid 1px #D4D8DA; }
