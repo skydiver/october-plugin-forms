@@ -109,6 +109,15 @@
                     'group'             => 'martin.forms::lang.components.shared.group_settings',
                     'showExternalParam' => false
                 ],
+                'inline_errors' => [
+                    'title'             => 'martin.forms::lang.components.shared.inline_errors.title',
+                    'description'       => 'martin.forms::lang.components.shared.inline_errors.description',
+                    'type'              => 'dropdown',
+                    'options'           => ['disabled' => 'martin.forms::lang.components.shared.inline_errors.disabled', 'display' => 'martin.forms::lang.components.shared.inline_errors.display', 'variable' => 'martin.forms::lang.components.shared.inline_errors.variable'],
+                    'default'           => 'disabled',
+                    'group'             => 'martin.forms::lang.components.shared.group_settings',
+                    'showExternalParam' => false
+                ],
                 'anonymize_ip' => [
                     'title'             => 'martin.forms::lang.components.shared.anonymize_ip.title',
                     'description'       => 'martin.forms::lang.components.shared.anonymize_ip.description',

@@ -5,6 +5,7 @@
     use AjaxException, Lang, Redirect, Request, Session, Validator;
     use Cms\Classes\ComponentBase;
     use October\Rain\Exception\ApplicationException;
+    use October\Rain\Exception\ValidationException;
     use October\Rain\Support\Facades\Flash;
     use Martin\Forms\Classes\BackendHelpers;
     use Martin\Forms\Classes\SendMail;
@@ -27,6 +28,10 @@
 
             if($this->isReCaptchaMisconfigured()) {
                 $this->page['recaptcha_warn'] = Lang::get('martin.forms::lang.components.shared.recaptcha_warn');
+            }
+
+            if($this->property('inline_errors') == 'display') {
+                $this->addJs('assets/js/inline-errors.js');
             }
 
         }
@@ -83,12 +88,14 @@
                 $rules['g-recaptcha-response'] = 'required';
             }
 
-            # NICE reCAPTCHA FIELD NAME
-            $fields_names = ['g-recaptcha-response' => 'reCAPTCHA'];
-
             # DO FORM VALIDATION
             $validator = Validator::make($post, $rules, $msgs);
-            $validator->setAttributeNames($fields_names);
+    
+            # NICE reCAPTCHA FIELD NAME
+            if($this->isReCaptchaEnabled()) {
+                $fields_names = ['g-recaptcha-response' => 'reCAPTCHA'];
+                $validator->setAttributeNames($fields_names);
+            }
 
             # VALIDATE ALL + CAPTCHA EXISTS
             if($validator->fails()) {
@@ -101,12 +108,16 @@
                     $message = \RainLab\Translate\Models\Message::trans($message);
                 }
 
-                # THROW ERROR MESSAGE
-                throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
-                    'type'  => 'danger',
-                    'title' => $message,
-                    'list'  => $validator->messages()->all()
-                ])]);
+                # THROW ERRORS
+                if($this->property('inline_errors') == 'display') {
+                    throw new ValidationException($validator);
+                } else {
+                    throw new AjaxException($this->exceptionResponse($validator, [
+                        'type'  => 'danger',
+                        'title' => $message,
+                        'list'  => $validator->messages()->all(),
+                    ]));
+                }
 
             }
 
@@ -114,16 +125,26 @@
             # (this prevents to resolve captcha after every form error)
             if($this->isReCaptchaEnabled()) {
 
+                # PREPARE RECAPTCHA VALIDATION
+                $rules   = ['g-recaptcha-response'           => 'recaptcha'];
+                $err_msg = ['g-recaptcha-response.recaptcha' => Lang::get('martin.forms::lang.validation.recaptcha_error')];
+
                 # DO SECOND VALIDATION
-                $rules     = ['g-recaptcha-response' => 'recaptcha'];
-                $validator = Validator::make($post, $rules);
+                $validator = Validator::make($post, $rules, $err_msg);
 
                 # VALIDATE ALL + CAPTCHA EXISTS
                 if($validator->fails()) {
-                    throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
-                        'type'    => 'danger',
-                        'content' => Lang::get('martin.forms::lang.validation.recaptcha_error')
-                    ])]);
+                                    
+                    # THROW ERRORS
+                    if($this->property('inline_errors') == 'display') {
+                        throw new ValidationException($validator);
+                    } else {
+                        throw new AjaxException($this->exceptionResponse($validator, [
+                            'type'    => 'danger',
+                            'content' => Lang::get('martin.forms::lang.validation.recaptcha_error'),
+                        ]));
+                    }
+
                 }
 
             }
@@ -167,6 +188,20 @@
                 'content' => $message,
                 'jscript' => $this->prepareJavaScript(),
             ])];
+
+        }
+
+        private function exceptionResponse($validator, $params) {
+
+            # EXCEPTION RESPONSE
+            $response = ['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', $params)];
+
+            # INCLUDE ERROR FIELDS IF REQUIRED
+            if($this->property('inline_errors') != 'disabled') {
+                $response['error_fields'] = $validator->messages();
+            }
+
+            return $response;
 
         }
 
