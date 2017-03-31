@@ -11,7 +11,9 @@ Return the regular error message and append a new json property (error_fields) s
 ### Display errors
 Let the plugin display the inline errors using OctoberCMS core functionalities.
 
-Here is a demo code:
+This function doesn't work out of the box because requires extra code.
+
+Here is an example:
 
 ```
 <form data-request="{{ __SELF__ }}::onFormSubmit" data-request-validate>
