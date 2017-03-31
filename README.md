@@ -26,6 +26,7 @@ So, the objective was to find a way to just put the html elements on the page, s
 * Auto-response email on form submit
 * reCAPTCHA validation
 * Support for Translate plugin
+* Inline errors with fields
 * AJAX file uploads (BETA, available since v1.3.0)
 
 
