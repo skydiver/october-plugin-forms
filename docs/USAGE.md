@@ -1,6 +1,6 @@
-#Usage
+# Usage
 
-###Front-end
+### Front-end
 
 1. Drag selected component to your page
 2. Configure parameters

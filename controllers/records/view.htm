@@ -24,26 +24,24 @@
         </td>
     </tr>
 <?php endforeach ?>
-</table>
-
 <?php if(count($record->files) > 0): ?>
-<div class="files-container m-t-lg">
-    <ul>
-    <?php foreach($record->files as $file): ?>
-        <li class="text-center">
-            <a href="<?php echo Backend::url('martin/forms/records/download', [$record->id, $file->id]) ?>" class="btn btn-primary" title="<?php echo $file->file_name ?>">
-                <i class="icon-download"></i>
-                <span class="files-filename"><?php echo $file->file_name ?></span>
-            </a>
-            <div class="files-size">
-                (<?php echo $file->sizeToString() ?>)
-            </div>
-        </li>
-    <?php endforeach ?>
-    </ul>
-</div>
-<div style="clear:both"></div>
+    <tr>
+        <td class="record-label">Attached Files:</td>
+        <td class="record-value files-container">
+            <ul>
+            <?php foreach($record->files as $file): ?>
+                <li>
+                    <a href="<?php echo Backend::url('martin/forms/records/download', [$record->id, $file->id]) ?>">
+                        <?php echo $file->file_name ?>
+                        (<?php echo $file->sizeToString() ?>)
+                    </a>
+                </li>
+            <?php endforeach ?>
+            </ul>
+        </td>
+    </tr>
 <?php endif ?>
+</table>
 
 <div class="record-metadata m-t-md m-r-md text-right">
     <p class="m-a-0"><?php echo e(trans('martin.forms::lang.controllers.records.columns.group')) ?>: <?php echo $record->group ?></p>
