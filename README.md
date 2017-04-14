@@ -8,7 +8,7 @@ Almost everyday we do forms for our clients, personal projects, etc
 
 Sometimes we need to add or remove fields, change validations, store data and at some point, this can be boring and repetitive.
 
-So, the objective was to find a way to just put the html elements on the page, skip the repetitive task of coding and (with some kind of magic) store this data on a database or send by mail.
+So, the objective was to find a way to just put the HTML elements on the page, skip the repetitive task of coding and (with some kind of magic) store this data on a database or send by mail.
 
 
 
@@ -26,7 +26,7 @@ So, the objective was to find a way to just put the html elements on the page, s
 * Auto-response email on form submit
 * reCAPTCHA validation
 * Support for Translate plugin
-* Inline errors with fields
+* Inline errors with fields (read documentation for more info)
 * AJAX file uploads (BETA, available since v1.3.0)
 
 
@@ -40,4 +40,4 @@ So, the objective was to find a way to just put the html elements on the page, s
 6. [Security](https://github.com/skydiver/october-plugin-forms/blob/master/docs/SECURITY.md)
 7. [Uploads [BETA]](https://github.com/skydiver/october-plugin-forms/blob/master/docs/UPLOADS.md)
 8. [Inline Errors](https://github.com/skydiver/october-plugin-forms/blob/master/docs/INLINE_ERRORS.md)
-9. [Form Fields](https://github.com/skydiver/october-plugin-forms/blob/master/docs/FORM_FIELDS.md)
+9. [Misc Topics](https://github.com/skydiver/october-plugin-forms/blob/master/docs/MISC_TOPICS.md)
