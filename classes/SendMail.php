@@ -3,6 +3,7 @@
     namespace Martin\Forms\Classes;
 
     use Mail;
+    use System\Models\MailTemplate;
 
     class SendMail {
 
@@ -10,7 +11,10 @@
 
             if(is_array($properties['mail_recipients'])) {
 
-                Mail::sendTo($properties['mail_recipients'], 'martin.forms::mail.notification', [
+                # CUSTOM TEMPLATE
+                $template = MailTemplate::where('code', $properties['mail_template'])->count() ? $properties['mail_template'] : 'martin.forms::mail.notification';
+
+                Mail::sendTo($properties['mail_recipients'], $template, [
                     'id'   => $record->id,
                     'data' => $post,
                     'ip'   => $record->ip,
@@ -31,13 +35,24 @@
 
         }
 
-        public static function sendAutoResponse($to, $from, $subject, $post) {
+        public static function sendAutoResponse($properties, $post) {
+
+            $to      = $post[$properties['mail_resp_field']];
+            $from    = $properties['mail_resp_from'];
+            $subject = $properties['mail_resp_subject'];
+
             if(filter_var($to, FILTER_VALIDATE_EMAIL) && filter_var($from, FILTER_VALIDATE_EMAIL)) {
-                Mail::sendTo($to, 'martin.forms::mail.autoresponse', $post, function($message) use ($from, $subject) {
+
+                # CUSTOM TEMPLATE
+                $template = isset($properties['mail_resp_template']) && $properties['mail_resp_template'] != '' && MailTemplate::where('code', $properties['mail_resp_template'])->count() ? $properties['mail_resp_template'] : 'martin.forms::mail.autoresponse';
+
+                Mail::sendTo($to, $template, $post, function($message) use ($from, $subject) {
                     $message->from($from);
                     $message->subject($subject);
                 });
+
             }
+
         }
 
     }

@@ -67,6 +67,13 @@
                     'group'             => 'martin.forms::lang.components.shared.group_mail',
                     'showExternalParam' => false
                 ],
+                'mail_template' => [
+                    'title'             => 'martin.forms::lang.components.shared.mail_template.title',
+                    'description'       => 'martin.forms::lang.components.shared.mail_template.description',
+                    'type'              => 'string',
+                    'group'             => 'martin.forms::lang.components.shared.group_mail',
+                    'showExternalParam' => false
+                ],
                 'mail_resp_enabled' => [
                     'title'             => 'martin.forms::lang.components.shared.mail_resp_enabled.title',
                     'description'       => 'martin.forms::lang.components.shared.mail_resp_enabled.description',
@@ -91,6 +98,13 @@
                 'mail_resp_subject' => [
                     'title'             => 'martin.forms::lang.components.shared.mail_resp_subject.title',
                     'description'       => 'martin.forms::lang.components.shared.mail_resp_subject.description',
+                    'type'              => 'string',
+                    'group'             => 'martin.forms::lang.components.shared.group_mail_resp',
+                    'showExternalParam' => false
+                ],
+                'mail_resp_template' => [
+                    'title'             => 'martin.forms::lang.components.shared.mail_template.title',
+                    'description'       => 'martin.forms::lang.components.shared.mail_template.description',
                     'type'              => 'string',
                     'group'             => 'martin.forms::lang.components.shared.group_mail_resp',
                     'showExternalParam' => false

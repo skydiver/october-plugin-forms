@@ -166,7 +166,7 @@
 
             # SEND AUTORESPONSE EMAIL
             if($this->property('mail_resp_enabled')) {
-                SendMail::sendAutoResponse($post[$this->property('mail_resp_field')], $this->property('mail_resp_from'), $this->property('mail_resp_subject'), $post);
+                SendMail::sendAutoResponse($this->getProperties(), $post);
             }
             
             # CHECK FOR REDIRECT
