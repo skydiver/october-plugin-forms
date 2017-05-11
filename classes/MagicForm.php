@@ -113,9 +113,10 @@
                     throw new ValidationException($validator);
                 } else {
                     throw new AjaxException($this->exceptionResponse($validator, [
-                        'type'  => 'danger',
-                        'title' => $message,
-                        'list'  => $validator->messages()->all(),
+                        'type'    => 'danger',
+                        'title'   => $message,
+                        'list'    => $validator->messages()->all(),
+                        'jscript' => $this->property('js_on_error'),
                     ]));
                 }
 
@@ -134,7 +135,7 @@
 
                 # VALIDATE ALL + CAPTCHA EXISTS
                 if($validator->fails()) {
-                                    
+
                     # THROW ERRORS
                     if($this->property('inline_errors') == 'display') {
                         throw new ValidationException($validator);
@@ -142,6 +143,7 @@
                         throw new AjaxException($this->exceptionResponse($validator, [
                             'type'    => 'danger',
                             'content' => Lang::get('martin.forms::lang.validation.recaptcha_error'),
+                            'jscript' => $this->property('js_on_error'),
                         ]));
                     }
 
@@ -206,13 +208,27 @@
         }
 
         private function prepareJavaScript() {
+
             $code = false;
-            if($this->isReCaptchaEnabled())   { $code .= $content = $this->renderPartial('@js/recaptcha.js'); }
+
+            /* SUCCESS JS */
+            if($this->property('js_on_success') != '') {
+                $code .= $this->property('js_on_success');
+            }
+
+            /* RECAPTCHA JS */
+            if($this->isReCaptchaEnabled()) {
+                $code .= $content = $this->renderPartial('@js/recaptcha.js');
+            }
+
+            /* RESET FORM JS */
             if($this->property('reset_form')) {
                 $code .= $content = $this->renderPartial('@js/reset-form.js', ['id' => '#' . $this->alias . '_forms_flash']);
                 if($this->property('uploader_enable')) { $code .= $content = $this->renderPartial('@js/reset-uploader.js', ['id' => $this->alias]); }
             }
+
             return $code;
+
         }
 
         private function getIP() {

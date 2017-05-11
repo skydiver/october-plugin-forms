@@ -50,3 +50,4 @@
     - Fixed handling arrays (radio inputs) in notification email
 1.3.9:
     - Use custom mail templates
+    - Execute custom JavaScript on form success or error
