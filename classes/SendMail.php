@@ -12,7 +12,7 @@
             if(is_array($properties['mail_recipients'])) {
 
                 # CUSTOM TEMPLATE
-                $template = MailTemplate::where('code', $properties['mail_template'])->count() ? $properties['mail_template'] : 'martin.forms::mail.notification';
+                $template = isset($properties['mail_template']) && $properties['mail_template'] != '' && MailTemplate::where('code', $properties['mail_template'])->count() ? $properties['mail_template'] : 'martin.forms::mail.notification';
 
                 Mail::sendTo($properties['mail_recipients'], $template, [
                     'id'   => $record->id,
