@@ -4,6 +4,7 @@
 
     use AjaxException, Lang, Redirect, Request, Session, Validator;
     use Cms\Classes\ComponentBase;
+    use Illuminate\Support\Facades\Event;
     use October\Rain\Exception\ApplicationException;
     use October\Rain\Exception\ValidationException;
     use October\Rain\Support\Facades\Flash;
@@ -154,6 +155,8 @@
             # REMOVE EXTRA FIELDS FROM STORED DATA
             unset($post['_token'], $post['g-recaptcha-response'], $post['_session_key'], $post['_uploader']);
 
+            Event::fire('martin.forms.beforeSaveRecord', json_encode($post));
+
             # SAVE RECORD TO DATABASE
             $record = new Record;
             $record->ip        = $this->getIP();
@@ -171,6 +174,8 @@
                 SendMail::sendAutoResponse($this->getProperties(), $post);
             }
             
+            Event::fire('martin.forms.afterSaveRecord', json_encode($post));
+
             # CHECK FOR REDIRECT
             if(filter_var($this->property('redirect'), FILTER_VALIDATE_URL)) {
                 return Redirect::to($this->property('redirect'));
