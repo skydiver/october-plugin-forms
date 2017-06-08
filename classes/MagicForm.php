@@ -155,7 +155,8 @@
             # REMOVE EXTRA FIELDS FROM STORED DATA
             unset($post['_token'], $post['g-recaptcha-response'], $post['_session_key'], $post['_uploader']);
 
-            Event::fire('martin.forms.beforeSaveRecord', json_encode($post));
+            # FIRE BEFORE SAVE EVENT
+            Event::fire('martin.forms.beforeSaveRecord', [&$post]);
 
             # SAVE RECORD TO DATABASE
             $record = new Record;
@@ -174,7 +175,8 @@
                 SendMail::sendAutoResponse($this->getProperties(), $post);
             }
             
-            Event::fire('martin.forms.afterSaveRecord', json_encode($post));
+            # FIRE AFTER SAVE EVENT
+            Event::fire('martin.forms.afterSaveRecord', [&$post]);
 
             # CHECK FOR REDIRECT
             if(filter_var($this->property('redirect'), FILTER_VALIDATE_URL)) {
