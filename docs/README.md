@@ -6,5 +6,6 @@
 5. [Custom Validation Messages](https://github.com/skydiver/october-plugin-forms/blob/master/docs/CUSTOM-VALIDATION-MESSAGES.md)
 6. [Security](https://github.com/skydiver/october-plugin-forms/blob/master/docs/SECURITY.md)
 7. [Uploads [BETA]](https://github.com/skydiver/october-plugin-forms/blob/master/docs/UPLOADS.md)
-8. [Inline Errors](https://github.com/skydiver/october-plugin-forms/blob/master/docs/INLINE_ERRORS.md)
-9. [Misc Topics](https://github.com/skydiver/october-plugin-forms/blob/master/docs/MISC_TOPICS.md)
+8. [Events](https://github.com/skydiver/october-plugin-forms/blob/master/docs/EVENTS.md)
+9. [Inline Errors](https://github.com/skydiver/october-plugin-forms/blob/master/docs/INLINE_ERRORS.md)
+10. [Misc Topics](https://github.com/skydiver/october-plugin-forms/blob/master/docs/MISC_TOPICS.md)
