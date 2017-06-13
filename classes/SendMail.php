@@ -14,15 +14,25 @@
                 # CUSTOM TEMPLATE
                 $template = isset($properties['mail_template']) && $properties['mail_template'] != '' && MailTemplate::where('code', $properties['mail_template'])->count() ? $properties['mail_template'] : 'martin.forms::mail.notification';
 
+                # SEND NOTIFICATION EMAIL
                 Mail::sendTo($properties['mail_recipients'], $template, [
                     'id'   => $record->id,
                     'data' => $post,
                     'ip'   => $record->ip,
                     'date' => $record->created_at
-                ], function($message) use ($properties, $files) {
+                ], function($message) use ($properties, $post, $files) {
 
-                    $message->subject($properties['mail_subject']);
+                    # USE CUSTOM SUBJECT
+                    if(isset($properties['mail_subject'])) {
+                        $message->subject($properties['mail_subject']);
+                    }
 
+                    # ADD REPLY TO ADDRESS
+                    if(isset($properties['mail_replyto']) && isset($post[$properties['mail_replyto']])) {
+                        $message->replyTo($post[$properties['mail_replyto']]);
+                    }
+                    
+                    # ADD UPLOADS
                     if(isset($properties['mail_uploads']) && $properties['mail_uploads'] && !empty($files)) {
                         foreach($files as $file) {
                             $message->attach($file->getLocalPath(), ['as' => $file->getFilename()]);

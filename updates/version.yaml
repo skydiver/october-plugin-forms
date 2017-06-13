@@ -53,3 +53,5 @@
     - Execute custom JavaScript on form success or error
 1.4.0:
     - Added Events (please, refer to docs) [thanks to therealkevinard]
+1.4.1:
+    - New option "Reply To"
