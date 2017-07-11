@@ -73,6 +73,13 @@
                 $post = post();
             }
 
+            # SANITIZE FORM DATA
+            if($this->property('sanitize_data', 'htmlspecialchars') == 'htmlspecialchars') {
+                $post = array_map(function($value) {
+                    return htmlspecialchars($value, ENT_QUOTES);
+                }, $post);
+            }
+
             # VALIDATION PARAMETERS
             $rules = (array) $this->property('rules');
             $msgs  = (array) $this->property('rules_messages');

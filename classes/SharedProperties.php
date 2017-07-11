@@ -160,6 +160,15 @@
                     'group'             => 'martin.forms::lang.components.shared.group_security',
                     'showExternalParam' => false
                 ],
+                'sanitize_data' => [
+                    'title'             => 'martin.forms::lang.components.shared.sanitize_data.title',
+                    'description'       => 'martin.forms::lang.components.shared.sanitize_data.description',
+                    'type'              => 'dropdown',
+                    'options'           => ['disabled' => 'martin.forms::lang.components.shared.sanitize_data.disabled', 'htmlspecialchars' => 'martin.forms::lang.components.shared.sanitize_data.htmlspecialchars'],
+                    'default'           => 'htmlspecialchars',
+                    'group'             => 'martin.forms::lang.components.shared.group_security',
+                    'showExternalParam' => false
+                ],
                 'anonymize_ip' => [
                     'title'             => 'martin.forms::lang.components.shared.anonymize_ip.title',
                     'description'       => 'martin.forms::lang.components.shared.anonymize_ip.description',

@@ -91,6 +91,7 @@
                 'js_on_error'       => ['title' => 'JS on Error'        , 'description' => 'Execute custom JavaScript code when the form doesn\'t validate. Don\'t use script tags.'],
                 'allowed_fields'    => ['title' => 'Allowed Fields'     , 'description' => 'Specify which fields should be filtered and stored (add one field name per line)'],
                 'anonymize_ip'      => ['title' => 'Anonymize IP'       , 'description' => 'Don\'t store IP address', 'full' => 'Full', 'partial' => 'Partial', 'disabled' => 'Disabled'],
+                'sanitize_data'     => ['title' => 'Sanitize form data' , 'description' => 'Sanitize form data and save result on database', 'disabled' => 'Disabled', 'htmlspecialchars' => 'Use htmlspecialchars'],
                 'recaptcha_enabled' => ['title' => 'Enable reCAPTCHA'   , 'description' => 'Insert the reCAPTCHA widget on your form'],
                 'recaptcha_theme'   => ['title' => 'Theme'              , 'description' => 'The color theme of the widget', 'light'  => 'Light' , 'dark'    => 'Dark'],
                 'recaptcha_type'    => ['title' => 'Type'               , 'description' => 'The type of CAPTCHA to serve' , 'image'  => 'Image' , 'audio'   => 'Audio'],

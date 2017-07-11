@@ -16,10 +16,10 @@
         <td class="record-value">
         <?php if(is_array($value) || is_object($value)): ?>
             <ul>
-                <?php echo \Martin\Forms\Classes\BackendHelpers::array2ul($value) ?>
+                <?php echo \Martin\Forms\Classes\BackendHelpers::array2ul(htmlspecialchars($value, ENT_QUOTES)) ?>
             </ul>
         <?php else: ?>
-            <?php echo nl2br($value); ?>
+            <?php echo nl2br(htmlspecialchars($value, ENT_QUOTES)); ?>
         <?php endif ?>
         </td>
     </tr>
