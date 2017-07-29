@@ -67,6 +67,13 @@
                     'group'             => 'martin.forms::lang.components.shared.group_mail',
                     'showExternalParam' => false
                 ],
+                'mail_bcc' => [
+                    'title'             => 'martin.forms::lang.components.shared.mail_bcc.title',
+                    'description'       => 'martin.forms::lang.components.shared.mail_bcc.description',
+                    'type'              => 'stringList',
+                    'group'             => 'martin.forms::lang.components.shared.group_mail',
+                    'showExternalParam' => false
+                ],
                 'mail_replyto' => [
                     'title'             => 'martin.forms::lang.components.shared.mail_replyto.title',
                     'description'       => 'martin.forms::lang.components.shared.mail_replyto.description',
@@ -157,6 +164,15 @@
                     'title'             => 'martin.forms::lang.components.shared.allowed_fields.title',
                     'description'       => 'martin.forms::lang.components.shared.allowed_fields.description',
                     'type'              => 'stringList',
+                    'group'             => 'martin.forms::lang.components.shared.group_security',
+                    'showExternalParam' => false
+                ],
+                'sanitize_data' => [
+                    'title'             => 'martin.forms::lang.components.shared.sanitize_data.title',
+                    'description'       => 'martin.forms::lang.components.shared.sanitize_data.description',
+                    'type'              => 'dropdown',
+                    'options'           => ['disabled' => 'martin.forms::lang.components.shared.sanitize_data.disabled', 'htmlspecialchars' => 'martin.forms::lang.components.shared.sanitize_data.htmlspecialchars'],
+                    'default'           => 'disabled',
                     'group'             => 'martin.forms::lang.components.shared.group_security',
                     'showExternalParam' => false
                 ],

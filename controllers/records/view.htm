@@ -19,7 +19,7 @@
                 <?php echo \Martin\Forms\Classes\BackendHelpers::array2ul($value) ?>
             </ul>
         <?php else: ?>
-            <?php echo nl2br($value); ?>
+            <?php echo nl2br(htmlspecialchars($value, ENT_QUOTES)); ?>
         <?php endif ?>
         </td>
     </tr>

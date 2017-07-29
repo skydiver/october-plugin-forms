@@ -55,3 +55,7 @@
     - Added Events (please, refer to docs) [thanks to therealkevinard]
 1.4.1:
     - New option "Reply To"
+1.4.2:
+    - Escape HTML characters on the view records page [thanks to Andre]
+    - New option to sanitize form data (check security docs for more info)
+    - Added option to send blind carbon copy in notifications email

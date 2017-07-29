@@ -44,9 +44,9 @@
             $return = '';
             foreach($array as $index => $item) {
                 if(is_array($item)) {
-                    $return .= "<li>$index<ul>" . self::array2ul($item) . "</ul></li>";
+                    $return .= '<li>' . htmlspecialchars($index, ENT_QUOTES) . '<ul>' . self::array2ul($item) . "</ul></li>";
                 } else {
-                    $return .= "<li>$item</li>";
+                    $return .= '<li>' . htmlspecialchars($item , ENT_QUOTES) .'</li>';
                 }
             }
             return $return;
