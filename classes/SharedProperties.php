@@ -67,6 +67,13 @@
                     'group'             => 'martin.forms::lang.components.shared.group_mail',
                     'showExternalParam' => false
                 ],
+                'mail_bcc' => [
+                    'title'             => 'martin.forms::lang.components.shared.mail_bcc.title',
+                    'description'       => 'martin.forms::lang.components.shared.mail_bcc.description',
+                    'type'              => 'stringList',
+                    'group'             => 'martin.forms::lang.components.shared.group_mail',
+                    'showExternalParam' => false
+                ],
                 'mail_replyto' => [
                     'title'             => 'martin.forms::lang.components.shared.mail_replyto.title',
                     'description'       => 'martin.forms::lang.components.shared.mail_replyto.description',

@@ -77,6 +77,7 @@
                 'mail_enabled'      => ['title' => 'Send Notifications' , 'description' => 'Send mail notifications on every form submited'],
                 'mail_subject'      => ['title' => 'Subject'            , 'description' => 'Override default email subject'],
                 'mail_recipients'   => ['title' => 'Recipients'         , 'description' => 'Specify email recipients (add one address per line)'],
+                'mail_bcc'          => ['title' => 'BCC'                , 'description' => 'Send blind carbon copy to email recipients (add one address per line)'],
                 'mail_replyto'      => ['title' => 'ReplyTo Email Field', 'description' => 'Form field containing the email address of sender to be used as "ReplyTo"'],
                 'mail_template'     => ['title' => 'Mail Template'      , 'description' => 'Use custom mail template. Specify template code like "martin.forms::mail.notification" (found on Settings, Mail templates). Leave empty to use default.'],
                 'mail_uploads'      => ['title' => 'Send Uploads'       , 'description' => 'Send uploads as attachements'],
