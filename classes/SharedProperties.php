@@ -165,7 +165,7 @@
                     'description'       => 'martin.forms::lang.components.shared.sanitize_data.description',
                     'type'              => 'dropdown',
                     'options'           => ['disabled' => 'martin.forms::lang.components.shared.sanitize_data.disabled', 'htmlspecialchars' => 'martin.forms::lang.components.shared.sanitize_data.htmlspecialchars'],
-                    'default'           => 'htmlspecialchars',
+                    'default'           => 'disabled',
                     'group'             => 'martin.forms::lang.components.shared.group_security',
                     'showExternalParam' => false
                 ],

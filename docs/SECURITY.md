@@ -11,6 +11,6 @@ To prevent this scenario, on component configuration, there is a Security group 
 
 ### Sanitize form data
 
-By default the plugin will run **htmlspecialchars** on every form field.
+By default the plugin will store form as entered by the visitor.
 
-If you need to store raw data, you can disable this feature.
+You can filter the data with **htmlspecialchars** function on every form field for extra security.

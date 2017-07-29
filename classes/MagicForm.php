@@ -74,7 +74,7 @@
             }
 
             # SANITIZE FORM DATA
-            if($this->property('sanitize_data', 'htmlspecialchars') == 'htmlspecialchars') {
+            if($this->property('sanitize_data') == 'htmlspecialchars') {
                 $post = array_map(function($value) {
                     return htmlspecialchars($value, ENT_QUOTES);
                 }, $post);
@@ -98,7 +98,7 @@
 
             # DO FORM VALIDATION
             $validator = Validator::make($post, $rules, $msgs);
-    
+
             # NICE reCAPTCHA FIELD NAME
             if($this->isReCaptchaEnabled()) {
                 $fields_names = ['g-recaptcha-response' => 'reCAPTCHA'];
@@ -181,7 +181,7 @@
             if($this->property('mail_resp_enabled')) {
                 SendMail::sendAutoResponse($this->getProperties(), $post);
             }
-            
+
             # FIRE AFTER SAVE EVENT
             Event::fire('martin.forms.afterSaveRecord', [&$post]);
 
