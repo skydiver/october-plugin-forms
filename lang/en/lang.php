@@ -106,9 +106,12 @@
         ],
 
         'settings' => [
+            'tabs'                    => ['general' => 'General', 'recaptcha' => 'reCAPTCHA'],
             'section_flash_messages'  => 'Flash Messages',
             'global_messages_success' => ['label' => 'Global Success Message', 'comment' => '(This setting can be overridden from the component)', 'default' => 'Your form was successfully submitted'],
             'global_messages_errors'  => ['label' => 'Global Errors Message' , 'comment' => '(This setting can be overridden from the component)', 'default' => 'There were errors with your submission'],
+            'global_hide_button'      => 'Hide navigation item',
+            'global_hide_button_desc' => 'Useful if you want to use events with your custom plugin.',
             'section_recaptcha'       => 'reCAPTCHA Settings',
             'recaptcha_site_key'      => 'Site key',
             'recaptcha_secret_key'    => 'Secret key',

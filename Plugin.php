@@ -7,6 +7,7 @@
     use System\Classes\SettingsManager;
     use Martin\Forms\Classes\BackendHelpers;
     use Martin\Forms\Classes\ReCaptchaValidator;
+    use Martin\Forms\Models\Settings;
 
     class Plugin extends PluginBase {
 
@@ -21,6 +22,7 @@
         }
 
         public function registerNavigation() {
+            if(Settings::get('global_hide_button', false)) { return; }
             return [
                 'forms' => [
                     'label'       => 'martin.forms::lang.menu.label',

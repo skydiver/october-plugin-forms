@@ -1,5 +1,5 @@
-fields:
-
+#fields:
+    #
     # section_flash_messages:
     #     label: martin.forms::lang.settings.section_flash_messages
     #     type : section
@@ -16,18 +16,32 @@ fields:
     #          span        : left
     #          type        : text
 
-    section_recaptcha:
-        label: martin.forms::lang.settings.section_recaptcha
-        type : section
+tabs:
+    fields:
+    
+        global_hide_button:
+            label  : martin.forms::lang.settings.global_hide_button
+            comment: martin.forms::lang.settings.global_hide_button_desc
+            type   : switch
+            default: false
+            tab    : martin.forms::lang.settings.tabs.general
 
-    recaptcha_help:
-        type   : partial
-        path   : $/martin/forms/models/settings/_recaptcha_help.htm
+        #section_recaptcha:
+        #    label: martin.forms::lang.settings.section_recaptcha
+        #    type : section
+        #    tab  : martin.forms::lang.settings.tabs.recaptcha
 
-    recaptcha_site_key:
-        label: martin.forms::lang.settings.recaptcha_site_key
-        span : left
+        recaptcha_help:
+            type   : partial
+            path   : $/martin/forms/models/settings/_recaptcha_help.htm
+            tab    : martin.forms::lang.settings.tabs.recaptcha
 
-    recaptcha_secret_key:
-        label: martin.forms::lang.settings.recaptcha_secret_key
-        span : right
+        recaptcha_site_key:
+            label: martin.forms::lang.settings.recaptcha_site_key
+            span : left
+            tab  : martin.forms::lang.settings.tabs.recaptcha
+
+        recaptcha_secret_key:
+            label: martin.forms::lang.settings.recaptcha_secret_key
+            span : right
+            tab  : martin.forms::lang.settings.tabs.recaptcha            
