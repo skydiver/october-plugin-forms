@@ -59,3 +59,9 @@
     - Escape HTML characters on the view records page [thanks to Andre]
     - New option to sanitize form data (check security docs for more info)
     - Added option to send blind carbon copy in notifications email
+1.4.3:
+    - Fixes related to October Build 420
+    - Added "Unread Records" counter
+    - Fixed errors when only BCC addresses are supplied
+    - New setting "hide navigation item"
+    - add_unread_field.php
