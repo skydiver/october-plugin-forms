@@ -9,7 +9,11 @@
 
         public static function sendNotification($properties, $post, $record, $files) {
 
-            if(is_array($properties['mail_recipients'])) {
+            # CHECK IF THERE IS AT LEAST ONE MAIL ADDRESS
+            if(!isset($properties['mail_recipients'])) { $properties['mail_recipients'] = false; }
+            if(!isset($properties['mail_bcc']))        { $properties['mail_bcc']        = false; }
+            
+            if(is_array($properties['mail_recipients']) || is_array($properties['mail_bcc'])) {
 
                 # CUSTOM TEMPLATE
                 $template = isset($properties['mail_template']) && $properties['mail_template'] != '' && MailTemplate::where('code', $properties['mail_template'])->count() ? $properties['mail_template'] : 'martin.forms::mail.notification';
