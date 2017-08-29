@@ -6,7 +6,7 @@
     use October\Rain\Database\Updates\Migration;
     use Martin\Forms\Models\Record;
 
-    class AddGroupField extends Migration {
+    class AddUnreadField extends Migration {
 
         public function up() {
 
