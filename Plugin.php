@@ -84,7 +84,9 @@
         }
 
         public function register() {
-            Validator::extend('recaptcha', 'Martin\Forms\Classes\ReCaptchaValidator@validateReCaptcha');
+            $this->app->resolving('validator', function($validator) {
+                Validator::extend('recaptcha', 'Martin\Forms\Classes\ReCaptchaValidator@validateReCaptcha');
+            });
         }
 
     }
