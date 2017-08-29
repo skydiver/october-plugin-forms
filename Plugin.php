@@ -7,6 +7,7 @@
     use System\Classes\SettingsManager;
     use Martin\Forms\Classes\BackendHelpers;
     use Martin\Forms\Classes\ReCaptchaValidator;
+    use Martin\Forms\Classes\UnreadRecords;
     use Martin\Forms\Models\Settings;
 
     class Plugin extends PluginBase {
@@ -32,10 +33,12 @@
                     'permissions' => ['martin.forms.*'],
                     'sideMenu' => [
                         'records' => [
-                            'label'       => 'martin.forms::lang.menu.records.label',
-                            'icon'        => 'icon-database',
-                            'url'         => Backend::url('martin/forms/records'),
-                            'permissions' => ['martin.forms.access_records']
+                            'label'        => 'martin.forms::lang.menu.records.label',
+                            'icon'         => 'icon-database',
+                            'url'          => Backend::url('martin/forms/records'),
+                            'permissions'  => ['martin.forms.access_records'],
+                            'counter'      => UnreadRecords::getTotal(),
+                            'counterLabel' => 'Un-Read Messages'
                         ],
                         'exports' => [
                             'label'       => 'martin.forms::lang.menu.exports.label',

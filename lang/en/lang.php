@@ -28,6 +28,10 @@
                     'files'      => 'Attached Files',
                     'created_at' => 'Created',
                 ],
+                'buttons' => [
+                    'read'   => 'Mark as Read',
+                    'unread' => 'Mark as Unread'
+                ],
             ],
             'exports' => [
                 'title'                => 'Export Records',

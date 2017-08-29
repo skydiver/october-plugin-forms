@@ -1,0 +1,13 @@
+<button type="button"
+        class="btn btn-<?php echo $type ?> <?php echo $icon ?>"
+        disabled="disabled"
+        data-request="<?php echo $request ?>"
+        data-request-confirm="<?php echo $request_confirm; ?>"
+        data-request-success="<?php echo $request_success; ?>"
+        onclick="<?php echo $onclick; ?>"
+        data-trigger-action="enable"
+        data-trigger=".control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-stripe-load-indicator>
+    <?php echo $label; ?>
+</button>
