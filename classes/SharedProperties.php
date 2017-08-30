@@ -46,6 +46,13 @@
                     'showExternalParam' => false,
                     'validation'        => ['required' => ['message' => Lang::get('martin.forms::lang.components.shared.validation_req')]]
                 ],
+                'messages_partial' => [
+                    'title'             => 'martin.forms::lang.components.shared.messages_partial.title',
+                    'description'       => 'martin.forms::lang.components.shared.messages_partial.description',
+                    'type'              => 'string',
+                    'group'             => 'martin.forms::lang.components.shared.group_messages',
+                    'showExternalParam' => false
+                ],
                 'mail_enabled' => [
                     'title'             => 'martin.forms::lang.components.shared.mail_enabled.title',
                     'description'       => 'martin.forms::lang.components.shared.mail_enabled.description',

@@ -46,9 +46,12 @@
 
         public function onFormSubmit() {
 
+            # FLASH PARTIAL
+            $flash_partial = $this->property('messages_partial', '@flash.htm');
+
             # CSRF CHECK
             if(Session::token() != post('_token')) {
-                throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
+                throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial($flash_partial, [
                     'type'    => 'danger',
                     'content' => Lang::get('martin.forms::lang.components.shared.csrf_error'),
                 ])]);
@@ -199,7 +202,7 @@
             }
 
             # DISPLAY SUCCESS MESSAGE
-            return ['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', [
+            return ['#' . $this->alias . '_forms_flash' => $this->renderPartial($flash_partial, [
                 'type'    => 'success',
                 'content' => $message,
                 'jscript' => $this->prepareJavaScript(),
@@ -209,8 +212,11 @@
 
         private function exceptionResponse($validator, $params) {
 
+            # FLASH PARTIAL
+            $flash_partial = $this->property('messages_partial', '@flash.htm');
+
             # EXCEPTION RESPONSE
-            $response = ['#' . $this->alias . '_forms_flash' => $this->renderPartial('@flash.htm', $params)];
+            $response = ['#' . $this->alias . '_forms_flash' => $this->renderPartial($flash_partial, $params)];
 
             # INCLUDE ERROR FIELDS IF REQUIRED
             if($this->property('inline_errors') != 'disabled') {

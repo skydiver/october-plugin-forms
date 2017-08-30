@@ -65,3 +65,5 @@
     - Fixed errors when only BCC addresses are supplied
     - New setting "hide navigation item"
     - add_unread_field.php
+1.4.4:
+    - Use custom partials for Success and Error messages

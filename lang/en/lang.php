@@ -78,6 +78,7 @@
                 'rules_messages'    => ['title' => 'Rules Messages'     , 'description' => 'Use your own rules messages using Laravel validation'],
                 'messages_success'  => ['title' => 'Success'            , 'description' => 'Message when the form is successfully submited', 'default' => 'Your form was successfully submitted'  ],
                 'messages_errors'   => ['title' => 'Errors'             , 'description' => 'Message when the form contains errors'         , 'default' => 'There were errors with your submission'],
+                'messages_partial'  => ['title' => 'Use Custom Partial' , 'description' => 'Override flash messages with your custom partial inside your theme'],
                 'mail_enabled'      => ['title' => 'Send Notifications' , 'description' => 'Send mail notifications on every form submited'],
                 'mail_subject'      => ['title' => 'Subject'            , 'description' => 'Override default email subject'],
                 'mail_recipients'   => ['title' => 'Recipients'         , 'description' => 'Specify email recipients (add one address per line)'],
