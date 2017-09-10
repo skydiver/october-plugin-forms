@@ -67,3 +67,5 @@
     - add_unread_field.php
 1.4.4:
     - Use custom partials for Success and Error messages
+1.4.4.1:
+    - Fix with notifications emails

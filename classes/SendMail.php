@@ -12,7 +12,7 @@
             # CHECK IF THERE IS AT LEAST ONE MAIL ADDRESS
             if(!isset($properties['mail_recipients'])) { $properties['mail_recipients'] = false; }
             if(!isset($properties['mail_bcc']))        { $properties['mail_bcc']        = false; }
-            
+
             if(is_array($properties['mail_recipients']) || is_array($properties['mail_bcc'])) {
 
                 # CUSTOM TEMPLATE
@@ -27,7 +27,7 @@
                 ], function($message) use ($properties, $post, $files) {
 
                     # SEND BLIND CARBON COPY
-                    if(isset($properties['mail_bcc'])) {
+                    if(isset($properties['mail_bcc']) && is_array($properties['mail_bcc'])) {
                         $message->bcc($properties['mail_bcc']);
                     }
 
