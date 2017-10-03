@@ -69,3 +69,6 @@
     - Use custom partials for Success and Error messages
 1.4.4.1:
     - Fix with notifications emails
+1.4.5:
+    - Mail class code refactoring
+    - Access submited data on auto-response email template

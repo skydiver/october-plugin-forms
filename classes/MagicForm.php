@@ -182,7 +182,7 @@
 
             # SEND AUTORESPONSE EMAIL
             if($this->property('mail_resp_enabled')) {
-                SendMail::sendAutoResponse($this->getProperties(), $post);
+                SendMail::sendAutoResponse($this->getProperties(), $post, $record);
             }
 
             # FIRE AFTER SAVE EVENT
