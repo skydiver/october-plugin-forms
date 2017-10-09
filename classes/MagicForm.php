@@ -171,7 +171,7 @@
             # SAVE RECORD TO DATABASE
             $record = new Record;
             $record->ip        = $this->getIP();
-            $record->form_data = json_encode($post);
+            $record->form_data = json_encode($post, JSON_UNESCAPED_UNICODE);
             if($this->property('group') != '') { $record->group = $this->property('group'); }
             $record->save(null, post('_session_key'));
 
