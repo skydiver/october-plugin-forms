@@ -72,3 +72,5 @@
 1.4.5:
     - Mail class code refactoring
     - Access submited data on auto-response email template
+1.4.5.1:
+    - Store form data without escaping unicode [thanks to panakour]
