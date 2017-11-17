@@ -13,6 +13,7 @@ trait FileUploader
 
     public $maxSize;
     public $placeholderText;
+    public $removeText;
 
     /**
      * Supported file types.
@@ -57,6 +58,12 @@ trait FileUploader
                 'default'     => 'Click or drag files to upload',
                 'type'        => 'string',
             ],
+            'removeText' => [
+                'title'       => 'Remove Popup text',
+                'description' => 'Wording to display in the popup when you remove file',
+                'default'     => 'Are you sure ?',
+                'type'        => 'string',
+            ],
             'maxSize' => [
                 'title'       => 'Max file size (MB)',
                 'description' => 'The maximum file size that can be uploaded in megabytes.',
@@ -82,6 +89,7 @@ trait FileUploader
         $this->fileTypes = $this->processFileTypes(true);
         $this->maxSize = $this->property('maxSize');
         $this->placeholderText = $this->property('placeholderText');
+        $this->removeText = $this->property('removeText');
     }
 
     public function onRun()

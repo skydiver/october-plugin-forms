@@ -22,6 +22,7 @@
             $this->fileTypes       = $this->processFileTypes(true);
             $this->maxSize         = $this->property('maxSize');
             $this->placeholderText = $this->property('placeholderText');
+            $this->removeText      = $this->property('removeText');
             $this->setProperty('deferredBinding', 1);
             $this->bindModel('files', new Record);
         }
@@ -65,6 +66,14 @@
                     'title'             => 'martin.forms::lang.components.shared.uploader_pholder.title',
                     'description'       => 'martin.forms::lang.components.shared.uploader_pholder.description',
                     'default'           => Lang::get('martin.forms::lang.components.shared.uploader_pholder.default'),
+                    'type'              => 'string',
+                    'group'             => 'martin.forms::lang.components.shared.group_uploader',
+                    'showExternalParam' => false,
+                ],
+                'removeText' => [
+                    'title'             => 'martin.forms::lang.components.shared.uploader_remFile.title',
+                    'description'       => 'martin.forms::lang.components.shared.uploader_remFile.description',
+                    'default'           => Lang::get('martin.forms::lang.components.shared.uploader_remFile.default'),
                     'type'              => 'string',
                     'group'             => 'martin.forms::lang.components.shared.group_uploader',
                     'showExternalParam' => false,
