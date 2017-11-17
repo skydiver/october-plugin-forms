@@ -107,6 +107,7 @@
                 'uploader_pholder'  => ['title' => 'Placeholder text'   , 'description' => 'Wording to display when no file is uploaded', 'default' => 'Click or drag files to upload'],
                 'uploader_maxsize'  => ['title' => 'File size limit'    , 'description' => 'The maximum file size that can be uploaded in megabytes'],
                 'uploader_types'    => ['title' => 'Allowed file types' , 'description' => 'Allowed file extensions or star (*) for all types (add one extension per line)'],
+                'uploader_remFile'  => ['title' => 'Remove Popup text'  , 'description' => 'Wording to display in the popup when you remove file', 'default' => 'Are you sure ?'],
             ]
         ],
 
