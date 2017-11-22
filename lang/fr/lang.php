@@ -95,6 +95,7 @@
                 'uploader_pholder'  => ['title' => 'Texte de remplacement'           , 'description' => 'Texte à afficher quand aucun fichier n\'est téléchargé', 'default' => 'Cliquez pour choisir ou faites glisser les fichiers à télécharger'],
                 'uploader_maxsize'  => ['title' => 'Limite de taille de fichier'     , 'description' => 'Taille maximale du fichier pouvant être téléchargée en mégaoctets'],
                 'uploader_types'    => ['title' => 'Types de fichiers autorisés'     , 'description' => 'Extensions de fichiers autorisées ou étoile (*) pour tous les types (ajoutez une extension par ligne)'],
+                'uploader_remFile'  => ['title' => 'Texte de Suppression'            , 'description' => 'Texte à afficher dans la popup lors de la suppression d\'un fichier', 'default' => 'Êtes-vous sûr ?'],
             ]
         ],
 
