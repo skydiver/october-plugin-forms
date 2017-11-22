@@ -71,6 +71,7 @@
                 'group_settings'    => 'More Settings',
                 'group_security'    => 'Security',
                 'group_recaptcha'   => 'reCAPTCHA Settings',
+                'group_advanced'    => 'Advanced Settings',
                 'group_uploader'    => 'Uploader Settings',
                 'validation_req'    => 'The property is required',
                 'group'             => ['title' => 'Group'              , 'description' => 'Organize your forms with a custom group name. This option is useful when exporting data.'],
@@ -102,11 +103,13 @@
                 'recaptcha_theme'   => ['title' => 'Theme'              , 'description' => 'The color theme of the widget', 'light'  => 'Light' , 'dark'    => 'Dark'],
                 'recaptcha_type'    => ['title' => 'Type'               , 'description' => 'The type of CAPTCHA to serve' , 'image'  => 'Image' , 'audio'   => 'Audio'],
                 'recaptcha_size'    => ['title' => 'Size'               , 'description' => 'The size of the widget'       , 'normal' => 'Normal', 'compact' => 'Compact'],
+                'skip_database'     => ['title' => 'Skip DB'            , 'description' => 'Don\'t store this form on database. Useful if you want to use events with your custom plugin.'],
                 'uploader_enable'   => ['title' => 'Allow uploads'      , 'description' => 'Enable files uploading. You need to explicitly enable this option as a security measure.'],
                 'uploader_multi'    => ['title' => 'Multiple files'     , 'description' => 'Allow multipe files uploads'],
                 'uploader_pholder'  => ['title' => 'Placeholder text'   , 'description' => 'Wording to display when no file is uploaded', 'default' => 'Click or drag files to upload'],
                 'uploader_maxsize'  => ['title' => 'File size limit'    , 'description' => 'The maximum file size that can be uploaded in megabytes'],
                 'uploader_types'    => ['title' => 'Allowed file types' , 'description' => 'Allowed file extensions or star (*) for all types (add one extension per line)'],
+                'uploader_remFile'  => ['title' => 'Remove Popup text'  , 'description' => 'Wording to display in the popup when you remove file', 'default' => 'Are you sure ?'],
             ]
         ],
 

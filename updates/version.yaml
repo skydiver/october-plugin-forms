@@ -74,3 +74,6 @@
     - Access submited data on auto-response email template
 1.4.5.1:
     - Store form data without escaping unicode [thanks to panakour]
+1.4.6:
+    - New option to skip saving forms data on database.
+    - Possibility to change the text on the remove file popup [thanks to ShiroeSama]
