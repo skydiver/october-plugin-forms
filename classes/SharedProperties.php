@@ -226,6 +226,13 @@ trait SharedProperties {
                 'group'             => 'martin.forms::lang.components.shared.group_recaptcha',
                 'showExternalParam' => false
             ],
+            'skip_database' => [
+                'title'             => 'martin.forms::lang.components.shared.skip_database.title',
+                'description'       => 'martin.forms::lang.components.shared.skip_database.description',
+                'type'              => 'checkbox',
+                'group'             => 'martin.forms::lang.components.shared.group_advanced',
+                'showExternalParam' => false
+            ],
         ];
     }
 

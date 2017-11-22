@@ -171,13 +171,15 @@ abstract class MagicForm extends ComponentBase {
         Event::fire('martin.forms.beforeSaveRecord', [&$post]);
 
         // SAVE RECORD TO DATABASE
-        $record = new Record;
-        $record->ip        = $this->_getIP();
-        $record->form_data = json_encode($post, JSON_UNESCAPED_UNICODE);
-        if ($this->property('group') != '') {
-            $record->group = $this->property('group');
+        if (!$this->property('skip_database')) {
+            $record = new Record;
+            $record->ip        = $this->_getIP();
+            $record->form_data = json_encode($post, JSON_UNESCAPED_UNICODE);
+            if ($this->property('group') != '') {
+                $record->group = $this->property('group');
+            }
+            $record->save(null, post('_session_key'));
         }
-        $record->save(null, post('_session_key'));
 
         // SEND NOTIFICATION EMAIL
         if ($this->property('mail_enabled')) {
