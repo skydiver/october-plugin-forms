@@ -77,3 +77,5 @@
 1.4.6:
     - New option to skip saving forms data on database.
     - Possibility to change the text on the remove file popup [thanks to ShiroeSama]
+1.4.6.1:
+    - Changed database field from json to text to support MySQL 5.5
