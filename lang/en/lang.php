@@ -92,7 +92,7 @@
                 'mail_resp_from'    => ['title' => 'Sender Address'     , 'description' => 'Email address of auto-response email sender (e.g. noreply@yourcompany.com)'],
                 'mail_resp_subject' => ['title' => 'Subject'            , 'description' => 'Override default email subject'],
                 'reset_form'        => ['title' => 'Reset Form'         , 'description' => 'Reset form after successfully submit'],
-                'redirect'          => ['title' => 'Redirect on Success', 'description' => 'Redirect to specific URL on successfully submit. Note: must be a valid URL starting with http or https or the redirection will be ignored.'],
+                'redirect'          => ['title' => 'Redirect on Success', 'description' => 'Redirect to URL on successfully submit.'],
                 'inline_errors'     => ['title' => 'Inline errors'      , 'description' => 'Display inline errors. This requires extra code, check documentation for more info.', 'disabled' => 'Disabled', 'display' => 'Display errors', 'variable' => 'JS variable'],
                 'js_on_success'     => ['title' => 'JS on Success'      , 'description' => 'Execute custom JavaScript code when the form was successfully submitted. Don\'t use script tags.'],
                 'js_on_error'       => ['title' => 'JS on Error'        , 'description' => 'Execute custom JavaScript code when the form doesn\'t validate. Don\'t use script tags.'],
