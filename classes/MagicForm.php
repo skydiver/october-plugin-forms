@@ -179,6 +179,14 @@ abstract class MagicForm extends ComponentBase {
                 $record->group = $this->property('group');
             }
             $record->save(null, post('_session_key'));
+        } else {
+            // THERE IS NO RECORD, CREATE AN OBJECT FOR USING ON MAILS
+            $record = (object) [
+                'id'         => null,
+                'ip'         => $this->_getIP(),
+                'created_at' => date('Y-m-d H:i:s'),
+                'files'      => null
+            ];
         }
 
         // SEND NOTIFICATION EMAIL
