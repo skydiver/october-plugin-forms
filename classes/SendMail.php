@@ -23,14 +23,20 @@ class SendMail {
 
             // CUSTOM TEMPLATE
             $template = isset($properties['mail_template']) && $properties['mail_template'] != '' && MailTemplate::where('code', $properties['mail_template'])->count() ? $properties['mail_template'] : 'martin.forms::mail.notification';
-
+			
+			$data = [
+				'id'   => $record->id,
+				'data' => $post,
+				'ip'   => $record->ip,
+				'date' => $record->created_at
+			];
+			// USE CUSTOM SUBJECT
+			if (isset($properties['mail_subject'])) {
+				$data['subject'] = $properties['mail_subject'];
+			}
+			
             // SEND NOTIFICATION EMAIL
-            Mail::sendTo($properties['mail_recipients'], $template, [
-                    'id'   => $record->id,
-                    'data' => $post,
-                    'ip'   => $record->ip,
-                    'date' => $record->created_at
-                ], function ($message) use ($properties, $post, $files) {
+            Mail::sendTo($properties['mail_recipients'], $template, $data, function ($message) use ($properties, $post, $files) {
 
                     // SEND BLIND CARBON COPY
                     if (isset($properties['mail_bcc']) && is_array($properties['mail_bcc'])) {
