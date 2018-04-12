@@ -79,3 +79,7 @@
     - Possibility to change the text on the remove file popup [thanks to ShiroeSama]
 1.4.6.1:
     - Changed database field from json to text to support MySQL 5.5
+1.4.7:
+    - fix custom subject on email template [Thanks to matteotrubini]
+    - fix email bug when not storing on db [Thanks JurekRaben]
+    - skip url redirect validation [Thanks to EleRam]

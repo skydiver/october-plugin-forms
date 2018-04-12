@@ -179,6 +179,14 @@ abstract class MagicForm extends ComponentBase {
                 $record->group = $this->property('group');
             }
             $record->save(null, post('_session_key'));
+        } else {
+            // THERE IS NO RECORD, CREATE AN OBJECT FOR USING ON MAILS
+            $record = (object) [
+                'id'         => null,
+                'ip'         => $this->_getIP(),
+                'created_at' => date('Y-m-d H:i:s'),
+                'files'      => null
+            ];
         }
 
         // SEND NOTIFICATION EMAIL
@@ -195,7 +203,7 @@ abstract class MagicForm extends ComponentBase {
         Event::fire('martin.forms.afterSaveRecord', [&$post]);
 
         // CHECK FOR REDIRECT
-        if (filter_var($this->property('redirect'), FILTER_VALIDATE_URL)) {
+        if ($this->property('redirect')) {
             return Redirect::to($this->property('redirect'));
         }
 

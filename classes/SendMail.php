@@ -30,40 +30,46 @@ class SendMail {
             $properties['mail_subject'] = str_replace('{{ data.date }}', date('d/m/Y'), $properties['mail_subject']);
             foreach($data['data'] as $key => $value) {
                 $properties['mail_subject'] = str_replace('{{ data.'.$key.' }}', $value, $properties['mail_subject']);
+            }          
+  
+            $data = [
+                'id'   => $record->id,
+                'data' => $post,
+                'ip'   => $record->ip,
+                'date' => $record->created_at
+            ];
+
+            // USE CUSTOM SUBJECT
+            if (isset($properties['mail_subject'])) {
+                $data['subject'] = $properties['mail_subject'];
             }
-            
+
             // SEND NOTIFICATION EMAIL
-            Mail::sendTo($properties['mail_recipients'], $template, [
-                    'id'   => $record->id,
-                    'data' => $post,
-                    'ip'   => $record->ip,
-                    'date' => $record->created_at
-                ], function ($message) use ($properties, $post, $files) {
+            Mail::sendTo($properties['mail_recipients'], $template, $data, function ($message) use ($properties, $post, $files) {
 
-                    // SEND BLIND CARBON COPY
-                    if (isset($properties['mail_bcc']) && is_array($properties['mail_bcc'])) {
-                        $message->bcc($properties['mail_bcc']);
-                    }
-
-                    // USE CUSTOM SUBJECT
-                    if (isset($properties['mail_subject'])) {
-                        $message->subject($properties['mail_subject']);
-                    }
-
-                    // ADD REPLY TO ADDRESS
-                    if (isset($properties['mail_replyto']) && isset($post[$properties['mail_replyto']])) {
-                        $message->replyTo($post[$properties['mail_replyto']]);
-                    }
-
-                    // ADD UPLOADS
-                    if (isset($properties['mail_uploads']) && $properties['mail_uploads'] && !empty($files)) {
-                        foreach ($files as $file) {
-                            $message->attach($file->getLocalPath(), ['as' => $file->getFilename()]);
-                        }
-                    }
-
+                // SEND BLIND CARBON COPY
+                if (isset($properties['mail_bcc']) && is_array($properties['mail_bcc'])) {
+                    $message->bcc($properties['mail_bcc']);
                 }
-            );
+
+                // USE CUSTOM SUBJECT
+                if (isset($properties['mail_subject'])) {
+                    $message->subject($properties['mail_subject']);
+                }
+
+                // ADD REPLY TO ADDRESS
+                if (isset($properties['mail_replyto']) && isset($post[$properties['mail_replyto']])) {
+                    $message->replyTo($post[$properties['mail_replyto']]);
+                }
+
+                // ADD UPLOADS
+                if (isset($properties['mail_uploads']) && $properties['mail_uploads'] && !empty($files)) {
+                    foreach ($files as $file) {
+                        $message->attach($file->getLocalPath(), ['as' => $file->getFilename()]);
+                    }
+                }
+
+            });
 
         }
 
