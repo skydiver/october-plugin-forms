@@ -24,6 +24,14 @@ class SendMail {
             // CUSTOM TEMPLATE
             $template = isset($properties['mail_template']) && $properties['mail_template'] != '' && MailTemplate::where('code', $properties['mail_template'])->count() ? $properties['mail_template'] : 'martin.forms::mail.notification';
 
+            // REPLACE TOKENS IN SUBJECT
+            $properties['mail_subject'] = str_replace('{{ data.id }}', $data['id'], $properties['mail_subject']);
+            $properties['mail_subject'] = str_replace('{{ data.ip }}', $data['ip'], $properties['mail_subject']);
+            $properties['mail_subject'] = str_replace('{{ data.date }}', date('d/m/Y'), $properties['mail_subject']);
+            foreach($data['data'] as $key => $value) {
+                $properties['mail_subject'] = str_replace('{{ data.'.$key.' }}', $value, $properties['mail_subject']);
+            }
+            
             // SEND NOTIFICATION EMAIL
             Mail::sendTo($properties['mail_recipients'], $template, [
                     'id'   => $record->id,
