@@ -41,7 +41,9 @@ class SendMail {
 
                 // REPLACE FORM FIELDS TOKENS IN SUBJECT
                 foreach ($data['data'] as $key => $value) {
-                    $properties['mail_subject'] = str_replace('{{ form.' . $key . ' }}', $value, $properties['mail_subject']);
+                    if (!is_array($value)) {
+                        $properties['mail_subject'] = str_replace('{{ form.' . $key . ' }}', $value, $properties['mail_subject']);
+                    }
                 }
 
                 // SET CUSTOM SUBJECT
