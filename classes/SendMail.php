@@ -33,7 +33,20 @@ class SendMail {
 
             // USE CUSTOM SUBJECT
             if (isset($properties['mail_subject'])) {
+
+                // REPLACE RECORD TOKENS IN SUBJECT
+                $properties['mail_subject'] = str_replace('{{ record.id }}', $data['id'], $properties['mail_subject']);
+                $properties['mail_subject'] = str_replace('{{ record.ip }}', $data['ip'], $properties['mail_subject']);
+                $properties['mail_subject'] = str_replace('{{ record.date }}', date('Y-m-d'), $properties['mail_subject']);
+
+                // REPLACE FORM FIELDS TOKENS IN SUBJECT
+                foreach ($data['data'] as $key => $value) {
+                    $properties['mail_subject'] = str_replace('{{ form.' . $key . ' }}', $value, $properties['mail_subject']);
+                }
+
+                // SET CUSTOM SUBJECT
                 $data['subject'] = $properties['mail_subject'];
+
             }
 
             // SEND NOTIFICATION EMAIL
