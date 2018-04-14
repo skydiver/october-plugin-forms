@@ -64,6 +64,20 @@ class BackendHelpers {
         return inet_ntop(inet_pton($address) & inet_pton("255.255.255.0"));
     }
 
+    /**
+     * Extract string from curly braces
+     *
+     * @param string $pattern     Pattern to replace
+     * @param string $replacement Replacement string
+     * @param string $subject     Strings to replace
+     *
+     * @return string
+     */
+    public static function replaceToken(string $pattern, string $replacement, string $subject) :string {
+        $pattern = '/{{\s*('.$pattern.')\s*}}/';
+        return preg_replace($pattern, $replacement, $subject);
+    }
+
 }
 
 ?>
