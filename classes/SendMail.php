@@ -4,6 +4,7 @@ namespace Martin\Forms\Classes;
 
 use Mail;
 use System\Models\MailTemplate;
+use Martin\Forms\Classes\BackendHelpers;
 
 class SendMail {
 
@@ -31,18 +32,18 @@ class SendMail {
                 'date' => $record->created_at
             ];
 
-            // USE CUSTOM SUBJECT
+            // CHECK FOR CUSTOM SUBJECT
             if (isset($properties['mail_subject'])) {
 
                 // REPLACE RECORD TOKENS IN SUBJECT
-                $properties['mail_subject'] = str_replace('{{ record.id }}', $data['id'], $properties['mail_subject']);
-                $properties['mail_subject'] = str_replace('{{ record.ip }}', $data['ip'], $properties['mail_subject']);
-                $properties['mail_subject'] = str_replace('{{ record.date }}', date('Y-m-d'), $properties['mail_subject']);
+                $properties['mail_subject'] = BackendHelpers::replaceToken('record.id', $data['id'], $properties['mail_subject']);
+                $properties['mail_subject'] = BackendHelpers::replaceToken('record.ip', $data['ip'], $properties['mail_subject']);
+                $properties['mail_subject'] = BackendHelpers::replaceToken('record.date', date('Y-m-d'), $properties['mail_subject']);
 
                 // REPLACE FORM FIELDS TOKENS IN SUBJECT
                 foreach ($data['data'] as $key => $value) {
                     if (!is_array($value)) {
-                        $properties['mail_subject'] = str_replace('{{ form.' . $key . ' }}', $value, $properties['mail_subject']);
+                        $properties['mail_subject'] = BackendHelpers::replaceToken('form.'.$key, $value, $properties['mail_subject']);
                     }
                 }
 
