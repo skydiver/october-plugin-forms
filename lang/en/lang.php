@@ -123,6 +123,8 @@
             'section_recaptcha'       => 'reCAPTCHA Settings',
             'recaptcha_site_key'      => 'Site key',
             'recaptcha_secret_key'    => 'Secret key',
+            'gprd'                    => 'Keep records for maximum X days',
+            'gprd_desc'               => 'New GPRD law in Europe, you can\'t keep records undefinitely, need to clear them after a certain period of time depending on your needs',
         ],
 
         'permissions' => [
