@@ -4,6 +4,7 @@ namespace Martin\Forms\Classes;
 
 use Mail;
 use System\Models\MailTemplate;
+use Martin\Forms\Classes\BackendHelpers;
 
 class SendMail {
 
@@ -24,38 +25,59 @@ class SendMail {
             // CUSTOM TEMPLATE
             $template = isset($properties['mail_template']) && $properties['mail_template'] != '' && MailTemplate::where('code', $properties['mail_template'])->count() ? $properties['mail_template'] : 'martin.forms::mail.notification';
 
-            // SEND NOTIFICATION EMAIL
-            Mail::sendTo($properties['mail_recipients'], $template, [
-                    'id'   => $record->id,
-                    'data' => $post,
-                    'ip'   => $record->ip,
-                    'date' => $record->created_at
-                ], function ($message) use ($properties, $post, $files) {
+            $data = [
+                'id'   => $record->id,
+                'data' => $post,
+                'ip'   => $record->ip,
+                'date' => $record->created_at
+            ];
 
-                    // SEND BLIND CARBON COPY
-                    if (isset($properties['mail_bcc']) && is_array($properties['mail_bcc'])) {
-                        $message->bcc($properties['mail_bcc']);
+            // CHECK FOR CUSTOM SUBJECT
+            if (isset($properties['mail_subject'])) {
+
+                // REPLACE RECORD TOKENS IN SUBJECT
+                $properties['mail_subject'] = BackendHelpers::replaceToken('record.id', $data['id'], $properties['mail_subject']);
+                $properties['mail_subject'] = BackendHelpers::replaceToken('record.ip', $data['ip'], $properties['mail_subject']);
+                $properties['mail_subject'] = BackendHelpers::replaceToken('record.date', date('Y-m-d'), $properties['mail_subject']);
+
+                // REPLACE FORM FIELDS TOKENS IN SUBJECT
+                foreach ($data['data'] as $key => $value) {
+                    if (!is_array($value)) {
+                        $properties['mail_subject'] = BackendHelpers::replaceToken('form.'.$key, $value, $properties['mail_subject']);
                     }
-
-                    // USE CUSTOM SUBJECT
-                    if (isset($properties['mail_subject'])) {
-                        $message->subject($properties['mail_subject']);
-                    }
-
-                    // ADD REPLY TO ADDRESS
-                    if (isset($properties['mail_replyto']) && isset($post[$properties['mail_replyto']])) {
-                        $message->replyTo($post[$properties['mail_replyto']]);
-                    }
-
-                    // ADD UPLOADS
-                    if (isset($properties['mail_uploads']) && $properties['mail_uploads'] && !empty($files)) {
-                        foreach ($files as $file) {
-                            $message->attach($file->getLocalPath(), ['as' => $file->getFilename()]);
-                        }
-                    }
-
                 }
-            );
+
+                // SET CUSTOM SUBJECT
+                $data['subject'] = $properties['mail_subject'];
+
+            }
+
+            // SEND NOTIFICATION EMAIL
+            Mail::sendTo($properties['mail_recipients'], $template, $data, function ($message) use ($properties, $post, $files) {
+
+                // SEND BLIND CARBON COPY
+                if (isset($properties['mail_bcc']) && is_array($properties['mail_bcc'])) {
+                    $message->bcc($properties['mail_bcc']);
+                }
+
+                // USE CUSTOM SUBJECT
+                if (isset($properties['mail_subject'])) {
+                    $message->subject($properties['mail_subject']);
+                }
+
+                // ADD REPLY TO ADDRESS
+                if (isset($properties['mail_replyto']) && isset($post[$properties['mail_replyto']])) {
+                    $message->replyTo($post[$properties['mail_replyto']]);
+                }
+
+                // ADD UPLOADS
+                if (isset($properties['mail_uploads']) && $properties['mail_uploads'] && !empty($files)) {
+                    foreach ($files as $file) {
+                        $message->attach($file->getLocalPath(), ['as' => $file->getFilename()]);
+                    }
+                }
+
+            });
 
         }
 
