@@ -25,6 +25,11 @@ tabs:
             type   : switch
             default: false
             tab    : martin.forms::lang.settings.tabs.general
+            
+        gprd:
+            label  : martin.forms::lang.settings.gprd
+            comment: martin.forms::lang.settings.gprd_desc
+            tab    : martin.forms::lang.settings.tabs.general
 
         #section_recaptcha:
         #    label: martin.forms::lang.settings.section_recaptcha
