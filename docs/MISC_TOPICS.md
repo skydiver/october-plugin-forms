@@ -56,3 +56,8 @@ It's possible to use variables of the submited form on your email subject.
 {{ form.xxx }}       # where "xxx" is the name of an existing form field
 {{ form.full_name }} # the value of the field with attribute name="full_name"
 ```
+
+Examples:
+* `New mail with ID: {{ record.id }}`
+* `Form submitted from IP: {{ record.ip }}`
+* `Contact from: {{ form.name }} {{ form.last }}`
