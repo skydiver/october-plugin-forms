@@ -29,8 +29,13 @@
                     'created_at' => 'Created',
                 ],
                 'buttons' => [
-                    'read'   => 'Mark as Read',
-                    'unread' => 'Mark as Unread'
+                    'read'       => 'Mark as Read',
+                    'unread'     => 'Mark as Unread',
+                    'gdpr_clean' => 'GDPR Clean',
+                ],
+                'alerts' => [
+                    'gdpr_confirm' => "Are you sure you want to clean old records?\nThis action cannot be undone!",
+                    'gdpr_success' => 'Old records deleted successfully',
                 ],
             ],
             'exports' => [
