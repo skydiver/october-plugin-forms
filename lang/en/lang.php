@@ -114,7 +114,7 @@
         ],
 
         'settings' => [
-            'tabs'                    => ['general' => 'General', 'recaptcha' => 'reCAPTCHA'],
+            'tabs'                    => ['general' => 'General', 'recaptcha' => 'reCAPTCHA', 'gdpr' => 'GDPR'],
             'section_flash_messages'  => 'Flash Messages',
             'global_messages_success' => ['label' => 'Global Success Message', 'comment' => '(This setting can be overridden from the component)', 'default' => 'Your form was successfully submitted'],
             'global_messages_errors'  => ['label' => 'Global Errors Message' , 'comment' => '(This setting can be overridden from the component)', 'default' => 'There were errors with your submission'],
@@ -123,8 +123,9 @@
             'section_recaptcha'       => 'reCAPTCHA Settings',
             'recaptcha_site_key'      => 'Site key',
             'recaptcha_secret_key'    => 'Secret key',
-            'gprd'                    => 'Keep records for maximum X days',
-            'gprd_desc'               => 'New GPRD law in Europe, you can\'t keep records undefinitely, need to clear them after a certain period of time depending on your needs',
+            'gdpr_help_title'         => 'Information',
+            'gdpr_help_comment'       => 'New GDPR law in Europe, you can\'t keep records undefinitely, need to clear them after a certain period of time depending on your needs',
+            'gdpr'                    => 'Keep records for a maximum of X days',
         ],
 
         'permissions' => [

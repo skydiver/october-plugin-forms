@@ -18,23 +18,13 @@
 
 tabs:
     fields:
-    
+
         global_hide_button:
             label  : martin.forms::lang.settings.global_hide_button
             comment: martin.forms::lang.settings.global_hide_button_desc
             type   : switch
             default: false
             tab    : martin.forms::lang.settings.tabs.general
-            
-        gprd:
-            label  : martin.forms::lang.settings.gprd
-            comment: martin.forms::lang.settings.gprd_desc
-            tab    : martin.forms::lang.settings.tabs.general
-
-        #section_recaptcha:
-        #    label: martin.forms::lang.settings.section_recaptcha
-        #    type : section
-        #    tab  : martin.forms::lang.settings.tabs.recaptcha
 
         recaptcha_help:
             type   : partial
@@ -49,4 +39,15 @@ tabs:
         recaptcha_secret_key:
             label: martin.forms::lang.settings.recaptcha_secret_key
             span : right
-            tab  : martin.forms::lang.settings.tabs.recaptcha            
+            tab  : martin.forms::lang.settings.tabs.recaptcha
+
+        gdpr_help:
+            type   : partial
+            path   : $/martin/forms/models/settings/_gdpr_help.htm
+            tab    : martin.forms::lang.settings.tabs.gdpr
+
+        gdpr:
+            label  : martin.forms::lang.settings.gdpr
+            span   : left
+            default: 120
+            tab    : martin.forms::lang.settings.tabs.gdpr
