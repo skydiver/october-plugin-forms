@@ -6,6 +6,7 @@
     use System\Classes\PluginBase;
     use System\Classes\SettingsManager;
     use Martin\Forms\Classes\BackendHelpers;
+    use Martin\Forms\Classes\GDPR;
     use Martin\Forms\Classes\ReCaptchaValidator;
     use Martin\Forms\Classes\UnreadRecords;
     use Martin\Forms\Models\Settings;
@@ -93,15 +94,11 @@
                 Validator::extend('recaptcha', 'Martin\Forms\Classes\ReCaptchaValidator@validateReCaptcha');
             });
         }
-        
-        public function registerSchedule($schedule)
-        {
+
+        public function registerSchedule($schedule) {
             $schedule->call(function () {
-                $gprd = Settings::get('gprd', false);
-                if($gprd !== false) {
-                    $records = \Db::table('martin_forms_records')->whereDate('created_at', '<', Carbon::now()->subDays($gprd))->delete();
-                }
-            })->everyDays();
+                $records = GDPR::cleanRecords();
+            })->daily();
         }
 
     }
