@@ -52,6 +52,7 @@ abstract class MagicForm extends ComponentBase {
         // CSRF CHECK
         if (Session::token() != post('_token')) {
             throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial($flash_partial, [
+                'status'  => 'error',
                 'type'    => 'danger',
                 'content' => Lang::get('martin.forms::lang.components.shared.csrf_error'),
             ])]);
@@ -126,6 +127,7 @@ abstract class MagicForm extends ComponentBase {
                 throw new ValidationException($validator);
             } else {
                 throw new AjaxException($this->_exceptionResponse($validator, [
+                    'status'  => 'error',
                     'type'    => 'danger',
                     'title'   => $message,
                     'list'    => $validator->messages()->all(),
@@ -154,6 +156,7 @@ abstract class MagicForm extends ComponentBase {
                     throw new ValidationException($validator);
                 } else {
                     throw new AjaxException($this->_exceptionResponse($validator, [
+                        'status'  => 'error',
                         'type'    => 'danger',
                         'content' => Lang::get('martin.forms::lang.validation.recaptcha_error'),
                         'jscript' => $this->property('js_on_error'),
@@ -217,6 +220,7 @@ abstract class MagicForm extends ComponentBase {
 
         // DISPLAY SUCCESS MESSAGE
         return ['#' . $this->alias . '_forms_flash' => $this->renderPartial($flash_partial, [
+            'status'  => 'success',
             'type'    => 'success',
             'content' => $message,
             'jscript' => $this->_prepareJavaScript(),
