@@ -57,23 +57,25 @@
     </div>
 
     <?php
-        echo $this->makePartial('$/martin/forms/controllers/records/partials/_action_button.htm', [
-            'type'            => 'danger',
-            'icon'            => 'oc-icon-history',
-            'label'           => e(trans('martin.forms::lang.controllers.records.buttons.gdpr_clean')),
-            'request'         => 'onGDPRClean',
-            'request_confirm' => e(trans('martin.forms::lang.controllers.records.alerts.gdpr_confirm')),
-            'request_success' => "
-                $('#records-toolbar').find('button').blur();
-                $.oc.flashMsg({
-                    'text': '" . e(trans('martin.forms::lang.controllers.records.alerts.gdpr_success')) . "',
-                    'class': 'success',
-                    'interval': 3
-                });
-                $.oc.sideNav.setCounter('forms/records', data.counter);
-                $('#Lists').html(data.list['#Lists']);
-            ",
-        ]);
+        if(Martin\Forms\Models\Settings::get('gdpr_enable')) {
+            echo $this->makePartial('$/martin/forms/controllers/records/partials/_action_button.htm', [
+                'type'            => 'danger',
+                'icon'            => 'oc-icon-history',
+                'label'           => e(trans('martin.forms::lang.controllers.records.buttons.gdpr_clean')),
+                'request'         => 'onGDPRClean',
+                'request_confirm' => e(trans('martin.forms::lang.controllers.records.alerts.gdpr_confirm')),
+                'request_success' => "
+                    $('#records-toolbar').find('button').blur();
+                    $.oc.flashMsg({
+                        'text': '" . e(trans('martin.forms::lang.controllers.records.alerts.gdpr_success')) . "',
+                        'class': 'success',
+                        'interval': 3
+                    });
+                    $.oc.sideNav.setCounter('forms/records', data.counter);
+                    $('#Lists').html(data.list['#Lists']);
+                ",
+            ]);
+        }
     ?>
 
 </div>

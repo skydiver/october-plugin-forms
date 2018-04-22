@@ -150,6 +150,13 @@
             'recaptcha_error' => 'Cannot validate reCAPTCHA field'
         ],
 
+        'classes' => [
+            'GDPR' => [
+                'alert_gdpr_disabled' => 'GDPR options are disabled',
+                'alert_invalid_gdpr'  => 'Invalid GDPR days setting value',
+            ]
+        ]
+
     ];
 
 ?>
