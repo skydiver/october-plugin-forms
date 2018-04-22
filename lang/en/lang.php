@@ -130,6 +130,7 @@
             'recaptcha_secret_key'    => 'Secret key',
             'gdpr_help_title'         => 'Information',
             'gdpr_help_comment'       => 'New GDPR law in Europe, you can\'t keep records undefinitely, need to clear them after a certain period of time depending on your needs',
+            'gdpr_enable'             => 'Enable GDPR',
             'gdpr'                    => 'Keep records for a maximum of X days',
         ],
 
