@@ -52,8 +52,8 @@ tabs:
             default: false
             tab    : martin.forms::lang.settings.tabs.gdpr
 
-        gdpr:
-            label  : martin.forms::lang.settings.gdpr
+        gdpr_days:
+            label  : martin.forms::lang.settings.gdpr_days
             span   : left
             default: 120
             tab    : martin.forms::lang.settings.tabs.gdpr

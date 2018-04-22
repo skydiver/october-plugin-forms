@@ -35,7 +35,7 @@
                 ],
                 'alerts' => [
                     'gdpr_confirm' => "Are you sure you want to clean old records?\nThis action cannot be undone!",
-                    'gdpr_success' => 'Old records deleted successfully',
+                    'gdpr_success' => 'GDPR cleanup was executed successfully',
                 ],
             ],
             'exports' => [
@@ -131,7 +131,7 @@
             'gdpr_help_title'         => 'Information',
             'gdpr_help_comment'       => 'New GDPR law in Europe, you can\'t keep records undefinitely, need to clear them after a certain period of time depending on your needs',
             'gdpr_enable'             => 'Enable GDPR',
-            'gdpr'                    => 'Keep records for a maximum of X days',
+            'gdpr_days'               => 'Keep records for a maximum of X days',
         ],
 
         'permissions' => [

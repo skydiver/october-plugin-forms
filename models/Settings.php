@@ -23,11 +23,11 @@
         // }
 
         public $rules = [
-            'gdpr' => 'required|numeric',
+            'gdpr_days' => 'required|numeric',
         ];
 
         public $attributeNames = [
-            'gdpr' => 'GDPR',
+            'gdpr_days' => 'GDPR',
         ];
 
     }
