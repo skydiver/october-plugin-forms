@@ -89,7 +89,12 @@
         }
 
         public function onGDPRClean() {
-            GDPR::cleanRecords();
+            if ($this->user->hasPermission(['martin.forms.gdpr_cleanup'])) {
+                GDPR::cleanRecords();
+                Flash::success(e(trans('martin.forms::lang.controllers.records.alerts.gdpr_success')));
+            } else {
+                Flash::error(e(trans('martin.forms::lang.controllers.records.alerts.gdpr_perms')));
+            }
             $counter = UnreadRecords::getTotal();
             return [
                 'counter' => ($counter != null) ? $counter : 0,

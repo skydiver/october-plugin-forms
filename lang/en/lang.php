@@ -36,6 +36,7 @@
                 'alerts' => [
                     'gdpr_confirm' => "Are you sure you want to clean old records?\nThis action cannot be undone!",
                     'gdpr_success' => 'GDPR cleanup was executed successfully',
+                    'gdpr_perms'   => 'You don\'t have permission to this feature',
                 ],
             ],
             'exports' => [
@@ -139,6 +140,7 @@
             'access_records'  => 'Access stored forms data',
             'access_exports'  => 'Access to export stored data',
             'access_settings' => 'Access module configuration',
+            'gdpr_cleanup'    => 'Perform GDPR database cleanup',
         ],
 
         'mails' => [

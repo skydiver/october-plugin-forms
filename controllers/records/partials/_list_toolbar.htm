@@ -66,11 +66,6 @@
                 'request_confirm' => e(trans('martin.forms::lang.controllers.records.alerts.gdpr_confirm')),
                 'request_success' => "
                     $('#records-toolbar').find('button').blur();
-                    $.oc.flashMsg({
-                        'text': '" . e(trans('martin.forms::lang.controllers.records.alerts.gdpr_success')) . "',
-                        'class': 'success',
-                        'interval': 3
-                    });
                     $.oc.sideNav.setCounter('forms/records', data.counter);
                     $('#Lists').html(data.list['#Lists']);
                 ",

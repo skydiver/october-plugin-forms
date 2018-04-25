@@ -71,6 +71,7 @@
                 'martin.forms.access_settings' => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_settings'],
                 'martin.forms.access_records'  => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_records'],
                 'martin.forms.access_exports'  => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_exports'],
+                'martin.forms.gdpr_cleanup'    => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.gdpr_cleanup'],
             ];
         }
 
