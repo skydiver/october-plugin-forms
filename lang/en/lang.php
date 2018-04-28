@@ -124,6 +124,7 @@
             'section_flash_messages'  => 'Flash Messages',
             'global_messages_success' => ['label' => 'Global Success Message', 'comment' => '(This setting can be overridden from the component)', 'default' => 'Your form was successfully submitted'],
             'global_messages_errors'  => ['label' => 'Global Errors Message' , 'comment' => '(This setting can be overridden from the component)', 'default' => 'There were errors with your submission'],
+            'plugin_help'             => 'You can access plugin documentation at GitHub repo:',
             'global_hide_button'      => 'Hide navigation item',
             'global_hide_button_desc' => 'Useful if you want to use events with your custom plugin.',
             'section_recaptcha'       => 'reCAPTCHA Settings',
