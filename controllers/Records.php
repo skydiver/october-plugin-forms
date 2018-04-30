@@ -7,6 +7,7 @@
     use Backend\Facades\Backend;
     use Illuminate\Support\Facades\Redirect;
     use October\Rain\Support\Facades\Flash;
+    use Martin\Forms\Classes\GDPR;
     use Martin\Forms\Classes\UnreadRecords;
     use Martin\Forms\Models\Record;
 
@@ -79,6 +80,20 @@
             if (($checkedIds = post('checked')) && is_array($checkedIds) && count($checkedIds)) {
                 $unread = (post('state') == 'read') ? 0 : 1;
                 Record::whereIn('id',$checkedIds)->update(['unread' => $unread]);
+            }
+            $counter = UnreadRecords::getTotal();
+            return [
+                'counter' => ($counter != null) ? $counter : 0,
+                'list'    => $this->listRefresh()
+            ];
+        }
+
+        public function onGDPRClean() {
+            if ($this->user->hasPermission(['martin.forms.gdpr_cleanup'])) {
+                GDPR::cleanRecords();
+                Flash::success(e(trans('martin.forms::lang.controllers.records.alerts.gdpr_success')));
+            } else {
+                Flash::error(e(trans('martin.forms::lang.controllers.records.alerts.gdpr_perms')));
             }
             $counter = UnreadRecords::getTotal();
             return [

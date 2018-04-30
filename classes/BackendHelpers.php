@@ -34,19 +34,23 @@ class BackendHelpers {
     }
 
     /**
-     * Render an array as HTML list (UL > LI)
+     * Render an array|object as HTML list (UL > LI)
      *
-     * @param array $array List items
+     * @param mixed $data List items
      *
      * @return string
      */
-    public static function array2ul(array $array) :string {
+    public static function array2ul($data) :string {
         $return = '';
-        foreach ($array as $index => $item) {
+        foreach ($data as $index => $item) {
             if (is_array($item)) {
                 $return .= '<li>' . htmlspecialchars($index, ENT_QUOTES) . '<ul>' . self::array2ul($item) . "</ul></li>";
             } else {
-                $return .= '<li>' . htmlspecialchars($item, ENT_QUOTES) .'</li>';
+                $return .= '<li>';
+                if (is_object($data)) {
+                    $return .= htmlspecialchars($index, ENT_QUOTES) . ' - ';
+                }
+                $return .= htmlspecialchars($item, ENT_QUOTES) .'</li>';
             }
         }
         return $return;

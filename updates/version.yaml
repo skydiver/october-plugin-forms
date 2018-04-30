@@ -84,3 +84,5 @@
     - fix custom subject on email template [Thanks to matteotrubini]
     - fix email bug when not storing on db [Thanks JurekRaben]
     - skip url redirect validation [Thanks to EleRam]
+1.4.8:
+    - added GDPR cleanup feature [thanks to Alex360hd]

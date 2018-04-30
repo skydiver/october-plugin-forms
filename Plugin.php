@@ -6,6 +6,7 @@
     use System\Classes\PluginBase;
     use System\Classes\SettingsManager;
     use Martin\Forms\Classes\BackendHelpers;
+    use Martin\Forms\Classes\GDPR;
     use Martin\Forms\Classes\ReCaptchaValidator;
     use Martin\Forms\Classes\UnreadRecords;
     use Martin\Forms\Models\Settings;
@@ -70,6 +71,7 @@
                 'martin.forms.access_settings' => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_settings'],
                 'martin.forms.access_records'  => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_records'],
                 'martin.forms.access_exports'  => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_exports'],
+                'martin.forms.gdpr_cleanup'    => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.gdpr_cleanup'],
             ];
         }
 
@@ -92,6 +94,12 @@
             $this->app->resolving('validator', function($validator) {
                 Validator::extend('recaptcha', 'Martin\Forms\Classes\ReCaptchaValidator@validateReCaptcha');
             });
+        }
+
+        public function registerSchedule($schedule) {
+            $schedule->call(function () {
+                $records = GDPR::cleanRecords();
+            })->daily();
         }
 
     }

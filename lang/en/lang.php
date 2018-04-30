@@ -29,8 +29,14 @@
                     'created_at' => 'Created',
                 ],
                 'buttons' => [
-                    'read'   => 'Mark as Read',
-                    'unread' => 'Mark as Unread'
+                    'read'       => 'Mark as Read',
+                    'unread'     => 'Mark as Unread',
+                    'gdpr_clean' => 'GDPR Clean',
+                ],
+                'alerts' => [
+                    'gdpr_confirm' => "Are you sure you want to clean old records?\nThis action cannot be undone!",
+                    'gdpr_success' => 'GDPR cleanup was executed successfully',
+                    'gdpr_perms'   => 'You don\'t have permission to this feature',
                 ],
             ],
             'exports' => [
@@ -114,15 +120,20 @@
         ],
 
         'settings' => [
-            'tabs'                    => ['general' => 'General', 'recaptcha' => 'reCAPTCHA'],
+            'tabs'                    => ['general' => 'General', 'recaptcha' => 'reCAPTCHA', 'gdpr' => 'GDPR'],
             'section_flash_messages'  => 'Flash Messages',
             'global_messages_success' => ['label' => 'Global Success Message', 'comment' => '(This setting can be overridden from the component)', 'default' => 'Your form was successfully submitted'],
             'global_messages_errors'  => ['label' => 'Global Errors Message' , 'comment' => '(This setting can be overridden from the component)', 'default' => 'There were errors with your submission'],
+            'plugin_help'             => 'You can access plugin documentation at GitHub repo:',
             'global_hide_button'      => 'Hide navigation item',
             'global_hide_button_desc' => 'Useful if you want to use events with your custom plugin.',
             'section_recaptcha'       => 'reCAPTCHA Settings',
             'recaptcha_site_key'      => 'Site key',
             'recaptcha_secret_key'    => 'Secret key',
+            'gdpr_help_title'         => 'Information',
+            'gdpr_help_comment'       => 'New GDPR law in Europe, you can\'t keep records undefinitely, need to clear them after a certain period of time depending on your needs',
+            'gdpr_enable'             => 'Enable GDPR',
+            'gdpr_days'               => 'Keep records for a maximum of X days',
         ],
 
         'permissions' => [
@@ -130,6 +141,7 @@
             'access_records'  => 'Access stored forms data',
             'access_exports'  => 'Access to export stored data',
             'access_settings' => 'Access module configuration',
+            'gdpr_cleanup'    => 'Perform GDPR database cleanup',
         ],
 
         'mails' => [
@@ -140,6 +152,13 @@
         'validation' => [
             'recaptcha_error' => 'Cannot validate reCAPTCHA field'
         ],
+
+        'classes' => [
+            'GDPR' => [
+                'alert_gdpr_disabled' => 'GDPR options are disabled',
+                'alert_invalid_gdpr'  => 'Invalid GDPR days setting value',
+            ]
+        ]
 
     ];
 
