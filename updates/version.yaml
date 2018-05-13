@@ -86,3 +86,5 @@
     - skip url redirect validation [Thanks to EleRam]
 1.4.8:
     - added GDPR cleanup feature [thanks to Alex360hd]
+1.4.9:
+    - fix on replaceToken function when replacement is null [thanks to leonaze]
