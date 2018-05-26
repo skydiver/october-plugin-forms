@@ -88,3 +88,5 @@
     - added GDPR cleanup feature [thanks to Alex360hd]
 1.4.9:
     - fix on replaceToken function when replacement is null [thanks to leonaze]
+1.4.9.1:
+    - fix a nullable type error on PHP 7.0
