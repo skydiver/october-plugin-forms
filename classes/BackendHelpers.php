@@ -43,7 +43,7 @@ class BackendHelpers {
     public static function array2ul($data) :string {
         $return = '';
         foreach ($data as $index => $item) {
-            if (is_array($item)) {
+            if (!is_string($item)) {
                 $return .= '<li>' . htmlspecialchars($index, ENT_QUOTES) . '<ul>' . self::array2ul($item) . "</ul></li>";
             } else {
                 $return .= '<li>';
