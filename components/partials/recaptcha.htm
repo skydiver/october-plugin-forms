@@ -1,5 +1,0 @@
-{% if (recaptcha_enabled) %}
-    <div id="{{ __SELF__ }}" class="g-recaptcha" data-sitekey="{{ __SELF__.settings.recaptcha_site_key }}" data-theme="{{ __SELF__.property('recaptcha_theme') }}" data-type="{{ __SELF__.property('recaptcha_type') }}" data-size="{{ __SELF__.property('recaptcha_size') }}"></div>
-{% elseif (recaptcha_misconfigured) %}
-    <h5>{{ recaptcha_warn }}</h5>
-{% endif %}
