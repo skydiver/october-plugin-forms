@@ -92,3 +92,5 @@
     - fix a nullable type error on PHP 7.0
 1.4.9.2:
     - bugfix when a form field array has more than 2 levels of depth
+1.4.10:
+    - improvements related to event functionality

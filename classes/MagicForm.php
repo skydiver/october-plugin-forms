@@ -171,7 +171,7 @@ abstract class MagicForm extends ComponentBase {
         unset($post['_token'], $post['g-recaptcha-response'], $post['_session_key'], $post['_uploader']);
 
         // FIRE BEFORE SAVE EVENT
-        Event::fire('martin.forms.beforeSaveRecord', [&$post]);
+        Event::fire('martin.forms.beforeSaveRecord', [&$post, $this]);
 
         // SAVE RECORD TO DATABASE
         if (!$this->property('skip_database')) {
@@ -203,7 +203,7 @@ abstract class MagicForm extends ComponentBase {
         }
 
         // FIRE AFTER SAVE EVENT
-        Event::fire('martin.forms.afterSaveRecord', [&$post]);
+        Event::fire('martin.forms.afterSaveRecord', [&$post, $this]);
 
         // CHECK FOR REDIRECT
         if ($this->property('redirect')) {
