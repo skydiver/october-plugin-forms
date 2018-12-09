@@ -28,6 +28,13 @@ trait SharedProperties {
                 'group'             => 'martin.forms::lang.components.shared.group_validation',
                 'showExternalParam' => false,
             ],
+            'custom_attributes' => [
+                'title'             => 'martin.forms::lang.components.shared.custom_attributes.title',
+                'description'       => 'martin.forms::lang.components.shared.custom_attributes.description',
+                'type'              => 'dictionary',
+                'group'             => 'martin.forms::lang.components.shared.group_validation',
+                'showExternalParam' => false,
+            ],
             'messages_success' => [
                 'title'             => 'martin.forms::lang.components.shared.messages_success.title',
                 'description'       => 'martin.forms::lang.components.shared.messages_success.description',
