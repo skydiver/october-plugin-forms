@@ -113,7 +113,7 @@ abstract class MagicForm extends ComponentBase
         // NICE reCAPTCHA FIELD NAME
         if ($this->isReCaptchaEnabled()) {
             $fields_names = ['g-recaptcha-response' => 'reCAPTCHA'];
-            $validator->setAttributeNames($fields_names);
+            $validator->setAttributeNames(array_merge($fields_names, $custom_attributes));
         }
 
         // VALIDATE ALL + CAPTCHA EXISTS
