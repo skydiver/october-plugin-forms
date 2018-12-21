@@ -83,6 +83,7 @@
                 'group'             => ['title' => 'Group'              , 'description' => 'Organize your forms with a custom group name. This option is useful when exporting data.'],
                 'rules'             => ['title' => 'Rules'              , 'description' => 'Set your own rules using Laravel validation'],
                 'rules_messages'    => ['title' => 'Rules Messages'     , 'description' => 'Use your own rules messages using Laravel validation'],
+                'custom_attributes' => ['title' => 'Custom Attributes'  , 'description' => 'Use your own custom attributes using Laravel validation'],
                 'messages_success'  => ['title' => 'Success'            , 'description' => 'Message when the form is successfully submited', 'default' => 'Your form was successfully submitted'  ],
                 'messages_errors'   => ['title' => 'Errors'             , 'description' => 'Message when the form contains errors'         , 'default' => 'There were errors with your submission'],
                 'messages_partial'  => ['title' => 'Use Custom Partial' , 'description' => 'Override flash messages with your custom partial inside your theme'],
