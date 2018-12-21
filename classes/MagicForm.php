@@ -87,8 +87,9 @@ abstract class MagicForm extends ComponentBase {
         }
 
         // VALIDATION PARAMETERS
-        $rules = (array) $this->property('rules');
-        $msgs  = (array) $this->property('rules_messages');
+        $rules = (array)$this->property('rules');
+        $msgs  = (array)$this->property('rules_messages');
+        $custom_attributes = (array)$this->property('custom_attributes');
 
         // TRANSLATE CUSTOM ERROR MESSAGES
         if (BackendHelpers::isTranslatePlugin()) {
@@ -103,12 +104,12 @@ abstract class MagicForm extends ComponentBase {
         }
 
         // DO FORM VALIDATION
-        $validator = Validator::make($post, $rules, $msgs);
+        $validator = Validator::make($post, $rules, $msgs, $custom_attributes);
 
         // NICE reCAPTCHA FIELD NAME
         if ($this->isReCaptchaEnabled()) {
             $fields_names = ['g-recaptcha-response' => 'reCAPTCHA'];
-            $validator->setAttributeNames($fields_names);
+            $validator->setAttributeNames(array_merge($fields_names, $custom_attributes));
         }
 
         // VALIDATE ALL + CAPTCHA EXISTS
@@ -172,6 +173,12 @@ abstract class MagicForm extends ComponentBase {
 
         // FIRE BEFORE SAVE EVENT
         Event::fire('martin.forms.beforeSaveRecord', [&$post, $this]);
+
+        if (count($custom_attributes)) {
+            $post = collect($post)->mapWithKeys(function ($val, $key) use ($custom_attributes) {
+                return [array_get($custom_attributes, $key, $key) => $val];
+            })->all();
+        }
 
         // SAVE RECORD TO DATABASE
         if (!$this->property('skip_database')) {
