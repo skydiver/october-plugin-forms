@@ -84,6 +84,29 @@ class SendMail {
     }
 
     public static function sendAutoResponse($properties, $post, $record) {
+        
+        $data = [
+            'id'   => $record->id,
+            'data' => $post,
+            'ip'   => $record->ip,
+            'date' => $record->created_at
+        ];
+
+        // CHECK FOR CUSTOM SUBJECT
+        if (isset($properties['mail_resp_subject'])) {
+
+            // REPLACE RECORD TOKENS IN SUBJECT
+            $properties['mail_resp_subject'] = BackendHelpers::replaceToken('record.id', $data['id'], $properties['mail_resp_subject']);
+            $properties['mail_resp_subject'] = BackendHelpers::replaceToken('record.ip', $data['ip'], $properties['mail_resp_subject']);
+            $properties['mail_resp_subject'] = BackendHelpers::replaceToken('record.date', date('Y-m-d'), $properties['mail_resp_subject']);
+
+            // REPLACE FORM FIELDS TOKENS IN SUBJECT
+            foreach ($data['data'] as $key => $value) {
+                if (!is_array($value)) {
+                    $properties['mail_resp_subject'] = BackendHelpers::replaceToken('form.'.$key, $value, $properties['mail_resp_subject']);
+                }
+            }
+        }
 
         $response = isset($properties['mail_resp_field']) ? $properties['mail_resp_field'] : null;
         $to       = isset($post[$response]) ? $post[$response] : null;
