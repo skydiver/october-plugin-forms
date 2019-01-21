@@ -97,3 +97,5 @@
 1.4.11:
     - added Laravel custom attributes to form validation [thanks to geekfil]
     - updated french translation [thanks to FelixINX]
+1.4.12:
+    - use form variables on auto-response mail subject [thanks to jiargei]
