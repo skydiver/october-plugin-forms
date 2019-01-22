@@ -132,6 +132,7 @@ abstract class MagicForm extends ComponentBase {
                     'type'    => 'danger',
                     'title'   => $message,
                     'list'    => $validator->messages()->all(),
+                    'errors'  => json_encode($validator->messages()->messages()),
                     'jscript' => $this->property('js_on_error'),
                 ]));
             }
@@ -160,6 +161,7 @@ abstract class MagicForm extends ComponentBase {
                         'status'  => 'error',
                         'type'    => 'danger',
                         'content' => Lang::get('martin.forms::lang.validation.recaptcha_error'),
+                        'errors'  => json_encode($validator->messages()->messages()),
                         'jscript' => $this->property('js_on_error'),
                     ]));
                 }
