@@ -21,8 +21,13 @@
 
     </div>
 
-{% if jscript %}
-    <script>{{ jscript|raw }}</script>
-{% endif %}
+    {% if jscript %}
+        <script>
+            {% if errors %}
+                var errors = JSON.parse('{{ errors|raw }}');
+            {% endif %}
+            {{ jscript|raw }}
+        </script>
+    {% endif %}
 
 {% endspaceless %}
