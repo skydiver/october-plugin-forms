@@ -99,3 +99,5 @@
     - updated french translation [thanks to FelixINX]
 1.4.12:
     - use form variables on auto-response mail subject [thanks to jiargei]
+1.4.13:
+    - pass an array with form errors to JavaScript [thanks to multiwebinc]
