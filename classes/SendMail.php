@@ -111,7 +111,7 @@ class SendMail {
         $response = isset($properties['mail_resp_field']) ? $properties['mail_resp_field'] : null;
         $to       = isset($post[$response]) ? $post[$response] : null;
         $from     = isset($properties['mail_resp_from']) ? $properties['mail_resp_from'] : null;
-        $subject  = $properties['mail_resp_subject'];
+        $subject  = isset($properties['mail_resp_subject']) ? $properties['mail_resp_subject'] : null;
 
         if (filter_var($to, FILTER_VALIDATE_EMAIL) && filter_var($from, FILTER_VALIDATE_EMAIL)) {
 
@@ -125,7 +125,9 @@ class SendMail {
                     'date' => $record->created_at
                 ], function ($message) use ($from, $subject) {
                     $message->from($from);
-                    $message->subject($subject);
+                    if (isset($subject)) {
+                        $message->subject($subject);
+                    }
                 }
             );
 
