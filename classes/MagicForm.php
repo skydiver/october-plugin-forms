@@ -212,7 +212,7 @@ abstract class MagicForm extends ComponentBase {
         }
 
         // FIRE AFTER SAVE EVENT
-        Event::fire('martin.forms.afterSaveRecord', [&$post, $this]);
+        Event::fire('martin.forms.afterSaveRecord', [&$post, $this, $record]);
 
         // CHECK FOR REDIRECT
         if ($this->property('redirect')) {
