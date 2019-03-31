@@ -19,6 +19,7 @@
         }
 
         public function init() {
+            parent::init();
             $this->fileTypes       = $this->processFileTypes(true);
             $this->maxSize         = $this->property('maxSize');
             $this->placeholderText = $this->property('placeholderText');
