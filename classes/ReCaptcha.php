@@ -39,8 +39,10 @@
         }
 
         private function loadReCaptcha() {
-            $this->addJs('https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'.$this->getReCaptchaLang(), ['async', 'defer']);
-            $this->addJs('assets/js/recaptcha.js');
+            if($this->property('recaptcha_enabled')){
+                $this->addJs('https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'.$this->getReCaptchaLang(), ['async', 'defer']);
+                $this->addJs('assets/js/recaptcha.js');
+            }
         }
 
     }
