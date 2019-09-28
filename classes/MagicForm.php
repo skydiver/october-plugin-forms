@@ -182,23 +182,17 @@ abstract class MagicForm extends ComponentBase {
             })->all();
         }
 
+        $record = new Record;
+        $record->ip        = $this->_getIP();
+        $record->created_at = date('Y-m-d H:i:s');
+
         // SAVE RECORD TO DATABASE
-        if (!$this->property('skip_database')) {
-            $record = new Record;
-            $record->ip        = $this->_getIP();
+        if (! $this->property('skip_database')) {
             $record->form_data = json_encode($post, JSON_UNESCAPED_UNICODE);
             if ($this->property('group') != '') {
                 $record->group = $this->property('group');
             }
             $record->save(null, post('_session_key'));
-        } else {
-            // THERE IS NO RECORD, CREATE AN OBJECT FOR USING ON MAILS
-            $record = (object) [
-                'id'         => null,
-                'ip'         => $this->_getIP(),
-                'created_at' => date('Y-m-d H:i:s'),
-                'files'      => null
-            ];
         }
 
         // SEND NOTIFICATION EMAIL
@@ -212,7 +206,7 @@ abstract class MagicForm extends ComponentBase {
         }
 
         // FIRE AFTER SAVE EVENT
-        Event::fire('martin.forms.afterSaveRecord', [&$post, $this]);
+        Event::fire('martin.forms.afterSaveRecord', [&$post, $this, $record]);
 
         // CHECK FOR REDIRECT
         if ($this->property('redirect')) {
