@@ -103,3 +103,7 @@
     - pass an array with form errors to JavaScript [thanks to multiwebinc]
 1.4.14:
     - fixed error with empty auto-response subject
+1.4.15:
+    - enhancements related to saving record and events [thanks to boxxroom]
+1.4.16:
+    - added chinese translation [thanks to everyx]
