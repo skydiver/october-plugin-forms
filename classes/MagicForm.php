@@ -81,7 +81,7 @@ abstract class MagicForm extends ComponentBase {
 
         // SANITIZE FORM DATA
         if ($this->property('sanitize_data') == 'htmlspecialchars') {
-            $post = array_map(function ($value) {
+            $post = $this->array_map_recursive(function ($value) {
                 return htmlspecialchars($value, ENT_QUOTES);
             }, $post);
         }
@@ -283,6 +283,15 @@ abstract class MagicForm extends ComponentBase {
             $address = Request::getClientIp();
         }
         return $address;
+    }
+
+    private function array_map_recursive($callback, $array)
+    {
+        $func = function ($item) use (&$func, &$callback) {
+            return is_array($item) ? array_map($func, $item) : call_user_func($callback, $item);
+        };
+
+        return array_map($func, $array);
     }
 
 }
