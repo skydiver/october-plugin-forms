@@ -35,6 +35,7 @@
         
         private function getReCaptchaLang($lang='') {
             if(BackendHelpers::isTranslatePlugin()) { $lang = '&hl=' . $this->activeLocale = $this->translator->getLocale(); }
+            else {  $lang = '&hl=' . $this->activeLocale = app()->getLocale(); }
             return $lang;
         }
 
