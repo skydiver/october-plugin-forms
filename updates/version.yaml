@@ -107,3 +107,5 @@
     - enhancements related to saving record and events [thanks to boxxroom]
 1.4.16:
     - added chinese translation [thanks to everyx]
+1.4.17:
+    - allowing sanitize to work recursively [thanks to multiwebinc]
