@@ -81,8 +81,10 @@
                 $headers = array_merge($meta_headers, $headers);
             }
 
-            # Add stored fields as header in CSV
-            $record = $records->first();
+            # ADD STORED FIELDS AS HEADER ROW IN CSV
+            $filteredRecords = $records->get();
+            $recordsArray = $filteredRecords->toArray();
+            $record = $filteredRecords->first();
             $headers = array_merge($headers, array_keys($record->form_data_arr));
 
             # ADD HEADERS
