@@ -56,9 +56,24 @@ fields:
         type    : section
         cssClass: m-t-md
 
+    options_delimiter:
+        label  : martin.forms::lang.controllers.exports.options_delimiter
+        comment: martin.forms::lang.controllers.exports.options_delimiter_com
+        span   : right
+        type   : switch
+        default: false
+
     options_metadata:
         label  : martin.forms::lang.controllers.exports.options_metadata
         comment: martin.forms::lang.controllers.exports.options_metadata_com
+        span   : left
+        type   : switch
+        default: true
+
+    options_utf:
+        label  : martin.forms::lang.controllers.exports.options_utf
+        comment: martin.forms::lang.controllers.exports.options_utf_com
+        span   : right
         type   : switch
         default: true
 

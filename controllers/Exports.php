@@ -4,6 +4,7 @@
 
     use BackendMenu, Response;
     use Backend\Classes\Controller;
+    use League\Csv\AbstractCsv;
     use League\Csv\Writer as CsvWriter;
     use SplTempFileObject;
     use Martin\Forms\Models\Record;
@@ -55,8 +56,19 @@
             # CREATE CSV
             $csv = CsvWriter::createFromFileObject(new SplTempFileObject());
 
+            # CHANGE DELIMTER
+            if($delimiter = post('Record.options_delimiter')) {
+              $csv->setDelimiter(';');
+            }
+
+            # SET UTF-8 Output
+            if($utf = post('Record.options_utf')) {
+            $csv->setOutputBOM(AbstractCsv::BOM_UTF8);
+            }
+
             # CSV HEADERS
-            $headers = [e(trans('martin.forms::lang.controllers.records.columns.form_data')) . " >>>"];
+            #$headers = [e(trans('martin.forms::lang.controllers.records.columns.form_data')) . " >>>"];
+            $headers = [];
 
             # METADATA HEADERS
             if($metadata = post('Record.options_metadata')) {
@@ -68,6 +80,12 @@
                 ];
                 $headers = array_merge($meta_headers, $headers);
             }
+
+            # ADD STORED FIELDS AS HEADER ROW IN CSV
+            $filteredRecords = $records->get();
+            $recordsArray = $filteredRecords->toArray();
+            $record = $filteredRecords->first();
+            $headers = array_merge($headers, array_keys($record->form_data_arr));
 
             # ADD HEADERS
             $csv->insertOne($headers);
