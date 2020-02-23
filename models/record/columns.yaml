@@ -28,3 +28,4 @@ columns:
 
     created_at:
         label: martin.forms::lang.controllers.records.columns.created_at
+        type: datetime
