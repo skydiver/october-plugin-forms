@@ -112,3 +112,6 @@
 1.4.18:
     - export records enhancements [thanks to Fosphatic]
     - recaptcha locale fix [thanks to MaTToX3]
+1.4.19:
+    - added russian translation [thanks to FlusherDock1]
+    - sort records by date fix [thanks to mjauvin]
