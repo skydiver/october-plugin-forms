@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="Extend your form using JavaScript">
+        <meta name="description" content="Recipient Selector">
 
         <meta property="og:site_name" content="Magic Forms"/>
-        <meta property="og:title" content="JavaScript | Magic Forms"/>
-        <meta property="og:description" content="Extend your form using JavaScript"/>
-        <meta property="og:url" content="https://skydiver.github.io/october-plugin-forms/docs/advanced/javascript"/>
+        <meta property="og:title" content="Recipient Selector | Magic Forms"/>
+        <meta property="og:description" content="Recipient Selector"/>
+        <meta property="og:url" content="https://skydiver.github.io/october-plugin-forms/docs/events/recipient_selector"/>
         <meta property="og:image" content="https://skydiver.github.io/october-plugin-forms/assets/img/logo.png"/>
         <meta property="og:type" content="website"/>
 
@@ -18,7 +18,7 @@
 
                     <meta name="generator" content="tighten_jigsaw_doc">
         
-        <title>Magic Forms | JavaScript</title>
+        <title>Magic Forms | Recipient Selector</title>
 
         <link rel="home" href="https://skydiver.github.io/october-plugin-forms">
         <link rel="icon" href="https://skydiver.github.io/october-plugin-forms/favicon.ico">
@@ -329,7 +329,7 @@
             <li class="list-reset pl-4">
             
         <a href="https://skydiver.github.io/october-plugin-forms/docs/advanced/javascript"
-            class="lvl1  active font-semibold text-blue nav-menu__item hover:text-blue"
+            class="lvl1   nav-menu__item hover:text-blue"
         >
             JavaScript
         </a>
@@ -385,15 +385,46 @@
         </nav>
 
         <div class="w-full lg:w-3/5 break-words px-6 xl:px-10 py-8 bg-white sm:shadow md:rounded-lg" v-pre>
-            <h1>JavaScript</h1>
-<p>There are several JavaScript options to use.</p>
-<h2>Reset Form</h2>
-<p>Clear form after successfully form submit.</p>
-<h2>Redirect on Success</h2>
-<p>Redirect user after successfully form submit.</p>
-<h2>JS on Success / JS on Error</h2>
-<p>Run custom Javascript code after form submit.</p>
-<p><img src="https://skydiver.github.io/october-plugin-forms/assets/images/advanced_a.png" alt="custom-js-code" /></p>        </div>
+            <h1>Recipient Selector</h1>
+<h2>Introduction</h2>
+<p>Notifications emails to custom addresses depending on a select input on your form by overriding <code>mail_recipients</code> property of Magic Form component.</p>
+<h2>HTML Form</h2>
+<p>On your partial, add a select input to your form:</p>
+<pre><code class="language-html">&lt;select id="department" name="department"&gt;
+    &lt;option value="marketing"&gt;Marketing&lt;/option&gt;
+    &lt;option value="sales"&gt;Sales&lt;/option&gt;
+    &lt;option value="support"&gt;Support&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+<h2>Extend Plugin</h2>
+<p>Create your own plugin or use this as template: <a href="https://github.com/skydiver/october-plugin-formsextender">https://github.com/skydiver/october-plugin-formsextender</a></p>
+<p>Replace your boot method with:</p>
+<pre><code class="language-php">public function boot() {
+    \Event::listen('martin.forms.beforeSaveRecord', function (&amp;$formdata, $component) {
+
+        // Get department input value
+        $department = $formdata['department'];
+
+        // Get department email address
+        switch ($department) {
+            case 'marketing':
+                $email = 'marketing@company.com';
+                break;
+            case 'sales':
+                $email = 'sales@company.com';
+                break;
+            case 'support':
+                $email = 'support@company.com';
+                break;
+            default:
+                $email = 'hello@company.com';
+                break;
+        }
+
+        // Override component mail recipients
+        $component-&gt;setProperty('mail_recipients', [$email]);
+
+    });
+}</code></pre>        </div>
     </div>
 </section>
         </main>

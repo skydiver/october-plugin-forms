@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="Recipient Selector">
+        <meta name="description" content="Custom Validation">
 
         <meta property="og:site_name" content="Magic Forms"/>
-        <meta property="og:title" content="Recipient Selector | Magic Forms"/>
-        <meta property="og:description" content="Recipient Selector"/>
-        <meta property="og:url" content="https://skydiver.github.io/october-plugin-forms/docs/advanced/events_recipient_selector"/>
+        <meta property="og:title" content="Custom Validation | Magic Forms"/>
+        <meta property="og:description" content="Custom Validation"/>
+        <meta property="og:url" content="https://skydiver.github.io/october-plugin-forms/docs/events/custom_validation"/>
         <meta property="og:image" content="https://skydiver.github.io/october-plugin-forms/assets/img/logo.png"/>
         <meta property="og:type" content="website"/>
 
@@ -18,7 +18,7 @@
 
                     <meta name="generator" content="tighten_jigsaw_doc">
         
-        <title>Magic Forms | Recipient Selector</title>
+        <title>Magic Forms | Custom Validation</title>
 
         <link rel="home" href="https://skydiver.github.io/october-plugin-forms">
         <link rel="icon" href="https://skydiver.github.io/october-plugin-forms/favicon.ico">
@@ -33,7 +33,7 @@
             <!-- End Google Tag Manager -->
         
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
-        <link rel="stylesheet" href="https://skydiver.github.io/october-plugin-forms/assets/build/css/main.css?id=72e1819b649fc42cdeb9">
+        <link rel="stylesheet" href="https://skydiver.github.io/october-plugin-forms/assets/build/css/main.css?id=b9d28c5de612e4624fdf">
 
                     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
             </head>
@@ -241,7 +241,7 @@
         <a href="https://skydiver.github.io/october-plugin-forms/docs/notifications/variables"
             class="lvl1   nav-menu__item hover:text-blue"
         >
-            Using Form Variables
+            Using Form Data
         </a>
     
     </li>
@@ -346,12 +346,32 @@
     
     </li>
 
+    </ul>
+
+    </li>
+
             <li class="list-reset pl-4">
             
-        <a href="https://skydiver.github.io/october-plugin-forms/docs/advanced/events"
+        <p class="nav-menu__item text-grey-dark">Events</p>
+    
+            
+        <ul class="list-reset my-0">
+            <li class="list-reset pl-4">
+            
+        <a href="https://skydiver.github.io/october-plugin-forms/docs/events/introduction"
             class="lvl1   nav-menu__item hover:text-blue"
         >
-            Events
+            Introduction
+        </a>
+    
+    </li>
+
+            <li class="list-reset pl-4">
+            
+        <a href="https://skydiver.github.io/october-plugin-forms/docs/events/examples"
+            class="lvl1   nav-menu__item hover:text-blue"
+        >
+            Examples
         </a>
     
     </li>
@@ -364,47 +384,45 @@
 
         </nav>
 
-        <div class="w-full lg:w-3/5 break-words pb-16 lg:pl-4" v-pre>
-            <h1>Recipient Selector</h1>
+        <div class="w-full lg:w-3/5 break-words px-6 xl:px-10 py-8 bg-white sm:shadow md:rounded-lg" v-pre>
+            <h1>Custom Validation</h1>
 <h2>Introduction</h2>
-<p>Notifications emails to custom addresses depending on a select input on your form by overriding <code>mail_recipients</code> property of Magic Form component.</p>
-<h2>HTML Form</h2>
-<p>On your partial, add a select input to your form:</p>
-<pre><code class="language-html">&lt;select id="department" name="department"&gt;
-    &lt;option value="marketing"&gt;Marketing&lt;/option&gt;
-    &lt;option value="sales"&gt;Sales&lt;/option&gt;
-    &lt;option value="support"&gt;Support&lt;/option&gt;
-&lt;/select&gt;</code></pre>
+<p>Validate your form based on a third party condition, like an external api response.</p>
 <h2>Extend Plugin</h2>
 <p>Create your own plugin or use this as template: <a href="https://github.com/skydiver/october-plugin-formsextender">https://github.com/skydiver/october-plugin-formsextender</a></p>
+<p>First, create a new partial on your theme.</p>
+<p>This file will be used to display your custom error.</p>
+<p>Let's call <code>ajax_error.htm</code></p>
+<pre><code class="language-html">&lt;div class="alert alert-danger alert-dismissible" role="alert"&gt;
+    &lt;button type="button" class="close" data-dismiss="alert" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+    &lt;strong&gt;Something went wrong!&lt;/strong&gt;
+&lt;/div&gt;</code></pre>
+<p>Now we need to add our custom logic to thrown an exception and display our custom error:</p>
 <p>Replace your boot method with:</p>
 <pre><code class="language-php">public function boot() {
     \Event::listen('martin.forms.beforeSaveRecord', function (&amp;$formdata, $component) {
 
-        // Get department input value
-        $department = $formdata['department'];
+        // replace with your own logic
+        $somethingWentWrong = true;
 
-        // Get department email address
-        switch ($department) {
-            case 'marketing':
-                $email = 'marketing@company.com';
-                break;
-            case 'sales':
-                $email = 'sales@company.com';
-                break;
-            case 'support':
-                $email = 'support@company.com';
-                break;
-            default:
-                $email = 'hello@company.com';
-                break;
+        if ($somethingWentWrong) {
+            $controller = \App::make(\Cms\Classes\Controller::class);
+            throw new \AjaxException([
+                '#genericForm_forms_flash' =&gt; $controller-&gt;renderPartial(
+                    '_ajax_error.htm',
+                    ['remoteError' =&gt; 'something failed]
+                )
+            ]);
         }
 
-        // Override component mail recipients
-        $component-&gt;setProperty('mail_recipients', [$email]);
-
     });
-}</code></pre>        </div>
+}</code></pre>
+<p>Notes:</p>
+<ul>
+<li><code>genericForm</code> is your component alias</li>
+<li>underscore on <code>_ajax_error.htm</code> it's not an error, file name needs to be prefixed using <code>_</code></li>
+<li>second argument of <code>renderPartial</code> it's an array with custom values passed to the partial</li>
+</ul>        </div>
     </div>
 </section>
         </main>
@@ -443,7 +461,7 @@
         <footer class="bg-white text-center text-sm mt-12 py-4" role="contentinfo">
             <ul class="flex flex-col md:flex-row justify-center list-reset">
                 <li class="md:mr-2">
-                    &copy; <a href="https://github.com/skydiver/" title="skydiver">skydiver</a> 2019.
+                    &copy; <a href="https://github.com/skydiver/" title="skydiver">skydiver</a> 2020.
                 </li>
                 <li>
                     Built with <a href="http://jigsaw.tighten.co" title="Jigsaw by Tighten">Jigsaw</a>

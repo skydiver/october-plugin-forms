@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="Using form variables on email notifications">
+        <meta name="description" content="Using form data on emails">
 
         <meta property="og:site_name" content="Magic Forms"/>
-        <meta property="og:title" content="Using Form Variables | Magic Forms"/>
-        <meta property="og:description" content="Using form variables on email notifications"/>
+        <meta property="og:title" content="Using Form Data | Magic Forms"/>
+        <meta property="og:description" content="Using form data on emails"/>
         <meta property="og:url" content="https://skydiver.github.io/october-plugin-forms/docs/notifications/variables"/>
         <meta property="og:image" content="https://skydiver.github.io/october-plugin-forms/assets/img/logo.png"/>
         <meta property="og:type" content="website"/>
@@ -18,7 +18,7 @@
 
                     <meta name="generator" content="tighten_jigsaw_doc">
         
-        <title>Magic Forms | Using Form Variables</title>
+        <title>Magic Forms | Using Form Data</title>
 
         <link rel="home" href="https://skydiver.github.io/october-plugin-forms">
         <link rel="icon" href="https://skydiver.github.io/october-plugin-forms/favicon.ico">
@@ -33,7 +33,7 @@
             <!-- End Google Tag Manager -->
         
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
-        <link rel="stylesheet" href="https://skydiver.github.io/october-plugin-forms/assets/build/css/main.css?id=72e1819b649fc42cdeb9">
+        <link rel="stylesheet" href="https://skydiver.github.io/october-plugin-forms/assets/build/css/main.css?id=b9d28c5de612e4624fdf">
 
                     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
             </head>
@@ -241,7 +241,7 @@
         <a href="https://skydiver.github.io/october-plugin-forms/docs/notifications/variables"
             class="lvl1  active font-semibold text-blue nav-menu__item hover:text-blue"
         >
-            Using Form Variables
+            Using Form Data
         </a>
     
     </li>
@@ -346,12 +346,32 @@
     
     </li>
 
+    </ul>
+
+    </li>
+
             <li class="list-reset pl-4">
             
-        <a href="https://skydiver.github.io/october-plugin-forms/docs/advanced/events"
+        <p class="nav-menu__item text-grey-dark">Events</p>
+    
+            
+        <ul class="list-reset my-0">
+            <li class="list-reset pl-4">
+            
+        <a href="https://skydiver.github.io/october-plugin-forms/docs/events/introduction"
             class="lvl1   nav-menu__item hover:text-blue"
         >
-            Events
+            Introduction
+        </a>
+    
+    </li>
+
+            <li class="list-reset pl-4">
+            
+        <a href="https://skydiver.github.io/october-plugin-forms/docs/events/examples"
+            class="lvl1   nav-menu__item hover:text-blue"
+        >
+            Examples
         </a>
     
     </li>
@@ -364,13 +384,25 @@
 
         </nav>
 
-        <div class="w-full lg:w-3/5 break-words pb-16 lg:pl-4" v-pre>
-            <h1>Using Form Variables</h1>
-<p>It's possible to use variables from the submitted form on your notification and auto-response subject.</p>
+        <div class="w-full lg:w-3/5 break-words px-6 xl:px-10 py-8 bg-white sm:shadow md:rounded-lg" v-pre>
+            <h1>Using Form Data</h1>
+<p>It's possible to use form data on your emails subject and templates.</p>
+<h2>Email Templates</h2>
+<ol>
+<li>Goto Settings</li>
+<li>Click on &quot;Mail templates&quot;</li>
+<li>Select the Magic Form template you wanna change</li>
+<li>On your email content you can use the following variables:</li>
+</ol>
+<pre><code>{{ data.xxx }}       # where "xxx" is the name of an existing form field
+{{ data.full_name }} # the value of the field with attribute name="full_name"</code></pre>
+<img class="border-2 border-grey-light rounded" src="https://skydiver.github.io/october-plugin-forms/assets/images/variables_a.png" alt="Form Variables" />
+<hr />
+<h2>Emails subject</h2>
 <ol>
 <li>Goto your page or partial</li>
 <li>Click on Magic Form component</li>
-<li>Expand &quot;Notification Settings&quot; or &quot;Auto-Response Settings&quot;</li>
+<li>Expand &quot;Notifications Settings&quot; or &quot;Auto-Response Settings&quot;</li>
 <li>On &quot;Subject&quot;, you can use the following variables:</li>
 </ol>
 <pre><code>{{ record.id }}      # the record id stored on the database
@@ -385,7 +417,6 @@
 <li><code>Form submitted from IP: {{ record.ip }}</code></li>
 <li><code>Contact from: {{ form.name }} {{ form.last }}</code></li>
 </ul>
-<hr />
 <p><img src="https://skydiver.github.io/october-plugin-forms/assets/images/notifications_a.png" alt="Form Variables" /></p>        </div>
     </div>
 </section>
@@ -425,7 +456,7 @@
         <footer class="bg-white text-center text-sm mt-12 py-4" role="contentinfo">
             <ul class="flex flex-col md:flex-row justify-center list-reset">
                 <li class="md:mr-2">
-                    &copy; <a href="https://github.com/skydiver/" title="skydiver">skydiver</a> 2019.
+                    &copy; <a href="https://github.com/skydiver/" title="skydiver">skydiver</a> 2020.
                 </li>
                 <li>
                     Built with <a href="http://jigsaw.tighten.co" title="Jigsaw by Tighten">Jigsaw</a>
