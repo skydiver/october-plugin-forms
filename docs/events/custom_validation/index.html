@@ -395,7 +395,7 @@
 <p>Let's call <code>ajax_error.htm</code></p>
 <pre><code class="language-html">&lt;div class="alert alert-danger alert-dismissible" role="alert"&gt;
     &lt;button type="button" class="close" data-dismiss="alert" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
-    &lt;strong&gt;Something went wrong!&lt;/strong&gt;
+    &lt;strong&gt;{{ customError }}&lt;/strong&gt;
 &lt;/div&gt;</code></pre>
 <p>Now we need to add our custom logic to thrown an exception and display our custom error:</p>
 <p>Replace your boot method with:</p>
@@ -410,7 +410,7 @@
             throw new \AjaxException([
                 '#genericForm_forms_flash' =&gt; $controller-&gt;renderPartial(
                     '_ajax_error.htm',
-                    ['remoteError' =&gt; 'something failed]
+                    ['customError' =&gt; 'Something went wrong!']
                 )
             ]);
         }
