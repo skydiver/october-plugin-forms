@@ -228,7 +228,11 @@ trait SharedProperties {
                 'title'             => 'martin.forms::lang.components.shared.recaptcha_size.title',
                 'description'       => 'martin.forms::lang.components.shared.recaptcha_size.description',
                 'type'              => 'dropdown',
-                'options'           => ['normal' => 'martin.forms::lang.components.shared.recaptcha_size.normal', 'compact' => 'martin.forms::lang.components.shared.recaptcha_size.compact'],
+                'options'           => [
+                    'normal' => 'martin.forms::lang.components.shared.recaptcha_size.normal',
+                    'compact' => 'martin.forms::lang.components.shared.recaptcha_size.compact',
+                    'invisible' => 'martin.forms::lang.components.shared.recaptcha_size.invisible',
+                ],
                 'default'           => 'normal',
                 'group'             => 'martin.forms::lang.components.shared.group_recaptcha',
                 'showExternalParam' => false

@@ -99,7 +99,7 @@ abstract class MagicForm extends ComponentBase {
         }
 
         // ADD reCAPTCHA VALIDATION
-        if ($this->isReCaptchaEnabled()) {
+        if ($this->isReCaptchaEnabled() && $this->property('recaptcha_size') != 'invisible') {
             $rules['g-recaptcha-response'] = 'required';
         }
 
