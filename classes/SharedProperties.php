@@ -244,6 +244,13 @@ trait SharedProperties {
                 'group'             => 'martin.forms::lang.components.shared.group_advanced',
                 'showExternalParam' => false
             ],
+            'emails_date_format' => [
+                'title'             => 'martin.forms::lang.components.shared.emails_date_format.title',
+                'description'       => 'martin.forms::lang.components.shared.emails_date_format.description',
+                'default'           => 'Y-m-d',
+                'group'             => 'martin.forms::lang.components.shared.group_advanced',
+                'showExternalParam' => false
+            ],
         ];
     }
 
