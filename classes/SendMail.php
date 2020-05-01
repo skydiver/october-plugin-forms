@@ -35,10 +35,13 @@ class SendMail {
             // CHECK FOR CUSTOM SUBJECT
             if (isset($properties['mail_subject'])) {
 
+                // set date format
+                $dateFormat = $properties['emails_date_format'] ?? 'Y-m-d';
+
                 // REPLACE RECORD TOKENS IN SUBJECT
                 $properties['mail_subject'] = BackendHelpers::replaceToken('record.id', $data['id'], $properties['mail_subject']);
                 $properties['mail_subject'] = BackendHelpers::replaceToken('record.ip', $data['ip'], $properties['mail_subject']);
-                $properties['mail_subject'] = BackendHelpers::replaceToken('record.date', date('Y-m-d'), $properties['mail_subject']);
+                $properties['mail_subject'] = BackendHelpers::replaceToken('record.date', date($dateFormat), $properties['mail_subject']);
 
                 // REPLACE FORM FIELDS TOKENS IN SUBJECT
                 foreach ($data['data'] as $key => $value) {
@@ -84,7 +87,7 @@ class SendMail {
     }
 
     public static function sendAutoResponse($properties, $post, $record) {
-        
+
         $data = [
             'id'   => $record->id,
             'data' => $post,
@@ -95,10 +98,13 @@ class SendMail {
         // CHECK FOR CUSTOM SUBJECT
         if (isset($properties['mail_resp_subject'])) {
 
+            // set date format
+            $dateFormat = $properties['emails_date_format'] ?? 'Y-m-d';
+
             // REPLACE RECORD TOKENS IN SUBJECT
             $properties['mail_resp_subject'] = BackendHelpers::replaceToken('record.id', $data['id'], $properties['mail_resp_subject']);
             $properties['mail_resp_subject'] = BackendHelpers::replaceToken('record.ip', $data['ip'], $properties['mail_resp_subject']);
-            $properties['mail_resp_subject'] = BackendHelpers::replaceToken('record.date', date('Y-m-d'), $properties['mail_resp_subject']);
+            $properties['mail_resp_subject'] = BackendHelpers::replaceToken('record.date', date($dateFormat), $properties['mail_resp_subject']);
 
             // REPLACE FORM FIELDS TOKENS IN SUBJECT
             foreach ($data['data'] as $key => $value) {
