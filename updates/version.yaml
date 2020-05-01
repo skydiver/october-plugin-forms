@@ -115,3 +115,6 @@
 1.4.19:
     - added russian translation [thanks to FlusherDock1]
     - sort records by date fix [thanks to mjauvin]
+1.4.20:
+    - added invisible reCAPTCHA [thanks to mjauvin]
+    - new option to set custom date format on emails subject
