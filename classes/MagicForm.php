@@ -2,7 +2,7 @@
 
 namespace Martin\Forms\Classes;
 
-use AjaxException, Lang, Redirect, Request, Session, Validator;
+use AjaxException, Lang, Redirect, Request, Session, Validator, Config;;
 use Cms\Classes\ComponentBase;
 use Illuminate\Support\Facades\Event;
 use October\Rain\Exception\ApplicationException;
@@ -50,7 +50,7 @@ abstract class MagicForm extends ComponentBase {
         $flash_partial = $this->property('messages_partial', '@flash.htm');
 
         // CSRF CHECK
-        if (Session::token() != post('_token')) {
+        if (Config::get('cms.enableCsrfProtection') && (Session::token() != post('_token'))) {
             throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial($flash_partial, [
                 'status'  => 'error',
                 'type'    => 'danger',
