@@ -2,8 +2,9 @@
 
 namespace Martin\Forms\Classes\FilePond;
 
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Crypt;
 
 class FilePond
 {
@@ -31,11 +32,24 @@ class FilePond
         }
 
         $filePath = Crypt::decryptString($serverId);
+        $tempPath = $this->getTempPath();
 
-        if (!Str::startsWith($filePath, config('filepond.temporary_files_path'))) {
+        if (!Str::startsWith($filePath, $tempPath)) {
             throw new InvalidPathException();
         }
 
         return $filePath;
+    }
+
+    public function getTempPath()
+    {
+        $defaultPath = temp_path('magic-forms-temp');
+
+        if (File::exists($defaultPath)) {
+            return $defaultPath;
+        }
+
+        File::makeDirectory($defaultPath);
+        return $defaultPath;
     }
 }

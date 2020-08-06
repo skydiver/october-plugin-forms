@@ -2,7 +2,7 @@
 
 namespace Martin\Forms\Classes\FilePond;
 
-class InvalidPathException extends \InvalidArgumentException implements LaravelFilepondException
+class InvalidPathException extends \InvalidArgumentException implements LaravelFilePondException
 {
     /**
      * @param string         $message

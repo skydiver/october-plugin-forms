@@ -14,7 +14,7 @@ class FilePondController extends BaseController
      */
     private $filepond;
 
-    public function __construct(Filepond $filepond)
+    public function __construct(FilePond $filepond)
     {
         $this->filepond = $filepond;
     }
@@ -38,8 +38,7 @@ class FilePondController extends BaseController
             ]);
         }
 
-        $tempPath = config('filepond.temporary_files_path');
-
+        $tempPath = $this->filepond->getTempPath();
         $filePath = @tempnam($tempPath, 'laravel-filepond');
         $filePath .= '.' . $file->getClientOriginalExtension();
 
@@ -66,6 +65,7 @@ class FilePondController extends BaseController
     public function delete(Request $request)
     {
         $filePath = $this->filepond->getPathFromServerId($request->getContent());
+
         if (unlink($filePath)) {
             return Response::make('', 200, [
                 'Content-Type' => 'text/plain',
