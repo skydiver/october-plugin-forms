@@ -28,11 +28,12 @@ class FilePondController extends BaseController
      */
     public function upload(Request $request)
     {
-        $input = $request->file(config('filepond.input_name'));
+        $field = $request->headers->get('FILEPOND-FIELD');
+        $input = $request->file($field);
         $file = is_array($input) ? $input[0] : $input;
 
         if ($input === null) {
-            return Response::make(config('filepond.input_name') . ' is required', 422, [
+            return Response::make($field . ' is required', 422, [
                 'Content-Type' => 'text/plain',
             ]);
         }
