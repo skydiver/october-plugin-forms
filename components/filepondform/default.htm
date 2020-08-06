@@ -56,14 +56,13 @@
 <script>
     const inputElement = document.querySelector('input[type="file"]');
     const pond = FilePond.create( inputElement );
-
     FilePond.setOptions({
         server: {
-            url: '/filepond/api',
+            url: '/martin/forms',
             process: '/process',
             revert: '/process',
             headers: {
-            'X-CSRF-TOKEN': '{{ form_token() }}'
+                'X-CSRF-TOKEN': '{{ form_token() }}'
             }
         }
     });
