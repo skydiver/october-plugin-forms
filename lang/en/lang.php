@@ -63,13 +63,17 @@
                 'name'        => 'Generic AJAX Form',
                 'description' => 'By default renders a generic form; override component HTML with your custom fields.',
             ],
-            'upload_form' => [
-                'name'        => 'Upload AJAX Form [BETA]',
-                'description' => 'Shows how to implement file uploads on your form.',
-            ],
             'empty_form' => [
                 'name'        => 'Empty AJAX Form',
                 'description' => 'Create a empty template for your custom form; override component HTML.',
+            ],
+            'filepond_form' => [
+                'name'        => 'FilePond Form [BETA]',
+                'description' => 'Upload files using FilePond.',
+            ],
+            'upload_form' => [
+                'name'        => 'Upload AJAX Form [BETA]',
+                'description' => 'Shows how to implement file uploads on your form.',
             ],
             'shared' => [
                 'csrf_error'        => 'Form session expired! Please refresh the page.',
