@@ -2,14 +2,17 @@
 
 namespace Martin\Forms\Classes;
 
+use AjaxException;
 use Lang;
-use Config;
+use Redirect;
 use Request;
 use Session;
-use Redirect;
 use Validator;
-use AjaxException;
 use Cms\Classes\ComponentBase;
+use Illuminate\Support\Facades\Event;
+use October\Rain\Exception\ValidationException;
+use Martin\Forms\Classes\BackendHelpers;
+use Martin\Forms\Classes\SendMail;
 use Martin\Forms\Models\Record;
 use Martin\Forms\Models\Settings;
 use Martin\Forms\Classes\SendMail;
@@ -23,8 +26,8 @@ abstract class MagicForm extends ComponentBase
     use \Martin\Forms\Classes\ReCaptcha;
     use \Martin\Forms\Classes\SharedProperties;
 
-    public function onRun() {
-
+    public function onRun()
+    {
         $this->page['recaptcha_enabled']       = $this->isReCaptchaEnabled();
         $this->page['recaptcha_misconfigured'] = $this->isReCaptchaMisconfigured();
 
@@ -39,18 +42,18 @@ abstract class MagicForm extends ComponentBase
         if ($this->property('inline_errors') == 'display') {
             $this->addJs('assets/js/inline-errors.js');
         }
-
     }
 
-    public function settings() {
+    public function settings()
+    {
         return [
             'recaptcha_site_key'   => Settings::get('recaptcha_site_key'),
             'recaptcha_secret_key' => Settings::get('recaptcha_secret_key'),
         ];
     }
 
-    public function onFormSubmit() {
-
+    public function onFormSubmit()
+    {
         // FLASH PARTIAL
         $flash_partial = $this->property('messages_partial', '@flash.htm');
 
@@ -141,7 +144,6 @@ abstract class MagicForm extends ComponentBase
                     'jscript' => $this->property('js_on_error'),
                 ]));
             }
-
         }
 
         // IF FIRST VALIDATION IS OK, VALIDATE CAPTCHA vs GOOGLE
@@ -170,9 +172,7 @@ abstract class MagicForm extends ComponentBase
                         'jscript' => $this->property('js_on_error'),
                     ]));
                 }
-
             }
-
         }
 
         // REMOVE EXTRA FIELDS FROM STORED DATA
@@ -192,7 +192,7 @@ abstract class MagicForm extends ComponentBase
         $record->created_at = date('Y-m-d H:i:s');
 
         // SAVE RECORD TO DATABASE
-        if (! $this->property('skip_database')) {
+        if (!$this->property('skip_database')) {
             $record->form_data = json_encode($post, JSON_UNESCAPED_UNICODE);
             if ($this->property('group') != '') {
                 $record->group = $this->property('group');
@@ -233,11 +233,10 @@ abstract class MagicForm extends ComponentBase
             'content' => $message,
             'jscript' => $this->prepareJavaScript(),
         ])];
-
     }
 
-    private function _exceptionResponse($validator, $params) {
-
+    private function _exceptionResponse($validator, $params)
+    {
         // FLASH PARTIAL
         $flash_partial = $this->property('messages_partial', '@flash.htm');
 
@@ -250,7 +249,6 @@ abstract class MagicForm extends ComponentBase
         }
 
         return $response;
-
     }
 
     private function prepareJavaScript()
