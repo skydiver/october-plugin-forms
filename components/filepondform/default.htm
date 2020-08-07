@@ -1,6 +1,14 @@
 <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
 <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 
+{% if __SELF__.property('uploader_enable') == 0 %}
+    <div style="margin-top: 2rem; padding: 10px; color:#a94442; background-color:#f2dede; border:solid 1px #ebccd1; border-radius:4px;">
+        <h5><strong>Warning</strong></h5>
+        <h6>Uploads are disabled.</h6>
+        <h6>You need to explicitly enable this option on the component (this is a security measure).</h6>
+    </div>
+{% endif %}
+
 {{ form_ajax(__SELF__ ~ '::onFormSubmit') }}
 
     <div id="{{ __SELF__ }}_forms_flash"></div>
@@ -53,6 +61,7 @@
 
 {{ form_close() }}
 
+{% if __SELF__.property('uploader_enable') == 1 %}
 <script>
     const inputElement = document.querySelector('input[type="file"]');
     const pond = FilePond.create(inputElement);
@@ -69,3 +78,4 @@
         }
     });
 </script>
+{% endif %}
