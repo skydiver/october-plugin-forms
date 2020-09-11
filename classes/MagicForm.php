@@ -2,18 +2,23 @@
 
 namespace Martin\Forms\Classes;
 
-use AjaxException, Lang, Redirect, Request, Session, Validator, Config;
+use Lang;
+use Config;
+use Request;
+use Session;
+use Redirect;
+use Validator;
+use AjaxException;
 use Cms\Classes\ComponentBase;
-use Illuminate\Support\Facades\Event;
-use October\Rain\Exception\ApplicationException;
-use October\Rain\Exception\ValidationException;
-use October\Rain\Support\Facades\Flash;
-use Martin\Forms\Classes\BackendHelpers;
-use Martin\Forms\Classes\SendMail;
 use Martin\Forms\Models\Record;
 use Martin\Forms\Models\Settings;
+use Martin\Forms\Classes\SendMail;
+use Illuminate\Support\Facades\Event;
+use Martin\Forms\Classes\BackendHelpers;
+use October\Rain\Exception\ValidationException;
 
-abstract class MagicForm extends ComponentBase {
+abstract class MagicForm extends ComponentBase
+{
 
     use \Martin\Forms\Classes\ReCaptcha;
     use \Martin\Forms\Classes\SharedProperties;
