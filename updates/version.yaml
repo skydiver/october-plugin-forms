@@ -118,3 +118,7 @@
 1.4.20:
     - added invisible reCAPTCHA [thanks to mjauvin]
     - new option to set custom date format on emails subject
+1.5.0:
+    - fixes related to October Build 469 [thanks to mjauvin]
+    - fix when CSRF check is disabled [thanks to rechik]
+    - php linting and cleanup
