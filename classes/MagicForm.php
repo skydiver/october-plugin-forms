@@ -259,14 +259,14 @@ abstract class MagicForm extends ComponentBase {
 
         /* RECAPTCHA JS */
         if ($this->isReCaptchaEnabled()) {
-            $code .= $content = $this->renderPartial('@js/recaptcha.js');
+            $code .= $content = $this->renderPartial('@js/recaptcha.htm');
         }
 
         /* RESET FORM JS */
         if ($this->property('reset_form')) {
-            $code .= $content = $this->renderPartial('@js/reset-form.js', ['id' => '#' . $this->alias . '_forms_flash']);
+            $code .= $content = $this->renderPartial('@js/reset-form.htm', ['id' => '#' . $this->alias . '_forms_flash']);
             if ($this->property('uploader_enable')) {
-                $code .= $content = $this->renderPartial('@js/reset-uploader.js', ['id' => $this->alias]);
+                $code .= $content = $this->renderPartial('@js/reset-uploader.htm', ['id' => $this->alias]);
             }
         }
 
