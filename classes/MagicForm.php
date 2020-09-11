@@ -183,7 +183,7 @@ abstract class MagicForm extends ComponentBase {
         }
 
         $record = new Record;
-        $record->ip        = $this->_getIP();
+        $record->ip        = $this->getIP();
         $record->created_at = date('Y-m-d H:i:s');
 
         // SAVE RECORD TO DATABASE
@@ -277,15 +277,19 @@ abstract class MagicForm extends ComponentBase {
         return $code;
     }
 
-    private function _getIP() {
+    private function getIP()
+    {
         if ($this->property('anonymize_ip') == 'full') {
-            $address = '(Not stored)';
-        } else if ($this->property('anonymize_ip') == 'partial') {
-            $address = BackendHelpers::anonymizeIPv4(Request::getClientIp());
-        } else {
-            $address = Request::getClientIp();
+            return '(Not stored)';
         }
-        return $address;
+
+        $ip = Request::getClientIp();
+
+        if ($this->property('anonymize_ip') == 'partial') {
+            return BackendHelpers::anonymizeIPv4($ip);
+        }
+
+        return $ip;
     }
 
     private function array_map_recursive($callback, $array)
@@ -296,5 +300,4 @@ abstract class MagicForm extends ComponentBase {
 
         return array_map($func, $array);
     }
-
 }
