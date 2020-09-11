@@ -2,7 +2,7 @@
 
 namespace Martin\Forms\Classes;
 
-use AjaxException, Lang, Redirect, Request, Session, Validator, Config;;
+use AjaxException, Lang, Redirect, Request, Session, Validator, Config;
 use Cms\Classes\ComponentBase;
 use Illuminate\Support\Facades\Event;
 use October\Rain\Exception\ApplicationException;
@@ -226,7 +226,7 @@ abstract class MagicForm extends ComponentBase {
             'status'  => 'success',
             'type'    => 'success',
             'content' => $message,
-            'jscript' => $this->_prepareJavaScript(),
+            'jscript' => $this->prepareJavaScript(),
         ])];
 
     }
@@ -248,8 +248,8 @@ abstract class MagicForm extends ComponentBase {
 
     }
 
-    private function _prepareJavaScript() {
-
+    private function prepareJavaScript()
+    {
         $code = false;
 
         /* SUCCESS JS */
@@ -259,19 +259,22 @@ abstract class MagicForm extends ComponentBase {
 
         /* RECAPTCHA JS */
         if ($this->isReCaptchaEnabled()) {
-            $code .= $content = $this->renderPartial('@js/recaptcha.htm');
+            $code .= $this->renderPartial('@js/recaptcha.htm');
         }
 
         /* RESET FORM JS */
         if ($this->property('reset_form')) {
-            $code .= $content = $this->renderPartial('@js/reset-form.htm', ['id' => '#' . $this->alias . '_forms_flash']);
-            if ($this->property('uploader_enable')) {
-                $code .= $content = $this->renderPartial('@js/reset-uploader.htm', ['id' => $this->alias]);
-            }
+            $params = ['id' => '#' . $this->alias . '_forms_flash'];
+            $code .= $this->renderPartial('@js/reset-form.htm', $params);
+        }
+
+        /* RESET UPLOAD FORM */
+        if ($this->property('reset_form') && $this->property('uploader_enable')) {
+            $params = ['id' => $this->alias];
+            $code .= $this->renderPartial('@js/reset-uploader.htm', $params);
         }
 
         return $code;
-
     }
 
     private function _getIP() {
@@ -295,5 +298,3 @@ abstract class MagicForm extends ComponentBase {
     }
 
 }
-
-?>
