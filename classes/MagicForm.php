@@ -2,18 +2,23 @@
 
 namespace Martin\Forms\Classes;
 
-use AjaxException, Lang, Redirect, Request, Session, Validator;
+use Lang;
+use Config;
+use Request;
+use Session;
+use Redirect;
+use Validator;
+use AjaxException;
 use Cms\Classes\ComponentBase;
-use Illuminate\Support\Facades\Event;
-use October\Rain\Exception\ApplicationException;
-use October\Rain\Exception\ValidationException;
-use October\Rain\Support\Facades\Flash;
-use Martin\Forms\Classes\BackendHelpers;
-use Martin\Forms\Classes\SendMail;
 use Martin\Forms\Models\Record;
 use Martin\Forms\Models\Settings;
+use Martin\Forms\Classes\SendMail;
+use Illuminate\Support\Facades\Event;
+use Martin\Forms\Classes\BackendHelpers;
+use October\Rain\Exception\ValidationException;
 
-abstract class MagicForm extends ComponentBase {
+abstract class MagicForm extends ComponentBase
+{
 
     use \Martin\Forms\Classes\ReCaptcha;
     use \Martin\Forms\Classes\SharedProperties;
@@ -50,7 +55,7 @@ abstract class MagicForm extends ComponentBase {
         $flash_partial = $this->property('messages_partial', '@flash.htm');
 
         // CSRF CHECK
-        if (Session::token() != post('_token')) {
+        if (Config::get('cms.enableCsrfProtection') && (Session::token() != post('_token'))) {
             throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial($flash_partial, [
                 'status'  => 'error',
                 'type'    => 'danger',
@@ -183,7 +188,7 @@ abstract class MagicForm extends ComponentBase {
         }
 
         $record = new Record;
-        $record->ip        = $this->_getIP();
+        $record->ip        = $this->getIP();
         $record->created_at = date('Y-m-d H:i:s');
 
         // SAVE RECORD TO DATABASE
@@ -226,7 +231,7 @@ abstract class MagicForm extends ComponentBase {
             'status'  => 'success',
             'type'    => 'success',
             'content' => $message,
-            'jscript' => $this->_prepareJavaScript(),
+            'jscript' => $this->prepareJavaScript(),
         ])];
 
     }
@@ -248,8 +253,8 @@ abstract class MagicForm extends ComponentBase {
 
     }
 
-    private function _prepareJavaScript() {
-
+    private function prepareJavaScript()
+    {
         $code = false;
 
         /* SUCCESS JS */
@@ -259,30 +264,37 @@ abstract class MagicForm extends ComponentBase {
 
         /* RECAPTCHA JS */
         if ($this->isReCaptchaEnabled()) {
-            $code .= $content = $this->renderPartial('@js/recaptcha.js');
+            $code .= $this->renderPartial('@js/recaptcha.htm');
         }
 
         /* RESET FORM JS */
         if ($this->property('reset_form')) {
-            $code .= $content = $this->renderPartial('@js/reset-form.js', ['id' => '#' . $this->alias . '_forms_flash']);
-            if ($this->property('uploader_enable')) {
-                $code .= $content = $this->renderPartial('@js/reset-uploader.js', ['id' => $this->alias]);
-            }
+            $params = ['id' => '#' . $this->alias . '_forms_flash'];
+            $code .= $this->renderPartial('@js/reset-form.htm', $params);
+        }
+
+        /* RESET UPLOAD FORM */
+        if ($this->property('reset_form') && $this->property('uploader_enable')) {
+            $params = ['id' => $this->alias];
+            $code .= $this->renderPartial('@js/reset-uploader.htm', $params);
         }
 
         return $code;
-
     }
 
-    private function _getIP() {
+    private function getIP()
+    {
         if ($this->property('anonymize_ip') == 'full') {
-            $address = '(Not stored)';
-        } else if ($this->property('anonymize_ip') == 'partial') {
-            $address = BackendHelpers::anonymizeIPv4(Request::getClientIp());
-        } else {
-            $address = Request::getClientIp();
+            return '(Not stored)';
         }
-        return $address;
+
+        $ip = Request::getClientIp();
+
+        if ($this->property('anonymize_ip') == 'partial') {
+            return BackendHelpers::anonymizeIPv4($ip);
+        }
+
+        return $ip;
     }
 
     private function array_map_recursive($callback, $array)
@@ -293,7 +305,4 @@ abstract class MagicForm extends ComponentBase {
 
         return array_map($func, $array);
     }
-
 }
-
-?>
