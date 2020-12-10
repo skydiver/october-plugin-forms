@@ -122,3 +122,6 @@
     - fixes related to October Build 469 [thanks to mjauvin]
     - fix when CSRF check is disabled [thanks to rechik]
     - php linting and cleanup
+1.5.1:
+    - email templates improvemenrs [thanks to mjauvin]
+    - added german translation [thanks to Fosphatic]
