@@ -1,13 +1,10 @@
 ---
-name: Issue template
-about: Notes before opening an issue
-title: ''
-labels: ''
-assignees: ''
+name: Bug report
+about: Create a bug report for Magic Forms
 
 ---
 
-Use issues to report errors / bugs.
+Use issues to report errors / bugs only.
 
 Do you have questions?
 * Read the [docs](https://skydiver.github.io/october-plugin-forms/docs/introduction/)
