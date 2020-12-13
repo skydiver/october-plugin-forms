@@ -2,6 +2,7 @@
 
 namespace Martin\Forms\Classes;
 
+use App;
 use AjaxException;
 use Lang;
 use Redirect;
@@ -12,6 +13,7 @@ use Cms\Classes\ComponentBase;
 use Illuminate\Support\Facades\Event;
 use October\Rain\Exception\ValidationException;
 use Martin\Forms\Classes\BackendHelpers;
+use Martin\Forms\Classes\FilePond\FilePond;
 use Martin\Forms\Classes\SendMail;
 use Martin\Forms\Models\Record;
 use Martin\Forms\Models\Settings;
@@ -176,7 +178,7 @@ abstract class MagicForm extends ComponentBase
         }
 
         // REMOVE EXTRA FIELDS FROM STORED DATA
-        unset($post['_token'], $post['g-recaptcha-response'], $post['_session_key'], $post['_uploader']);
+        unset($post['_token'], $post['g-recaptcha-response'], $post['_session_key'], $post['_uploader'], $post['files']);
 
         // FIRE BEFORE SAVE EVENT
         Event::fire('martin.forms.beforeSaveRecord', [&$post, $this]);
@@ -197,6 +199,10 @@ abstract class MagicForm extends ComponentBase
             if ($this->property('group') != '') {
                 $record->group = $this->property('group');
             }
+
+            // attach files
+            $this->attachFiles($record);
+
             $record->save(null, post('_session_key'));
         }
 
@@ -302,5 +308,23 @@ abstract class MagicForm extends ComponentBase
         };
 
         return array_map($func, $array);
+    }
+
+    private function attachFiles(Record $record)
+    {
+        $files = post('files', null);
+
+        if (!$files) {
+            return;
+        }
+
+        foreach ($files as $file) {
+            $filepond = App::make(FilePond::class);
+            $filePath = $filepond->getPathFromServerId($file);
+
+            $record->files()->create([
+                'data' => $filePath
+            ], post('_session_key'));
+        }
     }
 }

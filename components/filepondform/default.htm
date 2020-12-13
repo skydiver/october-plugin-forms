@@ -48,7 +48,7 @@
 
     <div class="form-group">
         <h4>Upload your resume</h4>
-        <input type="file" name="resume">
+        <input type="file" name="files" multiple>
     </div>
 
     <hr>
@@ -67,6 +67,7 @@
     const pond = FilePond.create(inputElement);
 
     FilePond.setOptions({
+        name: 'files[]',
         server: {
             url: '/martin/forms',
             process: '/process',
