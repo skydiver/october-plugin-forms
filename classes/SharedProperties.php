@@ -4,9 +4,10 @@ namespace Martin\Forms\Classes;
 
 use Lang;
 
-trait SharedProperties {
-
-    public function defineProperties() {
+trait SharedProperties
+{
+    public function defineProperties()
+    {
         return [
             'group' => [
                 'title'             => 'martin.forms::lang.components.shared.group.title',
@@ -253,7 +254,4 @@ trait SharedProperties {
             ],
         ];
     }
-
 }
-
-?>

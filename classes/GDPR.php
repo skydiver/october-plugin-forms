@@ -3,19 +3,16 @@
 namespace Martin\Forms\Classes;
 
 use Flash;
-use Request;
+use Carbon\Carbon;
 use Martin\Forms\Models\Record;
 use Martin\Forms\Models\Settings;
-use Carbon\Carbon;
-use October\Rain\Exception\ApplicationException;
-use October\Rain\Exception\ValidationException;
 
-class GDPR {
-
-    public static function cleanRecords() {
-
+class GDPR
+{
+    public static function cleanRecords()
+    {
         $gdpr_enable = Settings::get('gdpr_enable', false);
-        $gdpr_days   = Settings::get('gdpr_days'  , false);
+        $gdpr_days   = Settings::get('gdpr_days', false);
 
         if (!$gdpr_enable) {
             Flash::error(e(trans('martin.forms::lang.classes.GDPR.alert_gdpr_disabled')));
@@ -29,9 +26,5 @@ class GDPR {
         }
 
         Flash::error(e(trans('martin.forms::lang.classes.GDPR.alert_invalid_gdpr')));
-
     }
-
 }
-
-?>

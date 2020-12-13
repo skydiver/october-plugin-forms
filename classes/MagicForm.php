@@ -134,7 +134,7 @@ abstract class MagicForm extends ComponentBase
             if ($this->property('inline_errors') == 'display') {
                 throw new ValidationException($validator);
             } else {
-                throw new AjaxException($this->_exceptionResponse($validator, [
+                throw new AjaxException($this->exceptionResponse($validator, [
                     'status'  => 'error',
                     'type'    => 'danger',
                     'title'   => $message,
@@ -163,7 +163,7 @@ abstract class MagicForm extends ComponentBase
                 if ($this->property('inline_errors') == 'display') {
                     throw new ValidationException($validator);
                 } else {
-                    throw new AjaxException($this->_exceptionResponse($validator, [
+                    throw new AjaxException($this->exceptionResponse($validator, [
                         'status'  => 'error',
                         'type'    => 'danger',
                         'content' => Lang::get('martin.forms::lang.validation.recaptcha_error'),
@@ -238,7 +238,7 @@ abstract class MagicForm extends ComponentBase
         ])];
     }
 
-    private function _exceptionResponse($validator, $params)
+    private function exceptionResponse($validator, $params)
     {
         // FLASH PARTIAL
         $flash_partial = $this->property('messages_partial', '@flash.htm');

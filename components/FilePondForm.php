@@ -2,8 +2,6 @@
 
 namespace Martin\Forms\Components;
 
-use Lang;
-use October\Rain\Filesystem\Definitions;
 use Martin\Forms\Classes\MagicForm;
 
 class FilePondForm extends MagicForm
@@ -36,6 +34,7 @@ class FilePondForm extends MagicForm
                 'showExternalParam' => false
             ],
         ];
+
         return array_merge(parent::defineProperties(), $local);
     }
 }
