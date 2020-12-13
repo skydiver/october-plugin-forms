@@ -35,14 +35,6 @@ class FilePondForm extends MagicForm
             //     'group'             => 'martin.forms::lang.components.shared.group_mail',
             //     'showExternalParam' => false
             // ],
-            // 'uploader_multi' => [
-            //     'title'             => 'martin.forms::lang.components.shared.uploader_multi.title',
-            //     'description'       => 'martin.forms::lang.components.shared.uploader_multi.description',
-            //     'default'           => true,
-            //     'type'              => 'checkbox',
-            //     'group'             => 'martin.forms::lang.components.shared.group_uploader',
-            //     'showExternalParam' => false,
-            // ],
             // 'maxSize' => [
             //     'title'             => 'martin.forms::lang.components.shared.uploader_maxsize.title',
             //     'description'       => 'martin.forms::lang.components.shared.uploader_maxsize.description',

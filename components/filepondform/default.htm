@@ -1,6 +1,3 @@
-<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-
 {% if __SELF__.property('uploader_enable') == 0 %}
     <div style="margin-top: 2rem; padding: 10px; color:#a94442; background-color:#f2dede; border:solid 1px #ebccd1; border-radius:4px;">
         <h5><strong>Warning</strong></h5>
@@ -61,22 +58,4 @@
 
 {{ form_close() }}
 
-{% if __SELF__.property('uploader_enable') == 1 %}
-<script>
-    const inputElement = document.querySelector('input[type="file"]');
-    const pond = FilePond.create(inputElement);
-
-    FilePond.setOptions({
-        name: 'files[]',
-        server: {
-            url: '/martin/forms',
-            process: '/process',
-            revert: '/process',
-            headers: {
-                'X-CSRF-TOKEN': '{{ form_token() }}',
-                'FILEPOND-FIELD': pond.name
-            }
-        }
-    });
-</script>
-{% endif %}
+{% partial '@filepond' %}

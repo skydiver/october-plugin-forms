@@ -68,12 +68,8 @@
                 'description' => 'Create a empty template for your custom form; override component HTML.',
             ],
             'filepond_form' => [
-                'name'        => 'FilePond Form [BETA]',
-                'description' => 'Upload files using FilePond.',
-            ],
-            'upload_form' => [
                 'name'        => 'Upload AJAX Form [BETA]',
-                'description' => 'Shows how to implement file uploads on your form.',
+                'description' => 'Sample AJAX form with upload capabilities using FilePond.',
             ],
             'shared' => [
                 'csrf_error'        => 'Form session expired! Please refresh the page.',

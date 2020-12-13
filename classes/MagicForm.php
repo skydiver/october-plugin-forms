@@ -3,6 +3,7 @@
 namespace Martin\Forms\Classes;
 
 use App;
+use Config;
 use Lang;
 use Request;
 use Session;
