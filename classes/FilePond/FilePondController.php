@@ -14,6 +14,11 @@ class FilePondController extends BaseController
      */
     private $filepond;
 
+    /**
+     * @var Illuminate\Http\UploadedFile
+     */
+    private $file;
+
     public function __construct(FilePond $filepond)
     {
         $this->filepond = $filepond;
@@ -30,7 +35,7 @@ class FilePondController extends BaseController
     {
         $field = $request->headers->get('FILEPOND-FIELD');
         $input = $request->file($field);
-        $file = is_array($input) ? $input[0] : $input;
+        $this->file = is_array($input) ? $input[0] : $input;
 
         if ($input === null) {
             return Response::make($field . ' is required', 422, [
@@ -38,13 +43,10 @@ class FilePondController extends BaseController
             ]);
         }
 
-        $tempPath = $this->filepond->getTempPath();
-        $filePath = @tempnam($tempPath, 'laravel-filepond');
-        $filePath .= '.' . $file->getClientOriginalExtension();
-
+        $filePath = $this->generateTempFilename();
         $filePathParts = pathinfo($filePath);
 
-        if (!$file->move($filePathParts['dirname'], $filePathParts['basename'])) {
+        if (!$this->file->move($filePathParts['dirname'], $filePathParts['basename'])) {
             return Response::make('Could not save file', 500, [
                 'Content-Type' => 'text/plain',
             ]);
@@ -74,6 +76,21 @@ class FilePondController extends BaseController
 
         return Response::make('', 500, [
             'Content-Type' => 'text/plain',
+        ]);
+    }
+
+    /**
+     * Generate unique temporary filename
+     *
+     * @return string
+     */
+    private function generateTempFilename()
+    {
+        return vsprintf('%s%s%s__%s', [
+            $this->filepond->getTempPath(),
+            DIRECTORY_SEPARATOR,
+            str_random(8),
+            $this->file->getClientOriginalName()
         ]);
     }
 }
