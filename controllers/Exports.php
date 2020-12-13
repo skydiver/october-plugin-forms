@@ -2,15 +2,16 @@
 
 namespace Martin\Forms\Controllers;
 
-use BackendMenu, Response;
-use Backend\Classes\Controller;
-use League\Csv\AbstractCsv;
-use League\Csv\Writer as CsvWriter;
+use Response;
+use BackendMenu;
 use SplTempFileObject;
+use League\Csv\AbstractCsv;
+use Backend\Classes\Controller;
 use Martin\Forms\Models\Record;
+use League\Csv\Writer as CsvWriter;
 
-class Exports extends Controller {
-
+class Exports extends Controller
+{
     public $requiredPermissions = ['martin.forms.access_exports'];
 
     public $implement = [
@@ -19,17 +20,20 @@ class Exports extends Controller {
 
     public $formConfig = 'config_form.yaml';
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         BackendMenu::setContext('Martin.Forms', 'forms', 'exports');
     }
 
-    public function index() {
+    public function index()
+    {
         $this->pageTitle = e(trans('martin.forms::lang.controllers.exports.title'));
         $this->create('frontend');
     }
 
-    public function csv() {
+    public function csv()
+    {
 
         $records = Record::orderBy('created_at');
 
@@ -82,7 +86,6 @@ class Exports extends Controller {
 
         // ADD STORED FIELDS AS HEADER ROW IN CSV
         $filteredRecords = $records->get();
-        $recordsArray = $filteredRecords->toArray();
         $record = $filteredRecords->first();
         $headers = array_merge($headers, array_keys($record->form_data_arr));
 
@@ -91,7 +94,6 @@ class Exports extends Controller {
 
         // WRITE CSV LINES
         foreach ($records->get()->toArray() as $row) {
-
             $data = (array) json_decode($row['form_data']);
 
             // IF DATA IS ARRAY CONVERT TO JSON STRING
@@ -107,15 +109,10 @@ class Exports extends Controller {
             }
 
             $csv->insertOne($data);
-
         }
 
         // RETURN CSV
         $csv->output('records.csv');
         exit();
-
     }
-
 }
-
-?>
