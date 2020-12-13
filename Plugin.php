@@ -79,7 +79,6 @@
             return [
                 'Martin\Forms\Components\GenericForm'  => 'genericForm',
                 'Martin\Forms\Components\FilePondForm' => 'filepondForm',
-                'Martin\Forms\Components\UploadForm'   => 'uploadForm',
                 'Martin\Forms\Components\EmptyForm'    => 'emptyForm',
             ];
         }

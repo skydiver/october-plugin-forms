@@ -3,23 +3,19 @@
 namespace Martin\Forms\Classes;
 
 use App;
-use AjaxException;
 use Lang;
-use Redirect;
 use Request;
 use Session;
+use Redirect;
 use Validator;
+use AjaxException;
 use Cms\Classes\ComponentBase;
-use Illuminate\Support\Facades\Event;
-use October\Rain\Exception\ValidationException;
-use Martin\Forms\Classes\BackendHelpers;
-use Martin\Forms\Classes\FilePond\FilePond;
-use Martin\Forms\Classes\SendMail;
 use Martin\Forms\Models\Record;
 use Martin\Forms\Models\Settings;
 use Martin\Forms\Classes\SendMail;
 use Illuminate\Support\Facades\Event;
 use Martin\Forms\Classes\BackendHelpers;
+use Martin\Forms\Classes\FilePond\FilePond;
 use October\Rain\Exception\ValidationException;
 
 abstract class MagicForm extends ComponentBase
@@ -178,7 +174,7 @@ abstract class MagicForm extends ComponentBase
         }
 
         // REMOVE EXTRA FIELDS FROM STORED DATA
-        unset($post['_token'], $post['g-recaptcha-response'], $post['_session_key'], $post['_uploader'], $post['files']);
+        unset($post['_token'], $post['g-recaptcha-response'], $post['_session_key'], $post['files']);
 
         // FIRE BEFORE SAVE EVENT
         Event::fire('martin.forms.beforeSaveRecord', [&$post, $this]);
@@ -275,12 +271,6 @@ abstract class MagicForm extends ComponentBase
         if ($this->property('reset_form')) {
             $params = ['id' => '#' . $this->alias . '_forms_flash'];
             $code .= $this->renderPartial('@js/reset-form.htm', $params);
-        }
-
-        /* RESET UPLOAD FORM */
-        if ($this->property('reset_form') && $this->property('uploader_enable')) {
-            $params = ['id' => $this->alias];
-            $code .= $this->renderPartial('@js/reset-uploader.htm', $params);
         }
 
         return $code;
