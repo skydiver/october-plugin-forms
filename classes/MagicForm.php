@@ -3,8 +3,8 @@
 namespace Martin\Forms\Classes;
 
 use App;
-use Config;
 use Lang;
+use Config;
 use Request;
 use Session;
 use Redirect;
@@ -13,10 +13,11 @@ use AjaxException;
 use Cms\Classes\ComponentBase;
 use Martin\Forms\Models\Record;
 use Martin\Forms\Models\Settings;
-use Martin\Forms\Classes\SendMail;
 use Illuminate\Support\Facades\Event;
 use Martin\Forms\Classes\BackendHelpers;
 use Martin\Forms\Classes\FilePond\FilePond;
+use Martin\Forms\Classes\Mails\AutoResponse;
+use Martin\Forms\Classes\Mails\Notification;
 use October\Rain\Exception\ValidationException;
 
 abstract class MagicForm extends ComponentBase
@@ -205,12 +206,15 @@ abstract class MagicForm extends ComponentBase
 
         // SEND NOTIFICATION EMAIL
         if ($this->property('mail_enabled')) {
-            SendMail::sendNotification($this->getProperties(), $post, $record, $record->files);
+            $notification = App::makeWith(Notification::class, [
+                $this->getProperties(), $post, $record, $record->files
+            ]);
+            $notification->send();
         }
 
         // SEND AUTORESPONSE EMAIL
         if ($this->property('mail_resp_enabled')) {
-            SendMail::sendAutoResponse($this->getProperties(), $post, $record);
+            AutoResponse::send($this->getProperties(), $post, $record);
         }
 
         // FIRE AFTER SAVE EVENT
