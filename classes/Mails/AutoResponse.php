@@ -39,6 +39,7 @@ class AutoResponse implements Mailable
         // SET EMAIL PARAMETERS
         $response = isset($this->properties['mail_resp_field']) ? $this->properties['mail_resp_field'] : null;
         $to       = isset($this->post[$response]) ? $this->post[$response] : null;
+        $name     = isset($this->properties['mail_resp_name']) ? $this->properties['mail_resp_name'] : null;
         $from     = isset($this->properties['mail_resp_from']) ? $this->properties['mail_resp_from'] : null;
         $subject  = isset($this->properties['mail_resp_subject']) ? $this->properties['mail_resp_subject'] : null;
 
@@ -47,8 +48,8 @@ class AutoResponse implements Mailable
             $template = $this->getTemplate();
 
             // SEND AUTORESPONSE EMAIL
-            Mail::sendTo($to, $template, $this->data, function ($message) use ($from, $subject) {
-                $message->from($from);
+            Mail::sendTo($to, $template, $this->data, function ($message) use ($from, $name, $subject) {
+                $message->from($from, $name);
 
                 if (isset($subject)) {
                     $message->subject($subject);

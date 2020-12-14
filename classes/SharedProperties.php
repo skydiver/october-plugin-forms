@@ -117,6 +117,13 @@ trait SharedProperties
                 'group'             => 'martin.forms::lang.components.shared.group_mail_resp',
                 'showExternalParam' => false
             ],
+            'mail_resp_name' => [
+                'title'             => 'martin.forms::lang.components.shared.mail_resp_name.title',
+                'description'       => 'martin.forms::lang.components.shared.mail_resp_name.description',
+                'type'              => 'string',
+                'group'             => 'martin.forms::lang.components.shared.group_mail_resp',
+                'showExternalParam' => false
+            ],
             'mail_resp_from' => [
                 'title'             => 'martin.forms::lang.components.shared.mail_resp_from.title',
                 'description'       => 'martin.forms::lang.components.shared.mail_resp_from.description',
