@@ -38,7 +38,6 @@ class Notification
 
         // EXIT IF NO EMAIL ADDRESSES ARE SET
         if (!$this->checkEmailSettings()) {
-            dd("EXIT");
             return;
         }
 
@@ -61,26 +60,22 @@ class Notification
         // SEND NOTIFICATION EMAIL
         Mail::sendTo($this->properties['mail_recipients'], $template, $this->data, function ($message) {
             // SEND BLIND CARBON COPY
-            $bcc = $this->properties['mail_bcc'];
-            if (!empty($bcc) && is_array($bcc)) {
-                $message->bcc($bcc);
+            if (!empty($this->properties['mail_bcc']) && is_array($this->properties['mail_bcc'])) {
+                $message->bcc($this->properties['mail_bcc']);
             }
 
             // USE CUSTOM SUBJECT
-            $customSubject = $this->properties['mail_subject'];
-            if (!empty($customSubject)) {
-                $message->subject($customSubject);
+            if (!empty($this->properties['mail_subject'])) {
+                $message->subject($this->properties['mail_subject']);
             }
 
             // ADD REPLY TO ADDRESS
-            $replyTo = $this->properties['mail_replyto'];
-            if (!empty($replyTo)) {
-                $message->replyTo($replyTo);
+            if (!empty($this->properties['mail_replyto'])) {
+                $message->replyTo($this->properties['mail_replyto']);
             }
 
             // ADD UPLOADS
-            $uploads = $this->properties['mail_uploads'];
-            if (!empty($uploads) && !empty($this->files)) {
+            if (!empty($this->properties['mail_uploads']) && !empty($this->files)) {
                 foreach ($this->files as $file) {
                     $message->attach($file->getLocalPath(), ['as' => $file->getFilename()]);
                 }
