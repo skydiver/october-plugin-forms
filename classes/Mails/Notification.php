@@ -45,7 +45,7 @@ class Notification
         // CUSTOM TEMPLATE
         $template = $this->getTemplate();
 
-        // SET DEFAULT DATA ARRAY
+        // SET DEFAULT EMAIL DATA ARRAY
         $this->data = [
             'id'   => $this->record->id,
             'data' => $this->post,
@@ -98,24 +98,14 @@ class Notification
         return (is_array($this->properties['mail_recipients']) || is_array($this->properties['mail_bcc']));
     }
 
-    /**
-     * Returns email template to use
-     *
-     * @return string
-     */
-    private function getTemplate(): string
+    public function getTemplate(): string
     {
         return !empty($this->properties['mail_template']) && MailTemplate::findOrMakeTemplate($this->properties['mail_template']) ?
             $this->properties['mail_template'] :
             'martin.forms::mail.notification';
     }
 
-    /**
-     * Parse custom subject and modify using form variables and custom settings
-     *
-     * @return void
-     */
-    private function prepareCustomSubject()
+    public function prepareCustomSubject()
     {
         // SET DATE FORMAT
         $dateFormat = $this->properties['emails_date_format'] ?? 'Y-m-d';

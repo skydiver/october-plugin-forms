@@ -214,7 +214,10 @@ abstract class MagicForm extends ComponentBase
 
         // SEND AUTORESPONSE EMAIL
         if ($this->property('mail_resp_enabled')) {
-            AutoResponse::send($this->getProperties(), $post, $record);
+            $autoresponse = App::makeWith(AutoResponse::class, [
+                $this->getProperties(), $post, $record
+            ]);
+            $autoresponse->send();
         }
 
         // FIRE AFTER SAVE EVENT
