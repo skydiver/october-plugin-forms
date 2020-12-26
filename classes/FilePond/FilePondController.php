@@ -31,7 +31,7 @@ class FilePondController extends BaseController
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function upload(Request $request)
+    public function upload(Request $request): \Illuminate\Http\Response
     {
         $field = $request->headers->get('FILEPOND-FIELD');
         $input = $request->file($field);
@@ -64,7 +64,7 @@ class FilePondController extends BaseController
      * @param Request $request
      * @return mixed
      */
-    public function delete(Request $request)
+    public function delete(Request $request): \Illuminate\Http\Response
     {
         $filePath = $this->filepond->getPathFromServerId($request->getContent());
 
@@ -84,7 +84,7 @@ class FilePondController extends BaseController
      *
      * @return string
      */
-    private function generateTempFilename()
+    private function generateTempFilename(): string
     {
         return vsprintf('%s%s%s__%s', [
             $this->filepond->getTempPath(),
