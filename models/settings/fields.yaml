@@ -6,12 +6,32 @@ tabs:
             path   : $/martin/forms/models/settings/_plugin_help.htm
             tab    : martin.forms::lang.settings.tabs.general
 
+        section_ui:
+            label   : UI
+            type    : section
+            comment : Settings related to plugin user inferface
+            tab     : martin.forms::lang.settings.tabs.general
+            cssClass: m-t
+
         global_hide_button:
             label  : martin.forms::lang.settings.global_hide_button
             comment: martin.forms::lang.settings.global_hide_button_desc
             type   : switch
             default: false
             tab    : martin.forms::lang.settings.tabs.general
+
+        section_uploads:
+            label   : File uploads
+            type    : section
+            comment : Settings related to file uploads through components
+            tab     : martin.forms::lang.settings.tabs.general
+            cssClass: m-t-lg
+
+        global_allowed_files:
+            label       : Allowed file formats
+            type        : text
+            default     : jpg,jpeg,bmp,png,webp,gif,js,ico,css,ics,odt,doc,docx,ppt,pptx,pdf,txt,xml,ods,xls,xlsx,ttf,flv,wmv,mp3,ogg,wav,avi,mov,mp4,mpeg,webm,mkv,rar,xml,zip
+            tab         : martin.forms::lang.settings.tabs.general
 
         recaptcha_help:
             type   : partial

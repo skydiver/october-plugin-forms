@@ -2,13 +2,15 @@
 
 namespace Martin\Forms\Classes\FilePond;
 
-use Illuminate\Routing\Controller as BaseController;
+use Validator;
 use Illuminate\Http\Request;
+use Martin\Forms\Models\Settings;
 use Illuminate\Support\Facades\Response;
+use October\Rain\Filesystem\Definitions;
+use Illuminate\Routing\Controller as BaseController;
 
 class FilePondController extends BaseController
 {
-
     /**
      * @var Filepond
      */
@@ -33,9 +35,16 @@ class FilePondController extends BaseController
      */
     public function upload(Request $request): \Illuminate\Http\Response
     {
-        $field = $request->headers->get('FILEPOND-FIELD');
+        $field = $this->getUploadFieldName();
         $input = $request->file($field);
         $this->file = is_array($input) ? $input[0] : $input;
+
+        /** VALIDATE UPLOAD FILE TYPE */
+        if ($this->checkInvalidFile()) {
+            return Response::make('File type not allowed', 422, [
+                'Content-Type' => 'text/plain',
+            ]);
+        }
 
         if ($input === null) {
             return Response::make($field . ' is required', 422, [
@@ -80,6 +89,16 @@ class FilePondController extends BaseController
     }
 
     /**
+     * Get field name used for uploads
+     *
+     * @return string
+     */
+    private function getUploadFieldName(): string
+    {
+        return request()->headers->get('FILEPOND-FIELD');
+    }
+
+    /**
      * Generate unique temporary filename
      *
      * @return string
@@ -92,5 +111,40 @@ class FilePondController extends BaseController
             str_random(8),
             $this->file->getClientOriginalName()
         ]);
+    }
+
+    /**
+     * Check if uploaded file is a valid mime type
+     *
+     * @return boolean
+     */
+    private function checkInvalidFile(): bool
+    {
+        $field = $this->getUploadFieldName();
+        $types = $this->allowedFileTypes();
+
+        $validator = Validator::make(request()->all(), [
+            $field . '.*' => 'mimes:' . $types,
+        ]);
+
+        return $validator->fails();
+    }
+
+    /**
+     * Get a list of allowed files types
+     *
+     * @return string
+     */
+    private function allowedFileTypes(): string
+    {
+        $settings = Settings::get('global_allowed_files', false);
+
+        if ($settings) {
+            return $settings;
+        }
+
+        $default = Definitions::get('defaultExtensions');
+
+        return implode(',', $default);
     }
 }
