@@ -4,7 +4,11 @@
 
 <script>
     const inputElement = document.querySelector('input[type="file"]');
-    const pond = FilePond.create(inputElement);
+
+    const pond = FilePond.create(inputElement, {
+        onaddfilestart: (file) => { isLoadingCheck(); },
+        onprocessfile: (files) => { isLoadingCheck(); }
+    });
 
     FilePond.setOptions({
         name: 'files[]',
@@ -18,5 +22,14 @@
             }
         }
     });
+
+    function isLoadingCheck() {
+        var isLoading = pond.getFiles().filter(x=>x.status !== 5).length !== 0;
+        if (isLoading) {
+            $('form [type="submit"]').attr("disabled", "disabled");
+        } else {
+            $('form [type="submit"]').removeAttr("disabled");
+        }
+    }
 </script>
 {% endif %}
