@@ -1,5 +1,5 @@
 {
-    "name": "skydiver/october-plugin-forms",
+    "name": "martin/forms-plugin",
     "type": "october-plugin",
     "description": "Create easy (and almost magic) AJAX forms",
     "keywords": ["october", "cms", "plugin", "forms", "magic forms"],
