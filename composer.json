@@ -1,0 +1,7 @@
+{
+    "name": "martin/forms-plugin",
+    "type": "october-plugin",
+    "description": "Create easy (and almost magic) AJAX forms",
+    "homepage": "https://octobercms.com/plugin/martin-forms",
+    "keywords": ["october", "cms", "forms"]
+}
