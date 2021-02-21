@@ -125,3 +125,6 @@
 1.5.1:
     - email templates improvemenrs [thanks to mjauvin]
     - added german translation [thanks to Fosphatic]
+1.5.2:
+    - plugin published to packagist [thanks to rubenvanerk]
+    - added dutch translation [thanks to rubenvanerk]

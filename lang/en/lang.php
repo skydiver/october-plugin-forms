@@ -4,7 +4,7 @@
 
         'plugin' => [
             'name'        => 'Magic Forms',
-            'description' => 'Create easy AJAX forms'
+            'description' => 'Create easy AJAX forms',
         ],
 
         'menu' => [
@@ -88,16 +88,16 @@
                 'rules'             => ['title' => 'Rules'              , 'description' => 'Set your own rules using Laravel validation'],
                 'rules_messages'    => ['title' => 'Rules Messages'     , 'description' => 'Use your own rules messages using Laravel validation'],
                 'custom_attributes' => ['title' => 'Custom Attributes'  , 'description' => 'Use your own custom attributes using Laravel validation'],
-                'messages_success'  => ['title' => 'Success'            , 'description' => 'Message when the form is successfully submited', 'default' => 'Your form was successfully submitted'  ],
+                'messages_success'  => ['title' => 'Success'            , 'description' => 'Message when the form is successfully submitted', 'default' => 'Your form was successfully submitted'],
                 'messages_errors'   => ['title' => 'Errors'             , 'description' => 'Message when the form contains errors'         , 'default' => 'There were errors with your submission'],
                 'messages_partial'  => ['title' => 'Use Custom Partial' , 'description' => 'Override flash messages with your custom partial inside your theme'],
-                'mail_enabled'      => ['title' => 'Send Notifications' , 'description' => 'Send mail notifications on every form submited'],
+                'mail_enabled'      => ['title' => 'Send Notifications' , 'description' => 'Send mail notifications on every form submitted'],
                 'mail_subject'      => ['title' => 'Subject'            , 'description' => 'Override default email subject'],
                 'mail_recipients'   => ['title' => 'Recipients'         , 'description' => 'Specify email recipients (add one address per line)'],
                 'mail_bcc'          => ['title' => 'BCC'                , 'description' => 'Send blind carbon copy to email recipients (add one address per line)'],
                 'mail_replyto'      => ['title' => 'ReplyTo Email Field', 'description' => 'Form field containing the email address of sender to be used as "ReplyTo"'],
                 'mail_template'     => ['title' => 'Mail Template'      , 'description' => 'Use custom mail template. Specify template code like "martin.forms::mail.notification" (found on Settings, Mail templates). Leave empty to use default.'],
-                'mail_uploads'      => ['title' => 'Send Uploads'       , 'description' => 'Send uploads as attachements'],
+                'mail_uploads'      => ['title' => 'Send Uploads'       , 'description' => 'Send uploads as attachments'],
                 'mail_resp_enabled' => ['title' => 'Send Auto-Response' , 'description' => 'Send an auto-response email to the person submitting the form'],
                 'mail_resp_field'   => ['title' => 'Email Field'        , 'description' => 'Form field containing the email address of the recipient of auto-response'],
                 'mail_resp_from'    => ['title' => 'Sender Address'     , 'description' => 'Email address of auto-response email sender (e.g. noreply@yourcompany.com)'],
@@ -128,7 +128,7 @@
                 'uploader_maxsize'   => ['title' => 'File size limit'      , 'description' => 'The maximum file size that can be uploaded in megabytes'],
                 'uploader_types'     => ['title' => 'Allowed file types'   , 'description' => 'Allowed file extensions or star (*) for all types (add one extension per line)'],
                 'uploader_remFile'   => ['title' => 'Remove Popup text'    , 'description' => 'Wording to display in the popup when you remove file', 'default' => 'Are you sure ?'],
-            ]
+            ],
         ],
 
         'settings' => [
@@ -157,21 +157,19 @@
         ],
 
         'mails' => [
-            'form_notification' => ['description' => 'Notify when a form is submited'],
-            'form_autoresponse' => ['description' => 'Auto-Response when a form is submited'],
+            'form_notification' => ['description' => 'Notify when a form is submitted'],
+            'form_autoresponse' => ['description' => 'Auto-Response when a form is submitted'],
         ],
 
         'validation' => [
-            'recaptcha_error' => 'Cannot validate reCAPTCHA field'
+            'recaptcha_error' => 'Cannot validate reCAPTCHA field',
         ],
 
         'classes' => [
             'GDPR' => [
                 'alert_gdpr_disabled' => 'GDPR options are disabled',
                 'alert_invalid_gdpr'  => 'Invalid GDPR days setting value',
-            ]
-        ]
+            ],
+        ],
 
     ];
-
-?>
