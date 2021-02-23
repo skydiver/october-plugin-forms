@@ -55,7 +55,7 @@ abstract class MagicForm extends ComponentBase
         $flash_partial = $this->property('messages_partial', '@flash.htm');
 
         // CSRF CHECK
-        if (Config::get('cms.enableCsrfProtection') && (Session::token() != post('_token'))) {
+        if (Config::get('cms.enableCsrfProtection') && (Session::token() != input('_token'))) {
             throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial($flash_partial, [
                 'status'  => 'error',
                 'type'    => 'danger',
@@ -75,13 +75,13 @@ abstract class MagicForm extends ComponentBase
         $allow = $this->property('allowed_fields');
         if (is_array($allow) && !empty($allow)) {
             foreach ($allow as $field) {
-                $post[$field] = post($field);
+                $post[$field] = isset(input()[$field]) ? input()[$field] : null;
             }
             if ($this->isReCaptchaEnabled()) {
-                $post['g-recaptcha-response'] = post('g-recaptcha-response');
+                $post['g-recaptcha-response'] = input('g-recaptcha-response');
             }
         } else {
-            $post = post();
+            $post = input();
         }
 
         // SANITIZE FORM DATA
@@ -197,7 +197,7 @@ abstract class MagicForm extends ComponentBase
             if ($this->property('group') != '') {
                 $record->group = $this->property('group');
             }
-            $record->save(null, post('_session_key'));
+            $record->save(null, input('_session_key'));
         }
 
         // SEND NOTIFICATION EMAIL
