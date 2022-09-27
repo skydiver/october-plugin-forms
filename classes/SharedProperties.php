@@ -77,7 +77,7 @@ trait SharedProperties {
             'mail_recipients' => [
                 'title'             => 'martin.forms::lang.components.shared.mail_recipients.title',
                 'description'       => 'martin.forms::lang.components.shared.mail_recipients.description',
-                'type'              => 'stringList',
+                'type'              => 'dictionary',
                 'group'             => 'martin.forms::lang.components.shared.group_mail',
                 'showExternalParam' => false
             ],

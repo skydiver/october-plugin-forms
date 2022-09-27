@@ -1,7 +1,5 @@
-{% spaceless %}
-
-    <div class="alert alert-{{ type }} alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<div class="alert alert-{{ type }} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
     {% if title %}
         <h4>{{ title }}</h4>
@@ -18,16 +16,13 @@
         {% endfor %}
         </ul>
     {% endif %}
+</div>
 
-    </div>
-
-    {% if jscript %}
-        <script>
-            {% if errors %}
-                var errors = JSON.parse('{{ errors|raw }}');
-            {% endif %}
-            {{ jscript|raw }}
-        </script>
-    {% endif %}
-
-{% endspaceless %}
+{% if jscript %}
+    <script>
+        {% if errors %}
+            var errors = JSON.parse('{{ errors|raw }}');
+        {% endif %}
+        {{ jscript|raw }}
+    </script>
+{% endif %}
