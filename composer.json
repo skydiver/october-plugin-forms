@@ -1,5 +1,5 @@
 {
-    "name": "blakejones/magicforms",
+    "name": "blakejones/magicforms-plugin",
     "type": "october-plugin",
     "description": "Create easy (and almost magic) AJAX forms",
     "keywords": ["october", "cms", "plugin", "forms", "magic forms"],
