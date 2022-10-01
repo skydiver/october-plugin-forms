@@ -2,7 +2,7 @@
 Create easy (and almost magic) AJAX forms.
 
 # Support for October CMS v3 (Forked)
-The original version of this plugin was [abandoned](https://github.com/blakej115/magic-forms/discussions/267). This is an actively maintained fork of the [original plugin](https://octobercms.com/plugin/martin-forms) that supports October CMS v3.
+The original version of this plugin was [abandoned](https://github.com/skydiver/october-plugin-forms/discussions/267). This is an actively maintained fork of the [original plugin](https://octobercms.com/plugin/martin-forms) that supports October CMS v3.
 
 ## Why Magic Forms?
 Almost everyday we do forms for our clients, personal projects, etc
