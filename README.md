@@ -30,4 +30,4 @@ So, the objective was to find a way to just put the HTML elements on the page, s
 
 ## Documentation
 Checkout our docs at:
-> https://blakejones.github.io/magic-forms/
+> https://blakej115.github.io/magic-forms/
