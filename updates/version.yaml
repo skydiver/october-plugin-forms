@@ -128,3 +128,6 @@
 1.5.2:
     - plugin published to packagist [thanks to rubenvanerk]
     - added dutch translation [thanks to rubenvanerk]
+1.6.0:
+    - changed namespace
+    - Added support for October CMS v3
