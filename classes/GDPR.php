@@ -1,11 +1,11 @@
 <?php
 
-namespace Martin\Forms\Classes;
+namespace BlakeJones\MagicForms\Classes;
 
 use Flash;
 use Request;
-use Martin\Forms\Models\Record;
-use Martin\Forms\Models\Settings;
+use BlakeJones\MagicForms\Models\Record;
+use BlakeJones\MagicForms\Models\Settings;
 use Carbon\Carbon;
 use October\Rain\Exception\ApplicationException;
 use October\Rain\Exception\ValidationException;
@@ -18,7 +18,7 @@ class GDPR {
         $gdpr_days   = Settings::get('gdpr_days'  , false);
 
         if (!$gdpr_enable) {
-            Flash::error(e(trans('martin.forms::lang.classes.GDPR.alert_gdpr_disabled')));
+            Flash::error(e(trans('blakejones.magicforms::lang.classes.GDPR.alert_gdpr_disabled')));
             return;
         }
 
@@ -28,7 +28,7 @@ class GDPR {
             return $rows;
         }
 
-        Flash::error(e(trans('martin.forms::lang.classes.GDPR.alert_invalid_gdpr')));
+        Flash::error(e(trans('blakejones.magicforms::lang.classes.GDPR.alert_invalid_gdpr')));
 
     }
 

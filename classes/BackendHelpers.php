@@ -1,6 +1,6 @@
 <?php
 
-namespace Martin\Forms\Classes;
+namespace BlakeJones\MagicForms\Classes;
 
 use Backend, BackendAuth;
 

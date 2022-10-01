@@ -1,6 +1,6 @@
 <?php
 
-    namespace Martin\Forms\Models;
+    namespace BlakeJones\MagicForms\Models;
 
     use Model;
 
@@ -8,7 +8,7 @@
 
         use \October\Rain\Database\Traits\SoftDelete;
 
-        public $table = 'martin_forms_records';
+        public $table = 'blakejones_magicforms_records';
 
         protected $dates = ['deleted_at'];
 

@@ -68,7 +68,7 @@
                 'messages_errors'   => ['title' => 'Hatalar'             , 'description' => 'Formda hatalar olduğunda gösterilecek mesaj'         , 'default' => 'Gönderiminizle ilgili hatalar vardı.'],
                 'allowed_fields'    => ['title' => 'İzin Verilen Alanlar', 'description' => 'Filtrelenecek ve depolanacak alanları belirtin (her satır için bir alan adı ekleyin)'],
                 'mail_enabled'      => ['title' => 'Posta Bildirimleri'  , 'description' => 'Gönderilen her formda posta gönder'],
-                'mail_recipients'   => ['title' => 'Posta Alıcıları'     , 'description' => 'E-posta alıcılarını belirtin (her hat için bir adres ekleyin)'],
+                'mail_recipients'   => ['title' => 'Posta Alıcıları'     , 'description' => 'E-posta alıcılarını belirtin. Anahtar olarak e-posta adreslerini ve değerler olarak adları kullanın.'],
                 'recaptcha_enabled' => ['title' => 'ReCAPTCHAyı etkinleştir'  , 'description' => 'ReCAPTCHA widgetını formunuza ekleyin.'],
                 'recaptcha_theme'   => ['title' => 'Tema'                , 'description' => 'Widgetin renk teması', 'light'  => 'Aydınlık' , 'dark'    => 'Karanlık'],
                 'recaptcha_type'    => ['title' => 'Tip'                 , 'description' => 'Gösterilecek CAPTCHA türü' , 'image'  => 'Resim' , 'audio'   => 'Ses'],

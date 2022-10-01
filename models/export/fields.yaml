@@ -2,24 +2,24 @@ fields:
 
     header:
         type: partial
-        path: $/martin/forms/models/export/_header.htm
+        path: $/blakejones/magicforms/models/export/_header.htm
         span: left
 
     ################################################################################################################################################
     #   FILTER SECTION
     ################################################################################################################################################
     filter_section:
-        label   : martin.forms::lang.controllers.exports.filter_section
+        label   : blakejones.magicforms::lang.controllers.exports.filter_section
         type    : section
         cssClass: m-t-md
 
     filter_type:
-        label  : martin.forms::lang.controllers.exports.filter_type
+        label  : blakejones.magicforms::lang.controllers.exports.filter_type
         type   : switch
         default: true
 
     filter_groups:
-        label  : martin.forms::lang.controllers.exports.filter_groups
+        label  : blakejones.magicforms::lang.controllers.exports.filter_groups
         span   : left
         type   : checkboxlist
         options: getGroupsOptions
@@ -29,7 +29,7 @@ fields:
             condition: checked
 
     filter_date_after:
-        label  : martin.forms::lang.controllers.exports.filter_date_after
+        label  : blakejones.magicforms::lang.controllers.exports.filter_date_after
         span   : left
         type   : datepicker
         mode   : date
@@ -39,7 +39,7 @@ fields:
             condition: checked
 
     filter_date_before:
-        label  : martin.forms::lang.controllers.exports.filter_date_before
+        label  : blakejones.magicforms::lang.controllers.exports.filter_date_before
         span   : left
         type   : datepicker
         mode   : date
@@ -52,33 +52,33 @@ fields:
     #   OPTIONS SECTION
     ################################################################################################################################################
     options_section:
-        label   : martin.forms::lang.controllers.exports.options_section
+        label   : blakejones.magicforms::lang.controllers.exports.options_section
         type    : section
         cssClass: m-t-md
 
     options_delimiter:
-        label  : martin.forms::lang.controllers.exports.options_delimiter
-        comment: martin.forms::lang.controllers.exports.options_delimiter_com
+        label  : blakejones.magicforms::lang.controllers.exports.options_delimiter
+        comment: blakejones.magicforms::lang.controllers.exports.options_delimiter_com
         span   : right
         type   : switch
         default: false
 
     options_metadata:
-        label  : martin.forms::lang.controllers.exports.options_metadata
-        comment: martin.forms::lang.controllers.exports.options_metadata_com
+        label  : blakejones.magicforms::lang.controllers.exports.options_metadata
+        comment: blakejones.magicforms::lang.controllers.exports.options_metadata_com
         span   : left
         type   : switch
         default: true
 
     options_utf:
-        label  : martin.forms::lang.controllers.exports.options_utf
-        comment: martin.forms::lang.controllers.exports.options_utf_com
+        label  : blakejones.magicforms::lang.controllers.exports.options_utf
+        comment: blakejones.magicforms::lang.controllers.exports.options_utf_com
         span   : right
         type   : switch
         default: true
 
     options_deleted:
-        label  : martin.forms::lang.controllers.exports.options_deleted
+        label  : blakejones.magicforms::lang.controllers.exports.options_deleted
         span   : left
         type   : switch
         default: false

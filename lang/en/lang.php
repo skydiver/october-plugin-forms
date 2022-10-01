@@ -96,7 +96,7 @@
                 'mail_recipients'   => ['title' => 'Recipients'         , 'description' => 'Specify email recipients. Use email addresses as keys and names as the values.'],
                 'mail_bcc'          => ['title' => 'BCC'                , 'description' => 'Send blind carbon copy to email recipients (add one address per line)'],
                 'mail_replyto'      => ['title' => 'ReplyTo Email Field', 'description' => 'Form field containing the email address of sender to be used as "ReplyTo"'],
-                'mail_template'     => ['title' => 'Mail Template'      , 'description' => 'Use custom mail template. Specify template code like "martin.forms::mail.notification" (found on Settings, Mail templates). Leave empty to use default.'],
+                'mail_template'     => ['title' => 'Mail Template'      , 'description' => 'Use custom mail template. Specify template code like "blakejones.magicforms::mail.notification" (found on Settings, Mail templates). Leave empty to use default.'],
                 'mail_uploads'      => ['title' => 'Send Uploads'       , 'description' => 'Send uploads as attachments'],
                 'mail_resp_enabled' => ['title' => 'Send Auto-Response' , 'description' => 'Send an auto-response email to the person submitting the form'],
                 'mail_resp_field'   => ['title' => 'Email Field'        , 'description' => 'Form field containing the email address of the recipient of auto-response'],

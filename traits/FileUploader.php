@@ -1,4 +1,4 @@
-<?php namespace Martin\Forms\Traits;
+<?php namespace BlakeJones\MagicForms\Traits;
 
 use Input;
 use Cms\Classes\ComponentBase;
@@ -9,7 +9,7 @@ use ApplicationException;
 trait FileUploader
 {
 
-    use \Martin\Forms\Traits\ComponentUtils;
+    use \BlakeJones\MagicForms\Traits\ComponentUtils;
 
     public $maxSize;
     public $placeholderText;

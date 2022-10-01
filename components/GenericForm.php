@@ -1,15 +1,15 @@
 <?php
 
-    namespace Martin\Forms\Components;
+    namespace BlakeJones\MagicForms\Components;
 
-    use Martin\Forms\Classes\MagicForm;
+    use BlakeJones\MagicForms\Classes\MagicForm;
 
     class GenericForm extends MagicForm {
 
         public function componentDetails() {
             return [
-                'name'        => 'martin.forms::lang.components.generic_form.name',
-                'description' => 'martin.forms::lang.components.generic_form.description',
+                'name'        => 'blakejones.magicforms::lang.components.generic_form.name',
+                'description' => 'blakejones.magicforms::lang.components.generic_form.description',
             ];
         }
 

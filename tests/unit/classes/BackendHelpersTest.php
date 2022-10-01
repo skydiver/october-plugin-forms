@@ -1,6 +1,6 @@
 <?php
 
-namespace Martin\Forms\Tests\Classes;
+namespace BlakeJones\MagicForms\Tests\Classes;
 
 use Backend;
 use BackendAuth;
@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use System\Classes\PluginManager;
 use Backend\Models\User;
-use Martin\Forms\Classes\BackendHelpers;
+use BlakeJones\MagicForms\Classes\BackendHelpers;
 
 class BackendHelpersTest extends PluginTestCase {
 
@@ -25,12 +25,12 @@ class BackendHelpersTest extends PluginTestCase {
      */
     public function testGetBackendUrl() {
         $this->_loginUser();
-        $expect = Backend::url("martin/forms/records");
+        $expect = Backend::url("blakejones/magicforms/records");
         $bh = new BackendHelpers();
         $this->assertEquals($expect, $bh->getBackendURL([
-            'martin.forms.access_records' => 'martin/forms/records',
-            'martin.forms.access_exports' => 'martin/forms/exports'
-        ], 'martin.forms.access_records'));
+            'blakejones.magicforms.access_records' => 'blakejones/magicforms/records',
+            'blakejones.magicforms.access_exports' => 'blakejones/magicforms/exports'
+        ], 'blakejones.magicforms.access_records'));
     }
 
     /**

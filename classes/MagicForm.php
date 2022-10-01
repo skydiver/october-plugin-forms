@@ -1,6 +1,6 @@
 <?php
 
-namespace Martin\Forms\Classes;
+namespace BlakeJones\MagicForms\Classes;
 
 use Lang;
 use Config;
@@ -10,18 +10,18 @@ use Redirect;
 use Validator;
 use AjaxException;
 use Cms\Classes\ComponentBase;
-use Martin\Forms\Models\Record;
-use Martin\Forms\Models\Settings;
-use Martin\Forms\Classes\SendMail;
+use BlakeJones\MagicForms\Models\Record;
+use BlakeJones\MagicForms\Models\Settings;
+use BlakeJones\MagicForms\Classes\SendMail;
 use Illuminate\Support\Facades\Event;
-use Martin\Forms\Classes\BackendHelpers;
+use BlakeJones\MagicForms\Classes\BackendHelpers;
 use October\Rain\Exception\ValidationException;
 
 abstract class MagicForm extends ComponentBase
 {
 
-    use \Martin\Forms\Classes\ReCaptcha;
-    use \Martin\Forms\Classes\SharedProperties;
+    use \BlakeJones\MagicForms\Classes\ReCaptcha;
+    use \BlakeJones\MagicForms\Classes\SharedProperties;
 
     public function onRun() {
 
@@ -33,7 +33,7 @@ abstract class MagicForm extends ComponentBase
         }
 
         if ($this->isReCaptchaMisconfigured()) {
-            $this->page['recaptcha_warn'] = Lang::get('martin.forms::lang.components.shared.recaptcha_warn');
+            $this->page['recaptcha_warn'] = Lang::get('blakejones.magicforms::lang.components.shared.recaptcha_warn');
         }
 
         if ($this->property('inline_errors') == 'display') {
@@ -59,7 +59,7 @@ abstract class MagicForm extends ComponentBase
             throw new AjaxException(['#' . $this->alias . '_forms_flash' => $this->renderPartial($flash_partial, [
                 'status'  => 'error',
                 'type'    => 'danger',
-                'content' => Lang::get('martin.forms::lang.components.shared.csrf_error'),
+                'content' => Lang::get('blakejones.magicforms::lang.components.shared.csrf_error'),
             ])]);
         }
 
@@ -150,7 +150,7 @@ abstract class MagicForm extends ComponentBase
 
             // PREPARE RECAPTCHA VALIDATION
             $rules   = ['g-recaptcha-response'           => 'recaptcha'];
-            $err_msg = ['g-recaptcha-response.recaptcha' => Lang::get('martin.forms::lang.validation.recaptcha_error')];
+            $err_msg = ['g-recaptcha-response.recaptcha' => Lang::get('blakejones.magicforms::lang.validation.recaptcha_error')];
 
             // DO SECOND VALIDATION
             $validator = Validator::make($post, $rules, $err_msg);
@@ -165,7 +165,7 @@ abstract class MagicForm extends ComponentBase
                     throw new AjaxException($this->_exceptionResponse($validator, [
                         'status'  => 'error',
                         'type'    => 'danger',
-                        'content' => Lang::get('martin.forms::lang.validation.recaptcha_error'),
+                        'content' => Lang::get('blakejones.magicforms::lang.validation.recaptcha_error'),
                         'errors'  => json_encode($validator->messages()->messages()),
                         'jscript' => $this->property('js_on_error'),
                     ]));
@@ -179,7 +179,7 @@ abstract class MagicForm extends ComponentBase
         unset($post['_token'], $post['g-recaptcha-response'], $post['_session_key'], $post['_uploader']);
 
         // FIRE BEFORE SAVE EVENT
-        Event::fire('martin.forms.beforeSaveRecord', [&$post, $this]);
+        Event::fire('blakejones.magicforms.beforeSaveRecord', [&$post, $this]);
 
         if (count($custom_attributes)) {
             $post = collect($post)->mapWithKeys(function ($val, $key) use ($custom_attributes) {
@@ -211,7 +211,7 @@ abstract class MagicForm extends ComponentBase
         }
 
         // FIRE AFTER SAVE EVENT
-        Event::fire('martin.forms.afterSaveRecord', [&$post, $this, $record]);
+        Event::fire('blakejones.magicforms.afterSaveRecord', [&$post, $this, $record]);
 
         // CHECK FOR REDIRECT
         if ($this->property('redirect')) {

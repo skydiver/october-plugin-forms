@@ -1,8 +1,8 @@
 {
-    "name": "martin/forms-plugin",
+    "name": "blakejones/magicforms",
     "type": "october-plugin",
     "description": "Create easy (and almost magic) AJAX forms",
     "keywords": ["october", "cms", "plugin", "forms", "magic forms"],
-    "homepage": "https://octobercms.com/plugin/martin-forms",
+    "homepage": "https://github.com/blakej115/magic-forms",
     "license": "MIT"
 }

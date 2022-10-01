@@ -1,7 +1,7 @@
-list            : $/martin/forms/models/record/columns.yaml
-modelClass      : Martin\Forms\Models\Record
-title           : martin.forms::lang.controllers.records.title
-recordUrl       : martin/forms/records/view/:id
+list            : $/blakejones/magicforms/models/record/columns.yaml
+modelClass      : BlakeJones\MagicForms\Models\Record
+title           : blakejones.magicforms::lang.controllers.records.title
+recordUrl       : blakejones/magicforms/records/view/:id
 noRecordsMessage: backend::lang.list.no_records
 recordsPerPage  : 20
 showSetup       : true

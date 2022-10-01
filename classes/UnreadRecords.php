@@ -1,8 +1,8 @@
 <?php
 
-namespace Martin\Forms\Classes;
+namespace BlakeJones\MagicForms\Classes;
 
-use Martin\Forms\Models\Record;
+use BlakeJones\MagicForms\Models\Record;
 
 class UnreadRecords {
 
