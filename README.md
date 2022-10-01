@@ -29,5 +29,7 @@ So, the objective was to find a way to just put the HTML elements on the page, s
 * AJAX file uploads (BETA, available since v1.3.0)
 
 ## Documentation
-Checkout our docs at:
-> https://blakej115.github.io/magic-forms/
+
+New documentation coming soon. For now, you may reference the old documentation:
+
+> https://skydiver.github.io/october-plugin-forms/docs/introduction/
