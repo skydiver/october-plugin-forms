@@ -131,3 +131,5 @@
 1.6.0:
     - changed namespace
     - Added support for October CMS v3
+1.6.1:
+  - Fixes support for Translate v2 [thanks to daftspunk]
