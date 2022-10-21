@@ -2,6 +2,7 @@
 
 namespace BlakeJones\MagicForms\Classes;
 
+use Schema;
 use BlakeJones\MagicForms\Models\Record;
 
 class UnreadRecords {
