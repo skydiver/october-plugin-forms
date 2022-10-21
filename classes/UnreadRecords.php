@@ -7,8 +7,11 @@ use BlakeJones\MagicForms\Models\Record;
 class UnreadRecords {
 
     public static function getTotal() {
-        $unread = Record::where('unread', 1)->count();
-        return ($unread > 0) ? $unread : null;
+        if (Schema::hasTable('blakejones_magicforms_records')) {
+            $unread = Record::where('unread', 1)->count();
+        }
+
+        return (isset($unread) && $unread > 0) ? $unread : null;
     }
 
 }

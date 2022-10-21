@@ -132,4 +132,6 @@
     - changed namespace
     - Added support for October CMS v3
 1.6.1:
-  - Fixes support for Translate v2 [thanks to daftspunk]
+    - Fixes support for Translate v2 [thanks to daftspunk]
+1.6.2:
+    - Fixed getting total count of records preventing install because the records table doesn't exist
