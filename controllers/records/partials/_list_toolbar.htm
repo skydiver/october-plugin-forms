@@ -17,6 +17,7 @@
                     'interval': 3
                 });
                 $.oc.sideNav.setCounter('forms/records', data.counter);
+                $.oc.sideNav.setCounter('forms', data.counter);
                 $('#Lists').html(data.list['#Lists']);
             ",
         ]);
@@ -35,6 +36,7 @@
             'request_success' => "
                 $('#records-toolbar').find('button').prop('disabled', true);
                 $.oc.sideNav.setCounter('forms/records', data.counter);
+                $.oc.sideNav.setCounter('forms', data.counter);
                 $('#Lists').html(data.list['#Lists']);
             ",
         ]);
@@ -50,6 +52,7 @@
             'request_success' => "
                 $('#records-toolbar').find('button').prop('disabled', true);
                 $.oc.sideNav.setCounter('forms/records', data.counter);
+                $.oc.sideNav.setCounter('forms', data.counter);
                 $('#Lists').html(data.list['#Lists']);
             ",
         ]);
@@ -67,6 +70,7 @@
                 'request_success' => "
                     $('#records-toolbar').find('button').blur();
                     $.oc.sideNav.setCounter('forms/records', data.counter);
+                    $.oc.sideNav.setCounter('forms', data.counter);
                     $('#Lists').html(data.list['#Lists']);
                 ",
             ]);

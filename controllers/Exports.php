@@ -21,7 +21,7 @@ class Exports extends Controller {
 
     public function __construct() {
         parent::__construct();
-        BackendMenu::setContext('blakejones.magicforms', 'forms', 'exports');
+        BackendMenu::setContext('BlakeJones.MagicForms', 'forms', 'exports');
     }
 
     public function index() {
@@ -84,7 +84,9 @@ class Exports extends Controller {
         $filteredRecords = $records->get();
         $recordsArray = $filteredRecords->toArray();
         $record = $filteredRecords->first();
-        $headers = array_merge($headers, array_keys($record->form_data_arr));
+        if (isset($record)) {
+            $headers = array_merge($headers, array_keys($record->form_data_arr));
+        }
 
         // ADD HEADERS
         $csv->insertOne($headers);

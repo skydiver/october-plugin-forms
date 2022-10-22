@@ -137,3 +137,5 @@
     - Fixed getting total count of records preventing install because the records table doesn't exist
 1.6.3:
     - Fixed needed use Schema for UnreadRecords class
+1.6.4:
+    - Fixed error when trying to export when no records exist, Fixed menu context, Fixed main menu counter not updating

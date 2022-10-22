@@ -23,7 +23,7 @@
 
         public function __construct() {
             parent::__construct();
-            BackendMenu::setContext('blakejones.magicforms', 'forms', 'records');
+            BackendMenu::setContext('BlakeJones.MagicForms', 'forms', 'records');
         }
 
         public function view($id) {
