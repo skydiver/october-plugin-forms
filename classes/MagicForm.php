@@ -63,14 +63,6 @@ abstract class MagicForm extends ComponentBase
             ])]);
         }
 
-        // LOAD TRANSLATOR PLUGIN
-        if (BackendHelpers::isTranslatePlugin()) {
-            $translator = \RainLab\Translate\Classes\Translator::instance();
-            $translator->loadLocaleFromSession();
-            $locale = $translator->getLocale();
-            \RainLab\Translate\Models\Message::setContext($locale);
-        }
-
         // FILTER ALLOWED FIELDS
         $allow = $this->property('allowed_fields');
         if (is_array($allow) && !empty($allow)) {
