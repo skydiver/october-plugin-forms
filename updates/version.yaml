@@ -1,141 +1,143 @@
 1.0.0:
-    - First version of Magic Forms
-    - create_records_table.php
+  - First version of Magic Forms
+  - create_records_table.php
 1.0.1:
-    - Added CSRF protection
+  - Added CSRF protection
 1.1.0:
-    - Added reCAPTCHA
+  - Added reCAPTCHA
 1.1.1:
-    - Fix when using reCAPTCHA + allowed fields
+  - Fix when using reCAPTCHA + allowed fields
 1.1.2:
-    - Filter forms records
-    - Search inside stored data
-    - Organize your forms on custom groups
-    - add_group_field.php
+  - Filter forms records
+  - Search inside stored data
+  - Organize your forms on custom groups
+  - add_group_field.php
 1.2.0:
-    - Export stored data in CSV format
+  - Export stored data in CSV format
 1.2.1:
-    - Auto-response email on form submit
-    - Added Turkish language
+  - Auto-response email on form submit
+  - Added Turkish language
 1.2.2:
-    - Override notifications and auto-response email subjects
+  - Override notifications and auto-response email subjects
 1.2.3:
-    - New option to reset form after successfully submit
-    - Fixed Empty AJAX Form template
-    - Support for Translate plugin
-    - Added plugin documentation
+  - New option to reset form after successfully submit
+  - Fixed Empty AJAX Form template
+  - Support for Translate plugin
+  - Added plugin documentation
 1.2.4:
-    - Added detailed reCAPTCHA help
+  - Added detailed reCAPTCHA help
 1.3.0:
-    - AJAX file uploads
+  - AJAX file uploads
 1.3.1:
-    - Added lang pt-br
+  - Added lang pt-br
 1.3.2:
-    - Fixed multiples reCAPTCHAs on same page
+  - Fixed multiples reCAPTCHAs on same page
 1.3.3:
-    - Fixed record detail page when form data contains an array
-    - Updated documentations
+  - Fixed record detail page when form data contains an array
+  - Updated documentations
 1.3.4:
-    - New "Anonymize IP" option
+  - New "Anonymize IP" option
 1.3.5:
-    - New option "Redirect on successful submit"
+  - New option "Redirect on successful submit"
 1.3.6:
-    - French translation
-    - Support Translate plugin on reCAPTCHA
-    - reCAPTCHA validation enhancements
+  - French translation
+  - Support Translate plugin on reCAPTCHA
+  - reCAPTCHA validation enhancements
 1.3.7:
-    - Displaying errors with fields (inline errors)
-    - Show uploads as list
+  - Displaying errors with fields (inline errors)
+  - Show uploads as list
 1.3.8:
-    - Fixed handling arrays (radio inputs) in notification email
+  - Fixed handling arrays (radio inputs) in notification email
 1.3.9:
-    - Use custom mail templates
-    - Execute custom JavaScript on form success or error
+  - Use custom mail templates
+  - Execute custom JavaScript on form success or error
 1.4.0:
-    - Added Events (please, refer to docs) [thanks to therealkevinard]
+  - Added Events (please, refer to docs) [thanks to therealkevinard]
 1.4.1:
-    - New option "Reply To"
+  - New option "Reply To"
 1.4.2:
-    - Escape HTML characters on the view records page [thanks to Andre]
-    - New option to sanitize form data (check security docs for more info)
-    - Added option to send blind carbon copy in notifications email
+  - Escape HTML characters on the view records page [thanks to Andre]
+  - New option to sanitize form data (check security docs for more info)
+  - Added option to send blind carbon copy in notifications email
 1.4.3:
-    - Fixes related to October Build 420
-    - Added "Unread Records" counter
-    - Fixed errors when only BCC addresses are supplied
-    - New setting "hide navigation item"
-    - add_unread_field.php
+  - Fixes related to October Build 420
+  - Added "Unread Records" counter
+  - Fixed errors when only BCC addresses are supplied
+  - New setting "hide navigation item"
+  - add_unread_field.php
 1.4.4:
-    - Use custom partials for Success and Error messages
+  - Use custom partials for Success and Error messages
 1.4.4.1:
-    - Fix with notifications emails
+  - Fix with notifications emails
 1.4.5:
-    - Mail class code refactoring
-    - Access submited data on auto-response email template
+  - Mail class code refactoring
+  - Access submited data on auto-response email template
 1.4.5.1:
-    - Store form data without escaping unicode [thanks to panakour]
+  - Store form data without escaping unicode [thanks to panakour]
 1.4.6:
-    - New option to skip saving forms data on database.
-    - Possibility to change the text on the remove file popup [thanks to ShiroeSama]
+  - New option to skip saving forms data on database.
+  - Possibility to change the text on the remove file popup [thanks to ShiroeSama]
 1.4.6.1:
-    - Changed database field from json to text to support MySQL 5.5
+  - Changed database field from json to text to support MySQL 5.5
 1.4.7:
-    - you can use your form variables on notification mail subject [thanks to Alex360hd]
-    - fix custom subject on email template [Thanks to matteotrubini]
-    - fix email bug when not storing on db [Thanks JurekRaben]
-    - skip url redirect validation [Thanks to EleRam]
+  - you can use your form variables on notification mail subject [thanks to Alex360hd]
+  - fix custom subject on email template [Thanks to matteotrubini]
+  - fix email bug when not storing on db [Thanks JurekRaben]
+  - skip url redirect validation [Thanks to EleRam]
 1.4.8:
-    - added GDPR cleanup feature [thanks to Alex360hd]
+  - added GDPR cleanup feature [thanks to Alex360hd]
 1.4.9:
-    - fix on replaceToken function when replacement is null [thanks to leonaze]
+  - fix on replaceToken function when replacement is null [thanks to leonaze]
 1.4.9.1:
-    - fix a nullable type error on PHP 7.0
+  - fix a nullable type error on PHP 7.0
 1.4.9.2:
-    - bugfix when a form field array has more than 2 levels of depth
+  - bugfix when a form field array has more than 2 levels of depth
 1.4.10:
-    - improvements related to event functionality
+  - improvements related to event functionality
 1.4.11:
-    - added Laravel custom attributes to form validation [thanks to geekfil]
-    - updated french translation [thanks to FelixINX]
+  - added Laravel custom attributes to form validation [thanks to geekfil]
+  - updated french translation [thanks to FelixINX]
 1.4.12:
-    - use form variables on auto-response mail subject [thanks to jiargei]
+  - use form variables on auto-response mail subject [thanks to jiargei]
 1.4.13:
-    - pass an array with form errors to JavaScript [thanks to multiwebinc]
+  - pass an array with form errors to JavaScript [thanks to multiwebinc]
 1.4.14:
-    - fixed error with empty auto-response subject
+  - fixed error with empty auto-response subject
 1.4.15:
-    - enhancements related to saving record and events [thanks to boxxroom]
+  - enhancements related to saving record and events [thanks to boxxroom]
 1.4.16:
-    - added chinese translation [thanks to everyx]
+  - added chinese translation [thanks to everyx]
 1.4.17:
-    - allowing sanitize to work recursively [thanks to multiwebinc]
+  - allowing sanitize to work recursively [thanks to multiwebinc]
 1.4.18:
-    - export records enhancements [thanks to Fosphatic]
-    - recaptcha locale fix [thanks to MaTToX3]
+  - export records enhancements [thanks to Fosphatic]
+  - recaptcha locale fix [thanks to MaTToX3]
 1.4.19:
-    - added russian translation [thanks to FlusherDock1]
-    - sort records by date fix [thanks to mjauvin]
+  - added russian translation [thanks to FlusherDock1]
+  - sort records by date fix [thanks to mjauvin]
 1.4.20:
-    - added invisible reCAPTCHA [thanks to mjauvin]
-    - new option to set custom date format on emails subject
+  - added invisible reCAPTCHA [thanks to mjauvin]
+  - new option to set custom date format on emails subject
 1.5.0:
-    - fixes related to October Build 469 [thanks to mjauvin]
-    - fix when CSRF check is disabled [thanks to rechik]
-    - php linting and cleanup
+  - fixes related to October Build 469 [thanks to mjauvin]
+  - fix when CSRF check is disabled [thanks to rechik]
+  - php linting and cleanup
 1.5.1:
-    - email templates improvemenrs [thanks to mjauvin]
-    - added german translation [thanks to Fosphatic]
+  - email templates improvemenrs [thanks to mjauvin]
+  - added german translation [thanks to Fosphatic]
 1.5.2:
-    - plugin published to packagist [thanks to rubenvanerk]
-    - added dutch translation [thanks to rubenvanerk]
+  - plugin published to packagist [thanks to rubenvanerk]
+  - added dutch translation [thanks to rubenvanerk]
 1.6.0:
-    - changed namespace
-    - Added support for October CMS v3
+  - changed namespace
+  - Added support for October CMS v3
 1.6.1:
-    - Fixes support for Translate v2 [thanks to daftspunk]
+  - Fixes support for Translate v2 [thanks to daftspunk]
 1.6.2:
-    - Fixed getting total count of records preventing install because the records table doesn't exist
+  - Fixed getting total count of records preventing install because the records table doesn't exist
 1.6.3:
-    - Fixed needed use Schema for UnreadRecords class
+  - Fixed needed use Schema for UnreadRecords class
 1.6.4:
-    - Fixed error when trying to export when no records exist, Fixed menu context, Fixed main menu counter not updating
+  - Fixed error when trying to export when no records exist, Fixed menu context, Fixed main menu counter not updating
+1.6.5:
+  - Fix for translate plugin [thanks to nnmer]
