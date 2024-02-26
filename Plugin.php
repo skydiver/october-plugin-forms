@@ -85,8 +85,8 @@
 
         public function registerMailTemplates() {
             return [
-                'blakejones.magicforms::mail.notification' => Lang::get('blakejones.magicforms::lang.mails.form_notification.description'),
-                'blakejones.magicforms::mail.autoresponse' => Lang::get('blakejones.magicforms::lang.mails.form_autoresponse.description'),
+                'blakejones.magicforms::mail.notification',
+                'blakejones.magicforms::mail.autoresponse',
             ];
         }
 
