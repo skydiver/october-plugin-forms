@@ -1,25 +1,25 @@
 <?php
 
-    namespace Martin\Forms;
+    namespace BlakeJones\MagicForms;
 
     use Backend, Lang, Validator;
     use System\Classes\PluginBase;
     use System\Classes\SettingsManager;
-    use Martin\Forms\Classes\BackendHelpers;
-    use Martin\Forms\Classes\GDPR;
-    use Martin\Forms\Classes\ReCaptchaValidator;
-    use Martin\Forms\Classes\UnreadRecords;
-    use Martin\Forms\Models\Settings;
+    use BlakeJones\MagicForms\Classes\BackendHelpers;
+    use BlakeJones\MagicForms\Classes\GDPR;
+    use BlakeJones\MagicForms\Classes\ReCaptchaValidator;
+    use BlakeJones\MagicForms\Classes\UnreadRecords;
+    use BlakeJones\MagicForms\Models\Settings;
 
     class Plugin extends PluginBase {
 
         public function pluginDetails() {
             return [
-                'name'        => 'martin.forms::lang.plugin.name',
-                'description' => 'martin.forms::lang.plugin.description',
-                'author'      => 'Martin M.',
+                'name'        => 'blakejones.magicforms::lang.plugin.name',
+                'description' => 'blakejones.magicforms::lang.plugin.description',
+                'author'      => 'Martin M. (Forked by Blake Jones)',
                 'icon'        => 'icon-bolt',
-                'homepage'    => 'https://github.com/skydiver/'
+                'homepage'    => 'https://github.com/blakej115/magic-forms'
             ];
         }
 
@@ -27,25 +27,25 @@
             if(Settings::get('global_hide_button', false)) { return; }
             return [
                 'forms' => [
-                    'label'       => 'martin.forms::lang.menu.label',
+                    'label'       => 'blakejones.magicforms::lang.menu.label',
                     'icon'        => 'icon-bolt',
-                    'iconSvg'     => 'plugins/martin/forms/assets/imgs/icon.svg',
-                    'url'         => BackendHelpers::getBackendURL(['martin.forms.access_records' => 'martin/forms/records', 'martin.forms.access_exports' => 'martin/forms/exports'], 'martin.forms.access_records'),
-                    'permissions' => ['martin.forms.*'],
+                    'iconSvg'     => 'plugins/blakejones/magicforms/assets/imgs/icon.svg',
+                    'url'         => BackendHelpers::getBackendURL(['blakejones.magicforms.access_records' => 'blakejones/magicforms/records', 'blakejones.magicforms.access_exports' => 'blakejones/magicforms/exports'], 'blakejones.magicforms.access_records'),
+                    'permissions' => ['blakejones.magicforms.*'],
                     'sideMenu' => [
                         'records' => [
-                            'label'        => 'martin.forms::lang.menu.records.label',
+                            'label'        => 'blakejones.magicforms::lang.menu.records.label',
                             'icon'         => 'icon-database',
-                            'url'          => Backend::url('martin/forms/records'),
-                            'permissions'  => ['martin.forms.access_records'],
+                            'url'          => Backend::url('blakejones/magicforms/records'),
+                            'permissions'  => ['blakejones.magicforms.access_records'],
                             'counter'      => UnreadRecords::getTotal(),
                             'counterLabel' => 'Un-Read Messages'
                         ],
                         'exports' => [
-                            'label'       => 'martin.forms::lang.menu.exports.label',
+                            'label'       => 'blakejones.magicforms::lang.menu.exports.label',
                             'icon'        => 'icon-download',
-                            'url'         => Backend::url('martin/forms/exports'),
-                            'permissions' => ['martin.forms.access_exports']
+                            'url'         => Backend::url('blakejones/magicforms/exports'),
+                            'permissions' => ['blakejones.magicforms.access_exports']
                         ],
                     ]
                 ]
@@ -55,12 +55,12 @@
         public function registerSettings() {
             return [
                 'config' => [
-                    'label'       => 'martin.forms::lang.menu.label',
-                    'description' => 'martin.forms::lang.menu.settings',
+                    'label'       => 'blakejones.magicforms::lang.menu.label',
+                    'description' => 'blakejones.magicforms::lang.menu.settings',
                     'category'    => SettingsManager::CATEGORY_CMS,
                     'icon'        => 'icon-bolt',
-                    'class'       => 'Martin\Forms\Models\Settings',
-                    'permissions' => ['martin.forms.access_settings'],
+                    'class'       => 'BlakeJones\MagicForms\Models\Settings',
+                    'permissions' => ['blakejones.magicforms.access_settings'],
                     'order'       => 500
                 ]
             ];
@@ -68,31 +68,31 @@
 
         public function registerPermissions() {
             return [
-                'martin.forms.access_settings' => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_settings'],
-                'martin.forms.access_records'  => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_records'],
-                'martin.forms.access_exports'  => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.access_exports'],
-                'martin.forms.gdpr_cleanup'    => ['tab' => 'martin.forms::lang.permissions.tab', 'label' => 'martin.forms::lang.permissions.gdpr_cleanup'],
+                'blakejones.magicforms.access_settings' => ['tab' => 'blakejones.magicforms::lang.permissions.tab', 'label' => 'blakejones.magicforms::lang.permissions.access_settings'],
+                'blakejones.magicforms.access_records'  => ['tab' => 'blakejones.magicforms::lang.permissions.tab', 'label' => 'blakejones.magicforms::lang.permissions.access_records'],
+                'blakejones.magicforms.access_exports'  => ['tab' => 'blakejones.magicforms::lang.permissions.tab', 'label' => 'blakejones.magicforms::lang.permissions.access_exports'],
+                'blakejones.magicforms.gdpr_cleanup'    => ['tab' => 'blakejones.magicforms::lang.permissions.tab', 'label' => 'blakejones.magicforms::lang.permissions.gdpr_cleanup'],
             ];
         }
 
         public function registerComponents() {
             return [
-                'Martin\Forms\Components\GenericForm' => 'genericForm',
-                'Martin\Forms\Components\UploadForm'  => 'uploadForm',
-                'Martin\Forms\Components\EmptyForm'   => 'emptyForm',
+                'BlakeJones\MagicForms\Components\GenericForm' => 'genericForm',
+                'BlakeJones\MagicForms\Components\UploadForm'  => 'uploadForm',
+                'BlakeJones\MagicForms\Components\EmptyForm'   => 'emptyForm',
             ];
         }
 
         public function registerMailTemplates() {
             return [
-                'martin.forms::mail.notification' => Lang::get('martin.forms::lang.mails.form_notification.description'),
-                'martin.forms::mail.autoresponse' => Lang::get('martin.forms::lang.mails.form_autoresponse.description'),
+                'blakejones.magicforms::mail.notification',
+                'blakejones.magicforms::mail.autoresponse',
             ];
         }
 
         public function register() {
             $this->app->resolving('validator', function($validator) {
-                Validator::extend('recaptcha', 'Martin\Forms\Classes\ReCaptchaValidator@validateReCaptcha');
+                Validator::extend('recaptcha', 'BlakeJones\MagicForms\Classes\ReCaptchaValidator@validateReCaptcha');
             });
         }
 

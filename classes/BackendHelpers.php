@@ -1,6 +1,6 @@
 <?php
 
-namespace Martin\Forms\Classes;
+namespace BlakeJones\MagicForms\Classes;
 
 use Backend, BackendAuth;
 
@@ -30,7 +30,7 @@ class BackendHelpers {
      * @return boolean
      */
     public static function isTranslatePlugin() :bool {
-        return class_exists('\RainLab\Translate\Classes\Translator') && class_exists('\RainLab\Translate\Models\Message');
+        return class_exists('\RainLab\Translate\Classes\Translator') && class_exists('\RainLab\Translate\Models\Message') && class_exists('\RainLab\Translate\Classes\Locale');
     }
 
     /**

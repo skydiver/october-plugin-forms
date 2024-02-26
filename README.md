@@ -1,7 +1,8 @@
-# Magic Forms for OctoberCMS
+# Magic Forms for October CMS v3
 Create easy (and almost magic) AJAX forms.
 
-
+# Support for October CMS v3 (Forked)
+The original version of this plugin was [abandoned](https://github.com/skydiver/october-plugin-forms/discussions/267). This is an actively maintained fork of the [original plugin](https://octobercms.com/plugin/martin-forms) that supports October CMS v3.
 
 ## Why Magic Forms?
 Almost everyday we do forms for our clients, personal projects, etc
@@ -9,8 +10,6 @@ Almost everyday we do forms for our clients, personal projects, etc
 Sometimes we need to add or remove fields, change validations, store data and at some point, this can be boring and repetitive.
 
 So, the objective was to find a way to just put the HTML elements on the page, skip the repetitive task of coding and (with some kind of magic) store this data on a database or send by mail.
-
-
 
 ## Features
 * Create any type of form: contact, feedback, registration, uploads, etc
@@ -29,8 +28,8 @@ So, the objective was to find a way to just put the HTML elements on the page, s
 * Inline errors with fields (read documentation for more info)
 * AJAX file uploads (BETA, available since v1.3.0)
 
-
-
 ## Documentation
-Checkout our docs at:
-> https://skydiver.github.io/october-plugin-forms/
+
+New documentation coming soon. For now, you may reference the old documentation:
+
+> https://skydiver.github.io/october-plugin-forms/docs/introduction/

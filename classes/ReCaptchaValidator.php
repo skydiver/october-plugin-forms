@@ -1,9 +1,9 @@
 <?php
 
-    namespace Martin\Forms\Classes;
+    namespace BlakeJones\MagicForms\Classes;
 
     use Request;
-    use Martin\Forms\Models\Settings;
+    use BlakeJones\MagicForms\Models\Settings;
 
     class ReCaptchaValidator {
 

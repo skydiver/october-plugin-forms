@@ -1,15 +1,15 @@
 <?php
 
-    namespace Martin\Forms\Controllers;
+    namespace BlakeJones\MagicForms\Controllers;
 
     use App, BackendMenu, Lang;
     use Backend\Classes\Controller;
     use Backend\Facades\Backend;
     use Illuminate\Support\Facades\Redirect;
     use October\Rain\Support\Facades\Flash;
-    use Martin\Forms\Classes\GDPR;
-    use Martin\Forms\Classes\UnreadRecords;
-    use Martin\Forms\Models\Record;
+    use BlakeJones\MagicForms\Classes\GDPR;
+    use BlakeJones\MagicForms\Classes\UnreadRecords;
+    use BlakeJones\MagicForms\Models\Record;
 
     class Records extends Controller {
 
@@ -19,23 +19,23 @@
 
         public $listConfig = 'config_list.yaml';
 
-        public $requiredPermissions = ['martin.forms.access_records'];
+        public $requiredPermissions = ['blakejones.magicforms.access_records'];
 
         public function __construct() {
             parent::__construct();
-            BackendMenu::setContext('Martin.Forms', 'forms', 'records');
+            BackendMenu::setContext('BlakeJones.MagicForms', 'forms', 'records');
         }
 
         public function view($id) {
             $record = Record::find($id);
             if(!$record) {
-                Flash::error(e(trans('martin.forms::lang.controllers.records.error')));
-                return Redirect::to(Backend::url('martin/forms/records'));
+                Flash::error(e(trans('blakejones.magicforms::lang.controllers.records.error')));
+                return Redirect::to(Backend::url('blakejones/magicforms/records'));
             }
             $record->unread = false;
             $record->save();
-            $this->addCss('/plugins/martin/forms/assets/css/records.css');
-            $this->pageTitle      = e(trans('martin.forms::lang.controllers.records.view_title'));
+            $this->addCss('/plugins/blakejones/magicforms/assets/css/records.css');
+            $this->pageTitle      = e(trans('blakejones.magicforms::lang.controllers.records.view_title'));
             $this->vars['record'] = $record;
         }
 
@@ -55,11 +55,11 @@
             $record = Record::find($id);
             if($record) {
                 $record->delete();
-                Flash::success(e(trans('martin.forms::lang.controllers.records.deleted')));
+                Flash::success(e(trans('blakejones.magicforms::lang.controllers.records.deleted')));
             } else {
-                Flash::error(e(trans('martin.forms::lang.controllers.records.error')));
+                Flash::error(e(trans('blakejones.magicforms::lang.controllers.records.error')));
             }
-            return Redirect::to(Backend::url('martin/forms/records'));
+            return Redirect::to(Backend::url('blakejones/magicforms/records'));
         }
 
         public function download($record_id, $file_id) {
@@ -89,11 +89,11 @@
         }
 
         public function onGDPRClean() {
-            if ($this->user->hasPermission(['martin.forms.gdpr_cleanup'])) {
+            if ($this->user->hasPermission(['blakejones.magicforms.gdpr_cleanup'])) {
                 GDPR::cleanRecords();
-                Flash::success(e(trans('martin.forms::lang.controllers.records.alerts.gdpr_success')));
+                Flash::success(e(trans('blakejones.magicforms::lang.controllers.records.alerts.gdpr_success')));
             } else {
-                Flash::error(e(trans('martin.forms::lang.controllers.records.alerts.gdpr_perms')));
+                Flash::error(e(trans('blakejones.magicforms::lang.controllers.records.alerts.gdpr_perms')));
             }
             $counter = UnreadRecords::getTotal();
             return [

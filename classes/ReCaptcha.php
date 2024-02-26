@@ -1,10 +1,10 @@
 <?php
 
-namespace Martin\Forms\Classes;
+namespace BlakeJones\MagicForms\Classes;
 
 use Session;
-use Martin\Forms\Classes\BackendHelpers;
-use Martin\Forms\Models\Settings;
+use BlakeJones\MagicForms\Classes\BackendHelpers;
+use BlakeJones\MagicForms\Models\Settings;
 use RainLab\Translate\Classes\Translator;
 
 trait ReCaptcha {

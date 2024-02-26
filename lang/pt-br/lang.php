@@ -72,7 +72,7 @@
                 'messages_errors'   => ['title' => 'Erros'                        , 'description' => 'Mensagem quando o formulário contém erros', 'default' => 'Ocorreu um erro no envio'],
                 'mail_enabled'      => ['title' => 'Enviar Notificações'          , 'description' => 'Enviar notificações por email em todos os formulários enviados'],
                 'mail_subject'      => ['title' => 'Assunto'                      , 'description' => 'Substitui o assunto de email padrão'],
-                'mail_recipients'   => ['title' => 'Destinatários'                , 'description' => 'Especifique destinatários de email (adicione um endereço por linha)'],
+                'mail_recipients'   => ['title' => 'Destinatários'                , 'description' => 'Especifique os destinatários de e-mail. Use endereços de e-mail como chaves e nomes como valores.'],
                 'mail_uploads'      => ['title' => 'Enviar Uploads'               , 'description' => 'Enviar uploads como anexos'],
                 'mail_resp_enabled' => ['title' => 'Enviar Resposta Automática'   , 'description' => 'Enviar um email de resposta automática para a pessoa que envia o formulário'],
                 'mail_resp_field'   => ['title' => 'Campo de Email'               , 'description' => 'Campo de formulário que contém o endereço de email do destinatário da resposta automática'],

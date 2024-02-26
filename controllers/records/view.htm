@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?php echo Backend::url('martin/forms/records') ?>"><?php echo e(trans('martin.forms::lang.menu.records.label')) ?></a></li>
+        <li><a href="<?php echo Backend::url('blakejones/magicforms/records') ?>"><?php echo e(trans('blakejones.magicforms::lang.menu.records.label')) ?></a></li>
         <li>Record #<?php echo $record->id ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -16,7 +16,7 @@
         <td class="record-value">
         <?php if(is_array($value) || is_object($value)): ?>
             <ul>
-                <?php echo \Martin\Forms\Classes\BackendHelpers::array2ul($value) ?>
+                <?php echo \BlakeJones\MagicForms\Classes\BackendHelpers::array2ul($value) ?>
             </ul>
         <?php else: ?>
             <?php echo nl2br(htmlspecialchars($value, ENT_QUOTES)); ?>
@@ -31,7 +31,7 @@
             <ul>
             <?php foreach($record->files as $file): ?>
                 <li>
-                    <a href="<?php echo Backend::url('martin/forms/records/download', [$record->id, $file->id]) ?>">
+                    <a href="<?php echo Backend::url('blakejones/magicforms/records/download', [$record->id, $file->id]) ?>">
                         <?php echo $file->file_name ?>
                         (<?php echo $file->sizeToString() ?>)
                     </a>
@@ -44,7 +44,7 @@
 </table>
 
 <div class="record-metadata m-t-md m-r-md text-right">
-    <p class="m-a-0"><?php echo e(trans('martin.forms::lang.controllers.records.columns.group')) ?>: <?php echo $record->group ?></p>
-    <p class="m-a-0"><?php echo e(trans('martin.forms::lang.controllers.records.columns.ip')) ?>: <?php echo $record->ip ?></p>
-    <p class="m-a-0"><?php echo e(trans('martin.forms::lang.controllers.records.columns.created_at')) ?>: <?php echo $record->created_at ?></p>
+    <p class="m-a-0"><?php echo e(trans('blakejones.magicforms::lang.controllers.records.columns.group')) ?>: <?php echo $record->group ?></p>
+    <p class="m-a-0"><?php echo e(trans('blakejones.magicforms::lang.controllers.records.columns.ip')) ?>: <?php echo $record->ip ?></p>
+    <p class="m-a-0"><?php echo e(trans('blakejones.magicforms::lang.controllers.records.columns.created_at')) ?>: <?php echo $record->created_at ?></p>
 </div>
